@@ -12,4 +12,8 @@ build
 .next
 out
 .vite
-*.tsbuildinfo 
+*.tsbuildinfo
+netlify.toml
+public/_redirects
+public/_headers
+public/404.html 

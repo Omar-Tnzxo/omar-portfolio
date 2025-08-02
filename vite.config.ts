@@ -36,9 +36,8 @@ export default defineConfig({
   define: {
     global: 'globalThis',
   },
-  // إضافة إعدادات إضافية لحل مشكلة المسارات في Netlify
+  base: '/',
+  // إضافة إعدادات إضافية للتوافق
   publicDir: 'public',
-  root: process.cwd(),
-  // إضافة إعدادات إضافية لحل مشكلة المسارات
-  base: './'
+  root: process.cwd()
 });
