@@ -12,7 +12,6 @@ type FeedbackCardProps = {
   name: string;
   designation: string;
   company: string;
-  image: string;
 };
 
 // Feedback Card
@@ -22,7 +21,6 @@ const FeedbackCard = ({
   name,
   designation,
   company,
-  image,
 }: FeedbackCardProps) => (
   <motion.div
     variants={fadeIn("", "spring", index * 0.5, 0.75)}
@@ -35,8 +33,7 @@ const FeedbackCard = ({
       {/* Testimonial */}
       <p className="text-white tracking-wider text-[18px]">{testimonial}</p>
 
-      <div className="mt-7 flex justify-between items-center gap-1">
-        <div className="flex-1 flex flex-col">
+      <div className="mt-7 flex flex-col">
           {/* Name */}
           <p className="text-white font-medium text-[16px]">
             <span className="blue-text-gradient">@</span> {name}
@@ -44,14 +41,6 @@ const FeedbackCard = ({
           <p className="mt-1 text-secondary text-[12px]">
             {designation} of {company}
           </p>
-        </div>
-
-        {/* User Image */}
-        <img
-          src={image}
-          alt={`feedback-by-${name}`}
-          className="w-10 h-10 rounded-full object-cover"
-        />
       </div>
     </div>
   </motion.div>

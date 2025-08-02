@@ -8,13 +8,10 @@ type ComputersProps = {
   isMobile: boolean;
 };
 
-// Computers
+// Computers - Temporarily Disabled
 const Computers = ({ isMobile }: ComputersProps) => {
-  // Import scene
-  const computer = useGLTF("./desktop_pc/scene.gltf");
-
+  // Return a simple box instead of loading the 3D model
   return (
-    // Mesh
     <mesh>
       {/* Light */}
       <hemisphereLight intensity={0.15} groundColor="black" />
@@ -27,12 +24,9 @@ const Computers = ({ isMobile }: ComputersProps) => {
         castShadow
         shadow-mapSize={1024}
       />
-      <primitive
-        object={computer.scene}
-        scale={isMobile ? 0.7 : 0.75}
-        position={isMobile ? [0, -3, -2.2] : [0, -3.25, -1.5]}
-        rotation={[-0.01, -0.2, -0.1]}
-      />
+      {/* Simple box instead of 3D model */}
+      <boxGeometry args={[2, 1, 1]} />
+      <meshStandardMaterial color="#4B5563" />
     </mesh>
   );
 };

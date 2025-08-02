@@ -9,7 +9,7 @@ export const textVariant = (delay?: number) => {
       y: 0,
       opacity: 1,
       transition: {
-        type: "spring",
+        type: "spring" as const,
         duration: 1.25,
         delay: delay,
       },
@@ -19,8 +19,8 @@ export const textVariant = (delay?: number) => {
 
 // FadeIn motion
 export const fadeIn = (
-  direction: "left" | "right" | "up" | "down" | string,
-  type: string,
+  direction: "left" | "right" | "up" | "down" | "",
+  type: "tween" | "spring" | "inertia",
   delay: number,
   duration: number,
 ) => {
@@ -38,7 +38,7 @@ export const fadeIn = (
         type: type,
         delay: delay,
         duration: duration,
-        ease: "easeOut",
+        ease: "easeOut" as const,
       },
     },
   };
@@ -55,10 +55,10 @@ export const zoomIn = (delay: number, duration: number) => {
       scale: 1,
       opacity: 1,
       transition: {
-        type: "tween",
+        type: "tween" as const,
         delay: delay,
         duration: duration,
-        ease: "easeOut",
+        ease: "easeOut" as const,
       },
     },
   };
@@ -66,8 +66,8 @@ export const zoomIn = (delay: number, duration: number) => {
 
 // slide in motion
 export const slideIn = (
-  direction: "left" | "right" | "up" | "down" | string,
-  type: string,
+  direction: "left" | "right" | "up" | "down" | "",
+  type: "tween" | "spring" | "inertia",
   delay: number,
   duration: number,
 ) => {
@@ -83,7 +83,7 @@ export const slideIn = (
         type: type,
         delay: delay,
         duration: duration,
-        ease: "easeOut",
+        ease: "easeOut" as const,
       },
     },
   };

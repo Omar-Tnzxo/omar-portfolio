@@ -11,13 +11,14 @@ type SectionWrapperProps = {
 
 export const SectionWrapper = ({ children, idName }: SectionWrapperProps) => (
   <motion.section
+    id={idName}
     variants={staggerContainer()}
     initial="hidden"
     whileInView="show"
     viewport={{ once: true, amount: 0.25 }}
     className={cn(styles.padding, "max-w-7xl mx-auto relative z-0")}
   >
-    <span className="hash-span" id={idName}>
+    <span className="hash-span" id={`${idName}-anchor`}>
       &nbsp;
     </span>
     {children}
