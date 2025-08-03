@@ -36,8 +36,8 @@ export default defineConfig({
   define: {
     global: 'globalThis',
   },
-  base: '/',
-  // إضافة إعدادات إضافية للتوافق
+  base: './',
+  // إعدادات للتوافق مع النشر
   publicDir: 'public',
   root: process.cwd()
 });

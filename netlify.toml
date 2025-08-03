@@ -7,10 +7,12 @@
   CI = "false"
   NPM_FLAGS = "--legacy-peer-deps"
 
+# SPA redirects for React Router
 [[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
+  force = true
 
 [[headers]]
   for = "/*"
