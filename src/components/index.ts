@@ -4,7 +4,6 @@
 import { About } from "./about";
 import {
   BallCanvas,
-  ComputersCanvas,
   EarthCanvas,
   StarsCanvas,
 } from "./canvas";
@@ -27,7 +26,6 @@ export {
   Approach,
   BallCanvas,
   BusinessCard,
-  ComputersCanvas,
   Contact,
   EarthCanvas,
   Experience,

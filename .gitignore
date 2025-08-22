@@ -8,8 +8,7 @@ pnpm-debug.log*
 # Build outputs
 dist/
 build/
-.next/
-out/
+*.local
 
 # Environment variables
 .env
@@ -74,24 +73,31 @@ jspm_packages/
 
 # Yarn Integrity file
 .yarn-integrity
-yarn.lock
 
 # parcel-bundler cache (https://parceljs.org/)
 .cache
 .parcel-cache
 
-# Vite cache
-.vite
+# Next.js build output
+.next
 
-# TypeScript cache
-*.tsbuildinfo
+# Nuxt.js build / generate output
+.nuxt
 
-# Netlify
-.netlify
+# Gatsby files
+.cache/
+public
 
-# Vercel
-.vercel
+# Storybook build outputs
+.out
+.storybook-out
 
 # Temporary folders
 tmp/
 temp/
+
+# Vite
+.vite/
+
+# TypeScript
+*.tsbuildinfo

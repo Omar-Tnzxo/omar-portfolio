@@ -1,63 +1,66 @@
-# 🚀 تعليمات النشر السريع على Netlify
+# 🚀 دليل النشر السريع
 
-## الطريقة الأولى: النشر من GitHub (مُوصى بها)
+## الطريقة الأسهل: Netlify
 
-### 1. ادفع الكود إلى GitHub
+### 1. رفع الكود على GitHub
 ```bash
+git init
 git add .
-git commit -m "Ready for Netlify deployment"
-git push origin main
+git commit -m "Ready for deployment"
+git branch -M main
+git remote add origin https://github.com/omar-tnzxo/omar-portfolio.git
+git push -u origin main
 ```
 
-### 2. اربط المشروع بـ Netlify
-1. اذهب إلى: https://app.netlify.com/teams/omar-tnzxo/projects
-2. اضغط "New site from Git"
-3. اختر GitHub
-4. حدد مستودع `omar-portfolio`
-5. تأكد من الإعدادات:
+### 2. النشر على Netlify
+1. اذهب إلى [netlify.com](https://netlify.com)
+2. اضغط "Sign up" أو "Log in"
+3. اختر "New site from Git"
+4. اختر GitHub واربط حسابك
+5. اختر repository: `omar-portfolio`
+6. Netlify سيكتشف تلقائياً:
    - **Build command:** `npm run build`
    - **Publish directory:** `dist`
-6. اضغط "Deploy site"
+7. اضغط "Deploy site"
 
-## الطريقة الثانية: النشر المباشر
+### 3. النتيجة
+- ستحصل على رابط مثل: `https://omar-portfolio.netlify.app`
+- يمكنك تغيير اسم النطاق من إعدادات الموقع
 
-### 1. ابن المشروع
+## خيارات أخرى سريعة
+
+### Vercel (مماثل لـ Netlify)
 ```bash
-npm install
-npm run build
+npm install -g vercel
+vercel
 ```
 
-### 2. ارفع مجلد dist
-1. اذهب إلى: https://app.netlify.com/teams/omar-tnzxo/projects
-2. اسحب مجلد `dist` إلى منطقة النشر
-3. انتظر حتى يكتمل النشر
+### GitHub Pages
+```bash
+npm install gh-pages --save-dev
+npm run build
+npx gh-pages -d dist
+```
 
-## ⚙️ إعدادات إضافية
+### Firebase Hosting
+```bash
+npm install -g firebase-tools
+firebase login
+firebase init hosting
+firebase deploy
+```
 
-### إعداد النطاق المخصص
-1. في لوحة تحكم Netlify، اذهب إلى "Domain settings"
-2. اضغط "Add custom domain"
-3. أدخل النطاق المطلوب
-4. اتبع تعليمات DNS
+## 🔧 استكشاف الأخطاء
 
-### إعداد المتغيرات البيئية
-إذا كان لديك متغيرات بيئية:
-1. اذهب إلى "Site settings" > "Environment variables"
-2. أضف المتغيرات المطلوبة
+### إذا فشل البناء:
+1. تأكد من تثبيت التبعيات: `npm install`
+2. تحقق من الأخطاء: `npm run type-check`
+3. جرب البناء محلياً: `npm run build`
 
-## 🔍 اختبار الموقع
-بعد النشر، تأكد من:
-- ✅ تحميل الصفحة الرئيسية
-- ✅ عمل الروابط الداخلية
-- ✅ عرض الصور والرسوم المتحركة
-- ✅ عمل نموذج الاتصال
-- ✅ التجاوب مع الأجهزة المحمولة
+### إذا لم تظهر الصفحة:
+1. تحقق من ملف `_redirects` في مجلد `public`
+2. تأكد من أن `base: '/'` في `vite.config.ts`
 
-## 📞 الدعم
-إذا واجهت أي مشاكل:
-- تحقق من سجلات البناء في Netlify
-- تأكد من أن جميع التبعيات مثبتة
-- تحقق من إعدادات `netlify.toml`
-
----
-**ملاحظة:** الموقع سيكون متاحاً على رابط Netlify الافتراضي مثل: `https://your-site-name.netlify.app` 
+## 📞 المساعدة
+- **GitHub Issues:** [omar-tnzxo/omar-portfolio](https://github.com/omar-tnzxo/omar-portfolio/issues)
+- **Email:** omar-agha@engineer.com

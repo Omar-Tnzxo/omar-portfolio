@@ -23,7 +23,8 @@ export default defineConfig({
     },
     chunkSizeWarningLimit: 1000,
     sourcemap: false,
-    minify: 'esbuild'
+    minify: 'esbuild',
+    outDir: 'dist'
   },
   server: {
     hmr: {
@@ -36,8 +37,6 @@ export default defineConfig({
   define: {
     global: 'globalThis',
   },
-  base: './',
-  // إعدادات للتوافق مع النشر
-  publicDir: 'public',
-  root: process.cwd()
+  base: '/',
+  publicDir: 'public'
 });
