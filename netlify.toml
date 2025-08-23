@@ -1,6 +1,6 @@
 [build]
   publish = "dist"
-  command = "chmod +x build.sh && ./build.sh"
+  command = "chmod +x build-simple.sh && ./build-simple.sh"
 
 [build.environment]
   NODE_VERSION = "18"
@@ -8,6 +8,7 @@
   NPM_FLAGS = "--legacy-peer-deps --omit=optional"
   ROLLUP_SKIP_NATIVE = "true"
   ROLLUP_SKIP_NATIVE_BINARIES = "true"
+  VITE_SKIP_NATIVE = "true"
 
 # SPA redirects for React Router
 [[redirects]]
