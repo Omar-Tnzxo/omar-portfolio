@@ -41,7 +41,7 @@ const WhatsAppButton: React.FC = () => {
             fontFamily="none"
             fontWeight="none"
             fontSize="none"
-            textAnchor="none"
+            textAnchor="start"
             style={{ mixBlendMode: "normal" }}
           >
             <g transform="scale(5.12,5.12)">

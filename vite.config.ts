@@ -47,6 +47,9 @@ export default defineConfig({
   },
   define: {
     global: 'globalThis',
+    'process.env.ROLLUP_SKIP_NATIVE': 'true',
+    'process.env.ROLLUP_SKIP_NATIVE_BINARIES': 'true',
+    'process.env.VITE_SKIP_NATIVE': 'true'
   },
   base: '/',
   publicDir: 'public',
