@@ -1,6 +1,6 @@
 [build]
   publish = "dist"
-  command = "npm ci --omit=optional --legacy-peer-deps && npm run build:esbuild"
+  command = "npm ci --omit=optional --legacy-peer-deps && npm run build"
 
 [build.environment]
   NODE_VERSION = "20"

@@ -3,10 +3,25 @@
 import * as esbuild from 'esbuild';
 import { copy } from 'fs-extra';
 import path from 'path';
+import { readFileSync } from 'fs';
 
 async function build() {
   try {
     console.log('🚀 Starting esbuild build...');
+    
+    // Load environment variables from .env file
+    let envVars = {};
+    try {
+      const envContent = readFileSync('.env', 'utf8');
+      envContent.split('\n').forEach(line => {
+        const [key, ...valueParts] = line.split('=');
+        if (key && !key.startsWith('#')) {
+          envVars[key.trim()] = valueParts.join('=').trim();
+        }
+      });
+    } catch (error) {
+      console.log('⚠️ Could not read .env file, using defaults');
+    }
     
     // Build with esbuild
     const result = await esbuild.build({
@@ -33,10 +48,10 @@ async function build() {
       define: {
         'process.env.NODE_ENV': '"production"',
         'global': 'globalThis',
-        'import.meta.env.VITE_APP_EMAILJS_KEY': JSON.stringify(process.env.VITE_APP_EMAILJS_KEY || 'H4YFvBxDUh6YpVn0a'),
-        'import.meta.env.VITE_APP_SERVICE_ID': JSON.stringify(process.env.VITE_APP_SERVICE_ID || 'service_mrbmgus'),
-        'import.meta.env.VITE_APP_TEMPLATE_ID': JSON.stringify(process.env.VITE_APP_TEMPLATE_ID || 'template_d16rk5m'),
-        'import.meta.env.VITE_APP_EMAILJS_RECIEVER': JSON.stringify(process.env.VITE_APP_EMAILJS_RECIEVER || 'omar-agha@engineer.com')
+        'import.meta.env.VITE_APP_EMAILJS_KEY': JSON.stringify(envVars.VITE_APP_EMAILJS_KEY || process.env.VITE_APP_EMAILJS_KEY || 'H4YFvBxDUh6YpVn0a'),
+        'import.meta.env.VITE_APP_SERVICE_ID': JSON.stringify(envVars.VITE_APP_SERVICE_ID || process.env.VITE_APP_SERVICE_ID || 'service_mrbmgus'),
+        'import.meta.env.VITE_APP_TEMPLATE_ID': JSON.stringify(envVars.VITE_APP_TEMPLATE_ID || process.env.VITE_APP_TEMPLATE_ID || 'template_d16rk5m'),
+        'import.meta.env.VITE_APP_EMAILJS_RECIEVER': JSON.stringify(envVars.VITE_APP_EMAILJS_RECIEVER || process.env.VITE_APP_EMAILJS_RECIEVER || 'omar-agha@engineer.com')
       },
       external: [],
       platform: 'browser',

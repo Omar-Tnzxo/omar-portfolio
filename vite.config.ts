@@ -54,10 +54,10 @@ export default defineConfig(({ mode }) => {
     'process.env.ROLLUP_SKIP_NATIVE': 'true',
     'process.env.ROLLUP_SKIP_NATIVE_BINARIES': 'true',
     'process.env.VITE_SKIP_NATIVE': 'true',
-    'import.meta.env.VITE_APP_EMAILJS_KEY': JSON.stringify(env.VITE_APP_EMAILJS_KEY),
-    'import.meta.env.VITE_APP_SERVICE_ID': JSON.stringify(env.VITE_APP_SERVICE_ID),
-    'import.meta.env.VITE_APP_TEMPLATE_ID': JSON.stringify(env.VITE_APP_TEMPLATE_ID),
-    'import.meta.env.VITE_APP_EMAILJS_RECIEVER': JSON.stringify(env.VITE_APP_EMAILJS_RECIEVER)
+    'import.meta.env.VITE_APP_EMAILJS_KEY': JSON.stringify(env.VITE_APP_EMAILJS_KEY || ''),
+    'import.meta.env.VITE_APP_SERVICE_ID': JSON.stringify(env.VITE_APP_SERVICE_ID || ''),
+    'import.meta.env.VITE_APP_TEMPLATE_ID': JSON.stringify(env.VITE_APP_TEMPLATE_ID || ''),
+    'import.meta.env.VITE_APP_EMAILJS_RECIEVER': JSON.stringify(env.VITE_APP_EMAILJS_RECIEVER || '')
   },
   base: '/',
   publicDir: 'public',
