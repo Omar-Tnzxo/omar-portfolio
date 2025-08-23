@@ -1,17 +1,11 @@
 [build]
   publish = "dist"
-  command = "npm ci --omit=optional --legacy-peer-deps && npm run build:esbuild"
+  command = "npm run build"
 
 [build.environment]
-  NODE_VERSION = "20"
+  NODE_VERSION = "18"
   CI = "false"
-  NPM_FLAGS = "--legacy-peer-deps --omit=optional"
-  ROLLUP_SKIP_NATIVE = "true"
-  ROLLUP_SKIP_NATIVE_BINARIES = "true"
-  VITE_SKIP_NATIVE = "true"
-  NODE_OPTIONS = "--max-old-space-size=4096"
-  NPM_CONFIG_OPTIONAL = "false"
-  NPM_CONFIG_LEGACY_PEER_DEPS = "true"
+  NPM_FLAGS = "--legacy-peer-deps"
 
 # SPA redirects for React Router
 [[redirects]]
@@ -20,22 +14,6 @@
   status = 200
   force = true
 
-# Handle specific routes
-[[redirects]]
-  from = "/avenue-omar"
-  to = "/index.html"
-  status = 200
-
-[[redirects]]
-  from = "/projects"
-  to = "/index.html"
-  status = 200
-
-[[redirects]]
-  from = "/contact"
-  to = "/index.html"
-  status = 200
-
 [[headers]]
   for = "/*"
   [headers.values]
@@ -43,8 +21,6 @@
     X-XSS-Protection = "1; mode=block"
     X-Content-Type-Options = "nosniff"
     Referrer-Policy = "strict-origin-when-cross-origin"
-    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
-    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https:; media-src 'self' https:; object-src 'none'; base-uri 'self'; form-action 'self';"
 
 [[headers]]
   for = "/assets/*"
@@ -55,22 +31,16 @@
   for = "*.js"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
-    Content-Type = "application/javascript"
 
 [[headers]]
   for = "*.css"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
 
-[[headers]]
-  for = "*.tsx"
-  [headers.values]
-    Content-Type = "application/javascript"
-
-[[headers]]
-  for = "*.ts"
-  [headers.values]
-    Content-Type = "application/javascript"
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
 
 [build.processing]
   skip_processing = false
@@ -87,4 +57,28 @@
   pretty_urls = true
 
 [build.processing.images]
-  compress = true 
+  compress = true
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "*.js"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "*.css"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable" 

@@ -8,13 +8,6 @@ import { SectionWrapper } from "../hoc";
 import { styles } from "../styles";
 import { slideIn } from "../utils/motion";
 
-// EmailJS configuration with fallbacks
-const EMAILJS_CONFIG = {
-  serviceId: import.meta.env.VITE_APP_SERVICE_ID || 'service_mrbmgus',
-  templateId: import.meta.env.VITE_APP_TEMPLATE_ID || 'template_d16rk5m',
-  key: import.meta.env.VITE_APP_EMAILJS_KEY || 'H4YFvBxDUh6YpVn0a'
-};
-
 // Contact
 export const Contact = () => {
   const formRef = useRef<HTMLFormElement | null>(null);
@@ -175,8 +168,8 @@ export const Contact = () => {
       
       emailjs
         .send(
-          import.meta.env.VITE_APP_SERVICE_ID || '',
-          import.meta.env.VITE_APP_TEMPLATE_ID || '',
+          import.meta.env.VITE_APP_SERVICE_ID,
+          import.meta.env.VITE_APP_TEMPLATE_ID,
           {
             from_name: contactForm.name,
             from_email: contactForm.email.trim().toLowerCase(),
@@ -202,7 +195,7 @@ export const Contact = () => {
             platform: userInfo.platform,
             referrer: userInfo.referrer,
           },
-          import.meta.env.VITE_APP_EMAILJS_KEY || '',
+          import.meta.env.VITE_APP_EMAILJS_KEY,
         )
         .then(() => toast.success("Thanks for contacting me!"))
         .catch((error) => {
@@ -239,8 +232,8 @@ export const Contact = () => {
       
       emailjs
         .send(
-          import.meta.env.VITE_APP_SERVICE_ID || '',
-          import.meta.env.VITE_APP_TEMPLATE_ID || '',
+          import.meta.env.VITE_APP_SERVICE_ID,
+          import.meta.env.VITE_APP_TEMPLATE_ID,
           {
             from_name: appointmentForm.name,
             from_email: appointmentForm.email.trim().toLowerCase(),
@@ -271,7 +264,7 @@ Notes: ${appointmentForm.notes || 'No additional notes'}`,
             platform: userInfo.platform,
             referrer: userInfo.referrer,
           },
-          import.meta.env.VITE_APP_EMAILJS_KEY || '',
+          import.meta.env.VITE_APP_EMAILJS_KEY,
         )
         .then(() => toast.success("Appointment request sent successfully!"))
         .catch((error) => {

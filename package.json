@@ -31,8 +31,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "cross-env ROLLUP_SKIP_NATIVE=true ROLLUP_SKIP_NATIVE_BINARIES=true VITE_SKIP_NATIVE=true vite build",
-    "build:esbuild": "node build-esbuild.js",
+    "build": "vite build",
     "preview": "vite preview",
     "check-types": "tsc --noEmit",
     "type-check": "tsc --noEmit",
@@ -63,30 +62,12 @@
     "@types/react": "^18.3.12",
     "@types/react-dom": "^18.3.1",
     "@types/react-vertical-timeline-component": "^3.3.6",
+    "@types/tailwindcss": "^3.1.0",
     "@vitejs/plugin-react": "^4.2.0",
     "autoprefixer": "^10.4.21",
-    "cross-env": "^7.0.3",
-    "esbuild": "^0.20.0",
-    "fs-extra": "^11.2.0",
     "postcss": "^8.5.6",
     "tailwindcss": "^3.4.17",
     "typescript": "^5.8.3",
     "vite": "^5.0.0"
-  },
-  "overrides": {
-    "rollup": {
-      "fsevents": "~2.3.3"
-    },
-    "three-mesh-bvh": "0.8.0"
-  },
-  "engines": {
-    "node": ">=18.0.0 <21.0.0"
-  },
-  "config": {
-    "optional": false
-  },
-  "resolutions": {
-    "rollup": "4.9.0",
-    "@rollup/rollup-win32-x64-msvc": "4.9.0"
   }
 }
