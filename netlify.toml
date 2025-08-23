@@ -1,6 +1,6 @@
 [build]
   publish = "dist"
-  command = "npm ci --omit=optional && npm run build"
+  command = "npm ci --omit=optional --legacy-peer-deps && npm run build"
 
 [build.environment]
   NODE_VERSION = "18"
@@ -11,6 +11,7 @@
   VITE_SKIP_NATIVE = "true"
   NODE_OPTIONS = "--max-old-space-size=4096"
   NPM_CONFIG_OPTIONAL = "false"
+  NPM_CONFIG_LEGACY_PEER_DEPS = "true"
 
 # SPA redirects for React Router
 [[redirects]]

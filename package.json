@@ -80,5 +80,8 @@
   },
   "config": {
     "optional": false
+  },
+  "resolutions": {
+    "rollup": "4.9.0"
   }
 }

@@ -49,5 +49,11 @@ export default defineConfig({
   },
   base: '/',
   publicDir: 'public',
-  assetsInclude: ['**/*.webp', '**/*.png', '**/*.svg', '**/*.jpg', '**/*.jpeg']
+  assetsInclude: ['**/*.webp', '**/*.png', '**/*.svg', '**/*.jpg', '**/*.jpeg'],
+  esbuild: {
+    target: 'es2020',
+    supported: {
+      'top-level-await': true
+    }
+  }
 });

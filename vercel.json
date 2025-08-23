@@ -1,0 +1,16 @@
+{
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
+  "framework": "vite",
+  "installCommand": "npm install --omit=optional",
+  "functions": {
+    "app/api/**/*.js": {
+      "runtime": "nodejs18.x"
+    }
+  },
+  "env": {
+    "ROLLUP_SKIP_NATIVE": "true",
+    "ROLLUP_SKIP_NATIVE_BINARIES": "true",
+    "VITE_SKIP_NATIVE": "true"
+  }
+}
