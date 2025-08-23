@@ -19,29 +19,9 @@ export default defineConfig({
           three: ['three', '@react-three/fiber', '@react-three/drei'],
           utils: ['clsx', 'tailwind-merge', 'maath']
         }
-      },
-      // Skip native binaries for Netlify
-      external: process.env.ROLLUP_SKIP_NATIVE ? [] : undefined
+      }
     },
-    chunkSizeWarningLimit: 1000,
-    sourcemap: false,
-    minify: 'esbuild',
-    outDir: 'dist',
-    // Skip native dependencies
-    target: 'es2020'
-  },
-  server: {
-    hmr: {
-      overlay: false
-    }
-  },
-  optimizeDeps: {
-    include: ['react', 'react-dom', 'framer-motion'],
-    exclude: ['@rollup/rollup-linux-x64-gnu', '@rollup/rollup-darwin-x64', '@rollup/rollup-win32-x64-msvc']
-  },
-  define: {
-    global: 'globalThis',
-  },
-  base: '/',
-  publicDir: 'public'
+    sourcemap: true,
+    chunkSizeWarningLimit: 1000
+  }
 });
