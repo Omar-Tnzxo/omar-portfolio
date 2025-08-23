@@ -1,4 +1,5 @@
 import React, { Component, ErrorInfo, ReactNode } from 'react';
+import FallbackCanvas from './FallbackCanvas';
 
 interface Props {
   children: ReactNode;
@@ -16,22 +17,17 @@ class ErrorBoundary extends Component<Props, State> {
   };
 
   public static getDerivedStateFromError(error: Error): State {
+    console.error('Canvas Error Boundary caught:', error);
     return { hasError: true, error };
   }
 
   public componentDidCatch(error: Error, errorInfo: ErrorInfo) {
-    console.error('Canvas Error:', error, errorInfo);
+    console.error('Canvas Error Details:', error, errorInfo);
   }
 
   public render() {
     if (this.state.hasError) {
-      return this.props.fallback || (
-        <div className="flex items-center justify-center w-full h-full">
-          <div className="text-center">
-            <p className="text-gray-400 text-sm">Failed to load 3D content</p>
-          </div>
-        </div>
-      );
+      return this.props.fallback || <FallbackCanvas />;
     }
 
     return this.props.children;

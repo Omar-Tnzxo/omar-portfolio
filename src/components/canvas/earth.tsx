@@ -3,7 +3,7 @@ import { Canvas } from "@react-three/fiber";
 import { Suspense } from "react";
 
 import CanvasLoader from "../loader";
-import ErrorBoundary from "./ErrorBoundary";
+import SafeCanvas from "./SafeCanvas";
 
 // Earth
 const Earth = () => {
@@ -18,7 +18,7 @@ const Earth = () => {
 // Earth Canvas
 const EarthCanvas = () => {
   return (
-    <ErrorBoundary>
+    <SafeCanvas>
       <Canvas
         shadows
         frameloop="demand"
@@ -38,7 +38,7 @@ const EarthCanvas = () => {
           <Earth />
         </Suspense>
       </Canvas>
-    </ErrorBoundary>
+    </SafeCanvas>
   );
 };
 
