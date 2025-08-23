@@ -1,6 +1,6 @@
 [build]
   publish = "dist"
-  command = "chmod +x build-simple.sh && ./build-simple.sh"
+  command = "npm ci --omit=optional && npm run build"
 
 [build.environment]
   NODE_VERSION = "18"
@@ -10,6 +10,7 @@
   ROLLUP_SKIP_NATIVE_BINARIES = "true"
   VITE_SKIP_NATIVE = "true"
   NODE_OPTIONS = "--max-old-space-size=4096"
+  NPM_CONFIG_OPTIONAL = "false"
 
 # SPA redirects for React Router
 [[redirects]]

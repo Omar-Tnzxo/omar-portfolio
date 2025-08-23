@@ -336,8 +336,8 @@ Notes: ${appointmentForm.notes || 'No additional notes'}`,
         >
           {/* Title */}
           <div className="mb-6">
-            <p className={styles.sectionSubText}>Get in touch</p>
-            <h3 className={styles.sectionHeadText}>Contact.</h3>
+          <p className={styles.sectionSubText}>Get in touch</p>
+          <h3 className={styles.sectionHeadText}>Contact.</h3>
           </div>
           
           {/* Contact Information */}
@@ -415,109 +415,109 @@ Notes: ${appointmentForm.notes || 'No additional notes'}`,
           {/* Contact Form */}
           {activeTab === 'contact' && (
             <motion.form
-              ref={formRef}
+            ref={formRef}
               onSubmit={handleContactSubmit}
-              className="space-y-5"
+            className="space-y-5"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.3 }}
-            >
-              {/* Name */}
+          >
+            {/* Name */}
               <label htmlFor="contact-name" className="block">
-                <span className="text-white font-medium mb-2 block flex items-center gap-2 text-sm">
-                  <span className="w-1 h-1 bg-gradient-to-r from-purple-500 to-blue-500 rounded-full"></span>
-                  Your Name*
-                </span>
-                <input
-                  type="text"
-                  name="name"
+              <span className="text-white font-medium mb-2 block flex items-center gap-2 text-sm">
+                <span className="w-1 h-1 bg-gradient-to-r from-purple-500 to-blue-500 rounded-full"></span>
+                Your Name*
+              </span>
+              <input
+                type="text"
+                name="name"
                   id="contact-name"
                   value={contactForm.name}
                   onChange={handleContactChange}
-                  placeholder="Ahmed Mohamed"
-                  title="What's your name?"
-                  disabled={loading}
-                  aria-disabled={loading}
-                  className="w-full bg-black/30 border border-white/10 py-3 px-4 placeholder:text-secondary text-white rounded-lg outline-none font-medium disabled:bg-black/20 disabled:text-white/60 transition-all duration-300 focus:border-purple-500/50 focus:bg-black/40 focus:ring-2 focus:ring-purple-500/20 text-sm"
-                />
+                placeholder="Ahmed Mohamed"
+                title="What's your name?"
+                disabled={loading}
+                aria-disabled={loading}
+                className="w-full bg-black/30 border border-white/10 py-3 px-4 placeholder:text-secondary text-white rounded-lg outline-none font-medium disabled:bg-black/20 disabled:text-white/60 transition-all duration-300 focus:border-purple-500/50 focus:bg-black/40 focus:ring-2 focus:ring-purple-500/20 text-sm"
+              />
                 <span className="text-red-400 mt-1 hidden text-xs" id="contact-name-error">
-                  Invalid Name!
-                </span>
-              </label>
+                Invalid Name!
+              </span>
+            </label>
 
-              {/* Email */}
+            {/* Email */}
               <label htmlFor="contact-email" className="block">
-                <span className="text-white font-medium mb-2 block flex items-center gap-2 text-sm">
-                  <span className="w-1 h-1 bg-gradient-to-r from-green-500 to-teal-500 rounded-full"></span>
-                  Your Email*
-                </span>
-                <input
-                  type="email"
-                  name="email"
+              <span className="text-white font-medium mb-2 block flex items-center gap-2 text-sm">
+                <span className="w-1 h-1 bg-gradient-to-r from-green-500 to-teal-500 rounded-full"></span>
+                Your Email*
+              </span>
+              <input
+                type="email"
+                name="email"
                   id="contact-email"
                   value={contactForm.email}
                   onChange={handleContactChange}
                   placeholder="ahmed@email.com"
-                  title="What's your email?"
-                  disabled={loading}
-                  aria-disabled={loading}
-                  className="w-full bg-black/30 border border-white/10 py-3 px-4 placeholder:text-secondary text-white rounded-lg outline-none font-medium disabled:bg-black/20 disabled:text-white/60 transition-all duration-300 focus:border-green-500/50 focus:bg-black/40 focus:ring-2 focus:ring-green-500/20 text-sm"
-                />
+                title="What's your email?"
+                disabled={loading}
+                aria-disabled={loading}
+                className="w-full bg-black/30 border border-white/10 py-3 px-4 placeholder:text-secondary text-white rounded-lg outline-none font-medium disabled:bg-black/20 disabled:text-white/60 transition-all duration-300 focus:border-green-500/50 focus:bg-black/40 focus:ring-2 focus:ring-green-500/20 text-sm"
+              />
                 <span className="text-red-400 mt-1 hidden text-xs" id="contact-email-error">
-                  Invalid E-mail!
-                </span>
-              </label>
+                Invalid E-mail!
+              </span>
+            </label>
 
-              {/* Message */}
+            {/* Message */}
               <label htmlFor="contact-message" className="block">
-                <span className="text-white font-medium mb-2 block flex items-center gap-2 text-sm">
-                  <span className="w-1 h-1 bg-gradient-to-r from-orange-500 to-red-500 rounded-full"></span>
-                  Your Message*
-                </span>
-                <textarea
-                  rows={5}
-                  name="message"
+              <span className="text-white font-medium mb-2 block flex items-center gap-2 text-sm">
+                <span className="w-1 h-1 bg-gradient-to-r from-orange-500 to-red-500 rounded-full"></span>
+                Your Message*
+              </span>
+              <textarea
+                rows={5}
+                name="message"
                   id="contact-message"
                   value={contactForm.message}
                   onChange={handleContactChange}
-                  placeholder="Hello there! I'd like to discuss..."
-                  title="What do you want to say?"
-                  disabled={loading}
-                  aria-disabled={loading}
-                  className="w-full bg-black/30 border border-white/10 py-3 px-4 placeholder:text-secondary text-white rounded-lg outline-none font-medium disabled:bg-black/20 disabled:text-white/60 transition-all duration-300 focus:border-orange-500/50 focus:bg-black/40 focus:ring-2 focus:ring-orange-500/20 resize-none text-sm"
-                />
-                <span className="text-red-400 mt-1 hidden text-xs" id="contact-message-error">
-                  Invalid Message!
-                </span>
-              </label>
-
-              {/* Submit Button */}
-              <motion.button
-                type="submit"
-                title={loading ? "Sending..." : "Send Message"}
+                placeholder="Hello there! I'd like to discuss..."
+                title="What do you want to say?"
                 disabled={loading}
                 aria-disabled={loading}
-                className="relative inline-flex h-10 w-full overflow-hidden rounded-lg bg-gradient-to-r from-purple-600 to-blue-600 p-[1px] focus:outline-none disabled:opacity-50 disabled:cursor-not-allowed group"
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-              >
-                <span className="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#E2CBFF_0%,#393BB2_50%,#E2CBFF_100%)]" />
-                <span className="inline-flex h-full w-full cursor-pointer items-center justify-center rounded-lg bg-slate-950 px-6 text-xs font-semibold text-white backdrop-blur-3xl transition-all duration-300 group-hover:bg-slate-900">
-                  {loading ? (
-                    <div className="flex items-center gap-2">
-                      <div className="w-3 h-3 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
-                      Sending...
-                    </div>
-                  ) : (
-                    <div className="flex items-center gap-2">
-                      <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
-                        <path d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5-1.429A1 1 0 009 15.571V11a1 1 0 112 0v4.571a1 1 0 00.725.962l5 1.428a1 1 0 001.17-1.408l-7-14z"/>
-                      </svg>
-                      Send Message
-                    </div>
-                  )}
-                </span>
-              </motion.button>
+                className="w-full bg-black/30 border border-white/10 py-3 px-4 placeholder:text-secondary text-white rounded-lg outline-none font-medium disabled:bg-black/20 disabled:text-white/60 transition-all duration-300 focus:border-orange-500/50 focus:bg-black/40 focus:ring-2 focus:ring-orange-500/20 resize-none text-sm"
+              />
+                <span className="text-red-400 mt-1 hidden text-xs" id="contact-message-error">
+                Invalid Message!
+              </span>
+            </label>
+
+            {/* Submit Button */}
+            <motion.button
+              type="submit"
+              title={loading ? "Sending..." : "Send Message"}
+              disabled={loading}
+              aria-disabled={loading}
+              className="relative inline-flex h-10 w-full overflow-hidden rounded-lg bg-gradient-to-r from-purple-600 to-blue-600 p-[1px] focus:outline-none disabled:opacity-50 disabled:cursor-not-allowed group"
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+            >
+              <span className="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#E2CBFF_0%,#393BB2_50%,#E2CBFF_100%)]" />
+              <span className="inline-flex h-full w-full cursor-pointer items-center justify-center rounded-lg bg-slate-950 px-6 text-xs font-semibold text-white backdrop-blur-3xl transition-all duration-300 group-hover:bg-slate-900">
+                {loading ? (
+                  <div className="flex items-center gap-2">
+                    <div className="w-3 h-3 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
+                    Sending...
+                  </div>
+                ) : (
+                  <div className="flex items-center gap-2">
+                    <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
+                      <path d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5-1.429A1 1 0 009 15.571V11a1 1 0 112 0v4.571a1 1 0 00.725.962l5 1.428a1 1 0 001.17-1.408l-7-14z"/>
+                    </svg>
+                    Send Message
+                  </div>
+                )}
+              </span>
+            </motion.button>
             </motion.form>
           )}
 
