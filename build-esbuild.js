@@ -38,7 +38,11 @@ async function build() {
       platform: 'browser',
       splitting: true,
       metafile: true,
-      write: true
+      write: true,
+      publicPath: '/',
+      assetNames: 'assets/[name]-[hash]',
+      chunkNames: 'chunks/[name]-[hash]',
+      entryNames: '[name]'
     });
 
     console.log('✅ esbuild build completed successfully!');
@@ -47,8 +51,10 @@ async function build() {
     await copy('public', 'dist', { overwrite: true });
     console.log('✅ Public assets copied!');
     
-    // Copy index.html
-    await copy('index.html', 'dist/index.html', { overwrite: true });
+    // Copy and update index.html
+    const indexPath = 'index.html';
+    const distIndexPath = 'dist/index.html';
+    await copy(indexPath, distIndexPath, { overwrite: true });
     console.log('✅ index.html copied!');
     
     console.log('🎉 Build completed successfully!');

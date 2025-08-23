@@ -37,7 +37,9 @@ export default defineConfig({
   server: {
     hmr: {
       overlay: false
-    }
+    },
+    port: 5173,
+    host: true
   },
   optimizeDeps: {
     include: ['react', 'react-dom', 'framer-motion'],
