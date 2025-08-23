@@ -8,6 +8,13 @@ import { SectionWrapper } from "../hoc";
 import { styles } from "../styles";
 import { slideIn } from "../utils/motion";
 
+// EmailJS configuration with fallbacks
+const EMAILJS_CONFIG = {
+  serviceId: import.meta.env.VITE_APP_SERVICE_ID || 'service_mrbmgus',
+  templateId: import.meta.env.VITE_APP_TEMPLATE_ID || 'template_d16rk5m',
+  key: import.meta.env.VITE_APP_EMAILJS_KEY || 'H4YFvBxDUh6YpVn0a'
+};
+
 // Contact
 export const Contact = () => {
   const formRef = useRef<HTMLFormElement | null>(null);
