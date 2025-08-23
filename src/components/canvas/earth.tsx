@@ -18,7 +18,7 @@ const Earth = () => {
 // Earth Canvas
 const EarthCanvas = () => {
   return (
-    <SafeCanvas>
+    <SafeCanvas type="earth">
       <Canvas
         shadows
         frameloop="demand"

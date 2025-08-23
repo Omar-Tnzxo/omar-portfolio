@@ -1,17 +1,20 @@
 import React, { Suspense, useState, useEffect } from 'react';
 import ErrorBoundary from './ErrorBoundary';
 import FallbackCanvas from './FallbackCanvas';
+import StaticCanvas from './StaticCanvas';
 
 interface SafeCanvasProps {
   children: React.ReactNode;
   className?: string;
   fallback?: React.ReactNode;
+  type?: 'ball' | 'earth' | 'stars';
 }
 
 const SafeCanvas: React.FC<SafeCanvasProps> = ({ 
   children, 
   className = "", 
-  fallback 
+  fallback,
+  type = 'stars'
 }) => {
   const [isClient, setIsClient] = useState(false);
   const [hasError, setHasError] = useState(false);
@@ -20,21 +23,21 @@ const SafeCanvas: React.FC<SafeCanvasProps> = ({
     setIsClient(true);
   }, []);
 
-  // إذا لم يتم تحميل الصفحة بعد، اعرض fallback
+  // إذا لم يتم تحميل الصفحة بعد، اعرض StaticCanvas
   if (!isClient) {
-    return fallback || <FallbackCanvas />;
+    return fallback || <StaticCanvas type={type} />;
   }
 
-  // إذا كان هناك خطأ، اعرض fallback
+  // إذا كان هناك خطأ، اعرض StaticCanvas
   if (hasError) {
-    return fallback || <FallbackCanvas />;
+    return fallback || <StaticCanvas type={type} />;
   }
 
   return (
     <ErrorBoundary 
-      fallback={fallback || <FallbackCanvas />}
+      fallback={fallback || <StaticCanvas type={type} />}
     >
-      <Suspense fallback={fallback || <FallbackCanvas />}>
+      <Suspense fallback={fallback || <StaticCanvas type={type} />}>
         <div className={className}>
           {children}
         </div>

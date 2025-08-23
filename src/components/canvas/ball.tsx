@@ -51,7 +51,7 @@ type BallCanvasProps = {
 // Ball Canvas
 const BallCanvas = ({ icon }: BallCanvasProps) => {
   return (
-    <SafeCanvas>
+    <SafeCanvas type="ball">
       <Canvas frameloop="demand" gl={{ preserveDrawingBuffer: true }}>
         {/* Show canvas loader on fallback */}
         <Suspense fallback={<CanvasLoader />}>

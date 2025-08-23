@@ -49,7 +49,7 @@ const StarsCanvas = () => {
   return (
     <div className="w-full h-auto absolute inset-0 z-[-1]">
       {/* Canvas */}
-      <SafeCanvas>
+      <SafeCanvas type="stars">
         <Canvas camera={{ position: [0, 0, 1] }}>
           {/* Show stars if not fallback */}
           <Suspense fallback={null}>
