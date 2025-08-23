@@ -22,7 +22,6 @@ export default defineConfig({
       },
       external: [],
       onwarn(warning, warn) {
-        // Skip all warnings to avoid build issues
         return;
       }
     },
