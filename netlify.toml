@@ -6,6 +6,10 @@
   NODE_VERSION = "20"
   CI = "false"
   NPM_FLAGS = "--legacy-peer-deps"
+  NPM_CONFIG_OPTIONAL = "false"
+  ROLLUP_SKIP_NATIVE = "true"
+  ROLLUP_SKIP_NATIVE_BINARIES = "true"
+  VITE_SKIP_NATIVE = "true"
 
 # SPA redirects for React Router
 [[redirects]]
