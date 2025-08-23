@@ -75,7 +75,8 @@
   "overrides": {
     "rollup": {
       "fsevents": "~2.3.3"
-    }
+    },
+    "three-mesh-bvh": "0.8.0"
   },
   "optionalDependencies": {},
   "engines": {
