@@ -9,16 +9,21 @@ export ROLLUP_SKIP_NATIVE=true
 export ROLLUP_SKIP_NATIVE_BINARIES=true
 export VITE_SKIP_NATIVE=true
 export CI=false
+export NODE_OPTIONS="--max-old-space-size=4096"
 
 # Clean install without optional dependencies
 echo "📦 Installing dependencies..."
-npm ci --omit=optional --no-audit --no-fund
+npm ci --omit=optional --no-audit --no-fund --legacy-peer-deps
 
 # Check if installation was successful
 if [ $? -ne 0 ]; then
     echo "❌ Failed to install dependencies"
     exit 1
 fi
+
+# Force install rollup native binary
+echo "🔧 Installing rollup native binary..."
+npm install @rollup/rollup-linux-x64-gnu@4.6.1 --no-save
 
 # Build the project
 echo "🏗️ Building project..."

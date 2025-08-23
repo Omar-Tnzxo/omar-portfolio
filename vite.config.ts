@@ -37,7 +37,7 @@ export default defineConfig({
   },
   optimizeDeps: {
     include: ['react', 'react-dom', 'framer-motion'],
-    exclude: process.env.ROLLUP_SKIP_NATIVE ? ['@rollup/rollup-linux-x64-gnu'] : []
+    exclude: ['@rollup/rollup-linux-x64-gnu', '@rollup/rollup-darwin-x64', '@rollup/rollup-win32-x64-msvc']
   },
   define: {
     global: 'globalThis',
