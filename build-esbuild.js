@@ -33,10 +33,10 @@ async function build() {
       define: {
         'process.env.NODE_ENV': '"production"',
         'global': 'globalThis',
-        'import.meta.env.VITE_APP_EMAILJS_KEY': '"H4YFvBxDUh6YpVn0a"',
-        'import.meta.env.VITE_APP_SERVICE_ID': '"service_mrbmgus"',
-        'import.meta.env.VITE_APP_TEMPLATE_ID': '"template_d16rk5m"',
-        'import.meta.env.VITE_APP_EMAILJS_RECIEVER': '"omar-agha@engineer.com"'
+        'import.meta.env.VITE_APP_EMAILJS_KEY': JSON.stringify(process.env.VITE_APP_EMAILJS_KEY || 'H4YFvBxDUh6YpVn0a'),
+        'import.meta.env.VITE_APP_SERVICE_ID': JSON.stringify(process.env.VITE_APP_SERVICE_ID || 'service_mrbmgus'),
+        'import.meta.env.VITE_APP_TEMPLATE_ID': JSON.stringify(process.env.VITE_APP_TEMPLATE_ID || 'template_d16rk5m'),
+        'import.meta.env.VITE_APP_EMAILJS_RECIEVER': JSON.stringify(process.env.VITE_APP_EMAILJS_RECIEVER || 'omar-agha@engineer.com')
       },
       external: [],
       platform: 'browser',

@@ -31,7 +31,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "cross-env ROLLUP_SKIP_NATIVE=true ROLLUP_SKIP_NATIVE_BINARIES=true VITE_SKIP_NATIVE=true vite build",
+    "build": "vite build",
     "build:esbuild": "node build-esbuild.js",
     "preview": "vite preview",
     "check-types": "tsc --noEmit",
