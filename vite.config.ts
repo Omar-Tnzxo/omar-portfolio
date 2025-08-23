@@ -19,12 +19,20 @@ export default defineConfig({
           three: ['three', '@react-three/fiber', '@react-three/drei'],
           utils: ['clsx', 'tailwind-merge', 'maath']
         }
+      },
+      external: [],
+      onwarn(warning, warn) {
+        // Skip warnings about missing optional dependencies
+        if (warning.code === 'MODULE_LEVEL_DIRECTIVE') return;
+        if (warning.code === 'UNUSED_EXTERNAL_IMPORT') return;
+        warn(warning);
       }
     },
     chunkSizeWarningLimit: 1000,
     sourcemap: false,
     minify: 'esbuild',
-    outDir: 'dist'
+    outDir: 'dist',
+    target: 'es2015'
   },
   server: {
     hmr: {
@@ -32,7 +40,8 @@ export default defineConfig({
     }
   },
   optimizeDeps: {
-    include: ['react', 'react-dom', 'framer-motion']
+    include: ['react', 'react-dom', 'framer-motion'],
+    exclude: ['@rollup/rollup-linux-x64-gnu']
   },
   define: {
     global: 'globalThis',
