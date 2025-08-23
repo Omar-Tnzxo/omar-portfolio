@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 
-const esbuild = require('esbuild');
-const { copy } = require('fs-extra');
-const path = require('path');
+import * as esbuild from 'esbuild';
+import { copy } from 'fs-extra';
+import path from 'path';
 
 async function build() {
   try {
@@ -27,7 +27,8 @@ async function build() {
         '.png': 'file',
         '.jpg': 'file',
         '.jpeg': 'file',
-        '.webp': 'file'
+        '.webp': 'file',
+        '.pdf': 'file'
       },
       define: {
         'process.env.NODE_ENV': '"production"',
