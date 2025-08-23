@@ -13,7 +13,7 @@ const ProductionCanvas: React.FC<ProductionCanvasProps> = ({
   type = 'stars'
 }) => {
   // في بيئة الإنتاج، اعرض StaticCanvas فقط
-  const isProduction = process.env.NODE_ENV === 'production';
+  const isProduction = import.meta.env.MODE === 'production';
   
   if (isProduction) {
     return <StaticCanvas type={type} className={className} />;
