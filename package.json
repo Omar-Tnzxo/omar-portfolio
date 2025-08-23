@@ -62,7 +62,6 @@
     "@types/react": "^18.3.12",
     "@types/react-dom": "^18.3.1",
     "@types/react-vertical-timeline-component": "^3.3.6",
-    "@types/tailwindcss": "^3.1.0",
     "@vitejs/plugin-react": "^4.2.0",
     "autoprefixer": "^10.4.21",
     "postcss": "^8.5.6",
@@ -74,5 +73,9 @@
     "rollup": {
       "fsevents": "~2.3.3"
     }
+  },
+  "optionalDependencies": {},
+  "engines": {
+    "node": ">=18.0.0"
   }
 }

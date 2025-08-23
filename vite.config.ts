@@ -25,6 +25,8 @@ export default defineConfig({
         // Skip warnings about missing optional dependencies
         if (warning.code === 'MODULE_LEVEL_DIRECTIVE') return;
         if (warning.code === 'UNUSED_EXTERNAL_IMPORT') return;
+        if (warning.code === 'CIRCULAR_DEPENDENCY') return;
+        if (warning.message.includes('@rollup/rollup-linux-x64-gnu')) return;
         warn(warning);
       }
     },
@@ -32,7 +34,10 @@ export default defineConfig({
     sourcemap: false,
     minify: 'esbuild',
     outDir: 'dist',
-    target: 'es2015'
+    target: 'es2015',
+    commonjsOptions: {
+      include: []
+    }
   },
   server: {
     hmr: {
@@ -41,7 +46,7 @@ export default defineConfig({
   },
   optimizeDeps: {
     include: ['react', 'react-dom', 'framer-motion'],
-    exclude: ['@rollup/rollup-linux-x64-gnu']
+    exclude: ['@rollup/rollup-linux-x64-gnu', '@rollup/rollup-darwin-x64', '@rollup/rollup-win32-x64-msvc']
   },
   define: {
     global: 'globalThis',

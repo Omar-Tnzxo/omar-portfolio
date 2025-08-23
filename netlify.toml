@@ -1,12 +1,13 @@
 [build]
   publish = "dist"
-  command = "npm ci && npm run build"
+  command = "chmod +x build.sh && ./build.sh"
 
 [build.environment]
   NODE_VERSION = "18"
   CI = "false"
-  NPM_FLAGS = "--legacy-peer-deps"
+  NPM_FLAGS = "--legacy-peer-deps --omit=optional"
   ROLLUP_SKIP_NATIVE = "true"
+  ROLLUP_SKIP_NATIVE_BINARIES = "true"
 
 # SPA redirects for React Router
 [[redirects]]
