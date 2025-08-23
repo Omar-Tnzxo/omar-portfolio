@@ -1,6 +1,6 @@
 [build]
   publish = "dist"
-  command = "chmod +x netlify-build.sh && ./netlify-build.sh"
+  command = "npm ci --omit=optional && npm run build"
 
 [build.environment]
   NODE_VERSION = "20"

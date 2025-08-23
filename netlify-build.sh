@@ -14,8 +14,28 @@ export CI=false
 echo "📦 Installing dependencies..."
 npm ci --omit=optional --no-audit --no-fund
 
+# Check if installation was successful
+if [ $? -ne 0 ]; then
+    echo "❌ Failed to install dependencies"
+    exit 1
+fi
+
 # Build the project
 echo "🏗️ Building project..."
 npm run build
 
+# Check if build was successful
+if [ $? -ne 0 ]; then
+    echo "❌ Build failed"
+    exit 1
+fi
+
+# Check if dist directory exists
+if [ ! -d "dist" ]; then
+    echo "❌ dist directory not found after build"
+    exit 1
+fi
+
 echo "✅ Build completed successfully!"
+echo "📁 dist directory contents:"
+ls -la dist/

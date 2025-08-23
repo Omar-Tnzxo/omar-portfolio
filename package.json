@@ -40,7 +40,9 @@
     "check-types": "tsc --noEmit",
     "type-check": "tsc --noEmit",
     "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "build:netlify": "npm ci --omit=optional && vite build"
+    "build:netlify": "npm ci --omit=optional && vite build",
+    "prebuild": "echo 'Cleaning build directory...'",
+    "postbuild": "echo 'Build completed successfully!'"
   },
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
