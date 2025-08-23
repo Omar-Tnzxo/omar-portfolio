@@ -3,6 +3,7 @@ import { Canvas, type PointsProps, useFrame } from "@react-three/fiber";
 import * as random from "maath/random";
 import { useRef, Suspense, useState } from "react";
 import type { Points as PointsType } from "three";
+import ErrorBoundary from "./ErrorBoundary";
 
 // Stars
 const Stars = (props: PointsProps) => {
@@ -48,15 +49,17 @@ const StarsCanvas = () => {
   return (
     <div className="w-full h-auto absolute inset-0 z-[-1]">
       {/* Canvas */}
-      <Canvas camera={{ position: [0, 0, 1] }}>
-        {/* Show stars if not fallback */}
-        <Suspense fallback={null}>
-          <Stars />
-        </Suspense>
+      <ErrorBoundary>
+        <Canvas camera={{ position: [0, 0, 1] }}>
+          {/* Show stars if not fallback */}
+          <Suspense fallback={null}>
+            <Stars />
+          </Suspense>
 
-        {/* preload all */}
-        <Preload all />
-      </Canvas>
+          {/* preload all */}
+          <Preload all />
+        </Canvas>
+      </ErrorBoundary>
     </div>
   );
 };

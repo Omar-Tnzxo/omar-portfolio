@@ -9,6 +9,7 @@ import { Canvas } from "@react-three/fiber";
 import { Suspense } from "react";
 
 import CanvasLoader from "../loader";
+import ErrorBoundary from "./ErrorBoundary";
 
 type BallProps = {
   imgUrl: string;
@@ -50,16 +51,18 @@ type BallCanvasProps = {
 // Ball Canvas
 const BallCanvas = ({ icon }: BallCanvasProps) => {
   return (
-    <Canvas frameloop="demand" gl={{ preserveDrawingBuffer: true }}>
-      {/* Show canvas loader on fallback */}
-      <Suspense fallback={<CanvasLoader />}>
-        <OrbitControls enableZoom={false} />
-        <Ball imgUrl={icon} />
-      </Suspense>
+    <ErrorBoundary>
+      <Canvas frameloop="demand" gl={{ preserveDrawingBuffer: true }}>
+        {/* Show canvas loader on fallback */}
+        <Suspense fallback={<CanvasLoader />}>
+          <OrbitControls enableZoom={false} />
+          <Ball imgUrl={icon} />
+        </Suspense>
 
-      {/* Preload all */}
-      <Preload all />
-    </Canvas>
+        {/* Preload all */}
+        <Preload all />
+      </Canvas>
+    </ErrorBoundary>
   );
 };
 
