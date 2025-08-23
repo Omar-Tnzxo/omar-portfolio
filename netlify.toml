@@ -9,6 +9,7 @@
   ROLLUP_SKIP_NATIVE = "true"
   ROLLUP_SKIP_NATIVE_BINARIES = "true"
   VITE_SKIP_NATIVE = "true"
+  NODE_OPTIONS = "--max-old-space-size=4096"
 
 # SPA redirects for React Router
 [[redirects]]

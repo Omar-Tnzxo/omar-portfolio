@@ -30,7 +30,7 @@ export default defineConfig({
     sourcemap: false,
     minify: 'esbuild',
     outDir: 'dist',
-    target: 'es2015',
+    target: 'es2020',
     commonjsOptions: {
       include: []
     }
@@ -48,5 +48,6 @@ export default defineConfig({
     global: 'globalThis',
   },
   base: '/',
-  publicDir: 'public'
+  publicDir: 'public',
+  assetsInclude: ['**/*.webp', '**/*.png', '**/*.svg', '**/*.jpg', '**/*.jpeg']
 });
