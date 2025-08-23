@@ -49,7 +49,11 @@ export default defineConfig({
     global: 'globalThis',
     'process.env.ROLLUP_SKIP_NATIVE': 'true',
     'process.env.ROLLUP_SKIP_NATIVE_BINARIES': 'true',
-    'process.env.VITE_SKIP_NATIVE': 'true'
+    'process.env.VITE_SKIP_NATIVE': 'true',
+    'import.meta.env.VITE_APP_EMAILJS_KEY': '"H4YFvBxDUh6YpVn0a"',
+    'import.meta.env.VITE_APP_SERVICE_ID': '"service_mrbmgus"',
+    'import.meta.env.VITE_APP_TEMPLATE_ID': '"template_d16rk5m"',
+    'import.meta.env.VITE_APP_EMAILJS_RECIEVER': '"omar-agha@engineer.com"'
   },
   base: '/',
   publicDir: 'public',
