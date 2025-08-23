@@ -7,8 +7,11 @@ import App from "./app";
 
 import "./index.css";
 
-// Initialize EmailJS
-emailjs.init(import.meta.env.VITE_APP_EMAILJS_KEY);
+// Initialize EmailJS only if key is available
+const emailjsKey = import.meta.env.VITE_APP_EMAILJS_KEY;
+if (emailjsKey) {
+  emailjs.init(emailjsKey);
+}
 
 const rootEl = document.getElementById("root");
 
