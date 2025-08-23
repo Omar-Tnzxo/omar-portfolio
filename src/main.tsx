@@ -8,9 +8,13 @@ import App from "./app";
 import "./index.css";
 
 // Initialize EmailJS only if key is available
-const emailjsKey = import.meta.env.VITE_APP_EMAILJS_KEY;
-if (emailjsKey) {
-  emailjs.init(emailjsKey);
+try {
+  const emailjsKey = import.meta.env.VITE_APP_EMAILJS_KEY;
+  if (emailjsKey && emailjsKey !== 'undefined') {
+    emailjs.init(emailjsKey);
+  }
+} catch (error) {
+  console.warn('EmailJS initialization failed:', error);
 }
 
 const rootEl = document.getElementById("root");
