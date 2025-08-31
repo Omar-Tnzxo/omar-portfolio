@@ -11,7 +11,7 @@ const EMAILJS_CONFIG = {
   receiver: import.meta.env.VITE_APP_EMAILJS_RECIEVER || 'omar-agha@engineer.com'
 };
 
-import App from "./app";
+import App from "./App";
 
 import "./index.css";
 

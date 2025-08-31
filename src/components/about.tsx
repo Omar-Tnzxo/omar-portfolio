@@ -5,7 +5,7 @@ import { SERVICES } from "../constants";
 import { SectionWrapper } from "../hoc";
 import { styles } from "../styles";
 import { fadeIn, textVariant } from "../utils/motion";
-import omarImage from "../assets/omar-hassan.webp";
+import { omarImage } from "../assets";
 
 type ServiceCardProps = {
   index: number;

@@ -22,6 +22,10 @@ export default defineConfig({
       }
     },
     sourcemap: true,
-    chunkSizeWarningLimit: 1000
+    chunkSizeWarningLimit: 1000,
+    minify: 'esbuild'
+  },
+  esbuild: {
+    target: 'es2020'
   }
 });

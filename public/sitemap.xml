@@ -1,33 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://omar-hassan.netlify.app/</loc>
-    <lastmod>2024-01-15</lastmod>
+    <loc>https://omar-portfolio.netlify.app/</loc>
+    <lastmod>2025-01-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://omar-hassan.netlify.app/#about</loc>
-    <lastmod>2024-01-15</lastmod>
+    <loc>https://omar-portfolio.netlify.app/#about</loc>
+    <lastmod>2025-01-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://omar-hassan.netlify.app/#experience</loc>
-    <lastmod>2024-01-15</lastmod>
+    <loc>https://omar-portfolio.netlify.app/#experience</loc>
+    <lastmod>2025-01-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://omar-hassan.netlify.app/#works</loc>
-    <lastmod>2024-01-15</lastmod>
+    <loc>https://omar-portfolio.netlify.app/#works</loc>
+    <lastmod>2025-01-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://omar-hassan.netlify.app/#contact</loc>
-    <lastmod>2024-01-15</lastmod>
+    <loc>https://omar-portfolio.netlify.app/#contact</loc>
+    <lastmod>2025-01-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://omar-portfolio.netlify.app/projects</loc>
+    <lastmod>2025-01-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://omar-portfolio.netlify.app/avenue-omar</loc>
+    <lastmod>2025-01-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
 </urlset> 

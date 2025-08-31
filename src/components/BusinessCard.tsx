@@ -17,15 +17,14 @@ import {
   Globe,
   BadgeCheck
 } from "lucide-react";
-import avenueLogo from "../assets/company/AvenueProperties.png";
-import omarImage from "../assets/omar-hassan.webp";
+import { avenueProperties, omarImage } from "../assets";
 
 const BusinessCard = () => {
   const contactInfo = {
     name: "Omar Hassan",
     title: "Marketing Manager",
     company: "The Avenue Properties",
-    companyLogo: avenueLogo,
+    companyLogo: avenueProperties,
     phone: "+201204564527",
     email: "omerhassan@theavenueeg.com",
     website: "theavenueeg.com",

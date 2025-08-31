@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { FaLocationArrow } from "react-icons/fa6";
 
 import { PROJECTS } from "../constants";
+import { preview } from "../assets";
 import { SectionWrapper } from "../hoc";
 import { styles } from "../styles";
 import { fadeIn, textVariant } from "../utils/motion";

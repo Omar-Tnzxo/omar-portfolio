@@ -3,7 +3,7 @@ import { useTransform, motion, useScroll } from "framer-motion";
 import { useRef, useEffect, useState } from "react";
 import { project1, project2, project3, project4, preview } from "../assets";
 import { Navbar } from "./navbar";
-import googlePlayIcon from "../assets/socials/google-play.svg";
+import { googlePlay as googlePlayIcon } from "../assets";
 
 const projects = [
   {

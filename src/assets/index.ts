@@ -10,6 +10,8 @@ import menu from "./menu.svg";
 import mobile from "./mobile.png";
 import preview from "./preview.png";
 import web from "./web.png";
+import omarImage from "./omar-hassan.webp";
+import herobg from "./herobg.png";
 
 import dart from "./tech/dart.png";
 import mysql from "./tech/mysql.png";
@@ -48,6 +50,7 @@ import youtube from "./socials/youtube.svg";
 import facebook from "./socials/facebook.svg";
 import instagram from "./socials/instagram.svg";
 import telegram from "./socials/telegram.svg";
+import googlePlay from "./socials/google-play.svg";
 
 // Files
 import resume from "./files/Omar's Resume - 20 Jul.pdf";
@@ -62,6 +65,8 @@ export {
   mobile,
   preview,
   web,
+  omarImage,
+  herobg,
   dart,
   mysql,
   flutter,
@@ -93,5 +98,6 @@ export {
   facebook,
   instagram,
   telegram,
+  googlePlay,
   resume,
 };

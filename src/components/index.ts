@@ -16,7 +16,7 @@ import { Tech } from "./tech";
 import { Works } from "./works";
 import Approach from "./approach";
 import MagicButton from "./ui/MagicButton";
-import OpeningAnimation from "./ui/OpeningAnimation";
+
 import WhatsAppButton from "./ui/WhatsAppButton";
 import Projects from "./projects";
 import BusinessCard from "./BusinessCard";
@@ -33,7 +33,7 @@ export {
   Hero,
   MagicButton,
   Navbar,
-  OpeningAnimation,
+
   StarsCanvas,
   Tech,
   Works,

@@ -1,6 +1,6 @@
 import React from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import SafeCanvasRevealEffect from "./ui/SafeCanvasRevealEffect";
+import { CanvasRevealEffect } from "./ui/CanvasRevealEffect";
 
 const Approach = () => {
   return (
@@ -19,7 +19,7 @@ const Approach = () => {
           icon={<AceternityIcon order="Phase 1" />}
           des="This is the foundation. Before a single post is created, I dive deep to understand the 'why' behind your brand. We'll collaborate to define your business objectives, profile your ideal target audience, and analyze the competitive landscape. The outcome of this phase is a rock-solid strategic plan, complete with key performance indicators (KPIs) and the core content pillars that will guide our entire campaign."
         >
-          <SafeCanvasRevealEffect
+          <CanvasRevealEffect
             animationSpeed={5.1}
             containerClassName="bg-emerald-900 rounded-3xl overflow-hidden"
             colors={[[0, 255, 127]]}
@@ -30,7 +30,7 @@ const Approach = () => {
           icon={<AceternityIcon order="Phase 2" />}
           des="This is where strategy comes to life. I translate our plan into compelling, high-value content tailored for each social media platform. This includes everything from writing engaging copy and directing creative teams, to managing the content calendar and ensuring every post aligns perfectly with your brand voice. I handle the entire content lifecycle to ensure a consistent and professional online presence."
         >
-          <SafeCanvasRevealEffect
+          <CanvasRevealEffect
             animationSpeed={3}
             containerClassName="bg-pink-900 rounded-3xl overflow-hidden"
             colors={[
@@ -45,7 +45,7 @@ const Approach = () => {
           icon={<AceternityIcon order="Phase 3" />}
           des="Marketing is a continuous loop of learning and improvement. I meticulously track performance against our set KPIs, analyzing the data to understand what truly resonates with your audience. Based on these insights, I provide clear, actionable reports and constantly refine our approach. This data-driven feedback loop allows us to optimize for better results and ensure we are always moving the needle."
         >
-          <SafeCanvasRevealEffect
+          <CanvasRevealEffect
             animationSpeed={3}
             containerClassName="bg-sky-600 rounded-3xl overflow-hidden"
             colors={[[135, 206, 250]]}
