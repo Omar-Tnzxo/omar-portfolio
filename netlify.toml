@@ -1,12 +1,17 @@
 [build]
+  command = "npm install --include=optional && npm run build"
   publish = "dist"
-  command = "npm install @rollup/rollup-linux-x64-gnu && npm run build"
+
+[build.environment]
+  NODE_VERSION = "18"
+  NPM_FLAGS = "--include=optional"
 
 # Security headers for all pages
 [[headers]]
   for = "/*"
   [headers.values]
     X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"
     X-Content-Type-Options = "nosniff"
     Referrer-Policy = "strict-origin-when-cross-origin"
 

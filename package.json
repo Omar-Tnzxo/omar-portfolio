@@ -36,7 +36,6 @@
   },
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
-    "@esbuild/win32-x64": "0.25.9",
     "@react-three/drei": "^9.122.0",
     "@react-three/fiber": "^8.17.14",
     "@rollup/rollup-win32-x64-msvc": "4.50.0",
