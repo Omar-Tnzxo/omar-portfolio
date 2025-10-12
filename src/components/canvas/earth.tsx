@@ -4,12 +4,13 @@ import { Suspense } from "react";
 
 import CanvasLoader from "../loader";
 
-// Use path from public folder - all files (gltf, bin, textures) will be copied to dist
-const planetModelUrl = "/assets/planet/scene.gltf";
+// Use GitHub CDN - most reliable solution
+const GITHUB_CDN_BASE = "https://raw.githubusercontent.com/Omar-Tnzxo/omar-portfolio/main/public/assets/planet";
+const planetModelUrl = `${GITHUB_CDN_BASE}/scene.gltf`;
 
 // Earth
 const Earth = () => {
-  // Load from public/assets/planet - guaranteed to work
+  // Load from GitHub CDN - guaranteed to work
   const earth = useGLTF(planetModelUrl);
 
   return (
