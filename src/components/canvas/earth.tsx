@@ -1,31 +1,26 @@
-import { OrbitControls, Sphere, useTexture } from "@react-three/drei";
+import { OrbitControls, useGLTF } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 import { Suspense } from "react";
 
 import CanvasLoader from "../loader";
 
-// Simple Earth using Sphere with texture - guaranteed to work!
+// Earth component - using GLB format (single file, most reliable)
 const Earth = () => {
-  // Use a simple color/gradient for now - no external dependencies
+  // Load GLB model from public/models folder
+  const earth = useGLTF("/models/earth.glb");
+
   return (
-    <Sphere args={[2.5, 64, 64]}>
-      <meshStandardMaterial
-        color="#2233aa"
-        roughness={0.7}
-        metalness={0.3}
-        emissive="#001133"
-        emissiveIntensity={0.2}
-      />
-      {/* Optional: Add subtle animation */}
-      <meshStandardMaterial
-        attach="material"
-        color="#4a7dc9"
-        roughness={0.5}
-        metalness={0.5}
-      />
-    </Sphere>
+    <primitive 
+      object={earth.scene} 
+      scale={2.5} 
+      position-y={0} 
+      rotation-y={0} 
+    />
   );
 };
+
+// Preload the model for better performance
+useGLTF.preload("/models/earth.glb");
 
 // Earth Canvas
 const EarthCanvas = () => {
@@ -40,7 +35,6 @@ const EarthCanvas = () => {
       {/* Lights */}
       <ambientLight intensity={0.5} />
       <directionalLight position={[10, 10, 5]} intensity={1} />
-      <pointLight position={[-10, -10, -5]} intensity={0.5} />
       
       {/* Suspense show Canvas Loader on fallback */}
       <Suspense fallback={<CanvasLoader />}>

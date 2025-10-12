@@ -1,4 +1,5 @@
 # Don't redirect these static file paths
+/models/*  200
 /assets/*  200
 /*.js      200
 /*.css     200
@@ -11,8 +12,8 @@
 /*.webp    200
 /*.pdf     200
 /*.gltf    200
-/*.bin     200
 /*.glb     200
+/*.bin     200
 /robots.txt 200
 /sitemap.xml 200
 /favicon.ico 200
