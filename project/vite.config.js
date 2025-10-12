@@ -80,91 +80,58 @@ export default defineConfig({
     {
       name: 'copy-files',
       writeBundle() {
+        // Helper function to safely copy files
+        const safeCopy = (src, dest) => {
+          const srcPath = resolve(__dirname, src)
+          const destPath = resolve(__dirname, dest)
+          if (fs.existsSync(srcPath)) {
+            fs.copyFileSync(srcPath, destPath)
+          } else {
+            console.warn(`Warning: Source file not found: ${src}`)
+          }
+        }
+
         // نسخ ملف app-ads.txt إلى مجلد dist
-        fs.copyFileSync(
-          resolve(__dirname, 'public/app-ads.txt'),
-          resolve(__dirname, 'dist/app-ads.txt')
-        )
+        safeCopy('public/app-ads.txt', 'dist/app-ads.txt')
         
         // نسخ ملف .well-known/app-ads.txt إلى مجلد dist
         const wellKnownDir = resolve(__dirname, 'dist/.well-known')
         if (!fs.existsSync(wellKnownDir)) {
           fs.mkdirSync(wellKnownDir, { recursive: true })
         }
-        fs.copyFileSync(
-          resolve(__dirname, 'public/.well-known/app-ads.txt'),
-          resolve(__dirname, 'dist/.well-known/app-ads.txt')
-        )
+        safeCopy('public/.well-known/app-ads.txt', 'dist/.well-known/app-ads.txt')
         
         // نسخ ملف google verification إلى مجلد dist
-        fs.copyFileSync(
-          resolve(__dirname, 'public/google5e1426d4796c5036.html'),
-          resolve(__dirname, 'dist/google5e1426d4796c5036.html')
-        )
+        safeCopy('public/google5e1426d4796c5036.html', 'dist/google5e1426d4796c5036.html')
         
         // نسخ ملف BingSiteAuth.xml إلى مجلد dist
-        fs.copyFileSync(
-          resolve(__dirname, 'public/BingSiteAuth.xml'),
-          resolve(__dirname, 'dist/BingSiteAuth.xml')
-        )
+        safeCopy('public/BingSiteAuth.xml', 'dist/BingSiteAuth.xml')
         
         // نسخ ملف sitemap.xml إلى مجلد dist
-        fs.copyFileSync(
-          resolve(__dirname, 'sitemap.xml'),
-          resolve(__dirname, 'dist/sitemap.xml')
-        )
+        safeCopy('sitemap.xml', 'dist/sitemap.xml')
         
         // نسخ ملف robots.txt إلى مجلد dist
-        fs.copyFileSync(
-          resolve(__dirname, 'robots.txt'),
-          resolve(__dirname, 'dist/robots.txt')
-        )
+        safeCopy('robots.txt', 'dist/robots.txt')
         
         // نسخ ملف ads.txt إلى مجلد dist
-        fs.copyFileSync(
-          resolve(__dirname, 'public/ads.txt'),
-          resolve(__dirname, 'dist/ads.txt')
-        )
+        safeCopy('public/ads.txt', 'dist/ads.txt')
         
         // نسخ ملفات تحقق محركات البحث الأخرى
-        fs.copyFileSync(
-          resolve(__dirname, 'public/y_key_verification.html'),
-          resolve(__dirname, 'dist/y_key_verification.html')
-        )
-        
-        fs.copyFileSync(
-          resolve(__dirname, 'public/yandex_verification.html'),
-          resolve(__dirname, 'dist/yandex_verification.html')
-        )
-        
-        fs.copyFileSync(
-          resolve(__dirname, 'public/yandex_184cd01d4b17b9f1.html'),
-          resolve(__dirname, 'dist/yandex_184cd01d4b17b9f1.html')
-        )
+        safeCopy('public/y_key_verification.html', 'dist/y_key_verification.html')
+        safeCopy('public/yandex_verification.html', 'dist/yandex_verification.html')
+        safeCopy('public/yandex_184cd01d4b17b9f1.html', 'dist/yandex_184cd01d4b17b9f1.html')
         
         // نسخ ملف معلومات الذكاء الاصطناعي
-        fs.copyFileSync(
-          resolve(__dirname, 'public/ai-info.txt'),
-          resolve(__dirname, 'dist/ai-info.txt')
-        )
+        safeCopy('public/ai-info.txt', 'dist/ai-info.txt')
         
         // نسخ ملف ping-search-engines.txt
-        fs.copyFileSync(
-          resolve(__dirname, 'public/ping-search-engines.txt'),
-          resolve(__dirname, 'dist/ping-search-engines.txt')
-        )
+        safeCopy('public/ping-search-engines.txt', 'dist/ping-search-engines.txt')
         
         // نسخ ملف _headers
-        fs.copyFileSync(
-          resolve(__dirname, 'public/_headers'),
-          resolve(__dirname, 'dist/_headers')
-        )
+        safeCopy('public/_headers', 'dist/_headers')
         
         // نسخ أيقونة الموقع
-        fs.copyFileSync(
-          resolve(__dirname, 'public/app-logo.png'),
-          resolve(__dirname, 'dist/app-logo.png')
-        )
+        safeCopy('public/app-logo.png', 'dist/app-logo.png')
       }
     }
   ],
