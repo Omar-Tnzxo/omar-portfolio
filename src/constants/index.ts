@@ -191,7 +191,7 @@ export const TESTIMONIALS = [
   {
     testimonial:
       "Omar's strategic approach transformed our lead generation completely. His technical skills and marketing expertise delivered measurable results.",
-    name: "Engy ****",
+    name: "Hagar ****",
     designation: "Marketing Director",
     company: "Avenue Advertising Agency",
   },

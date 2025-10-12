@@ -1,5 +1,4 @@
 # Don't redirect these static file paths
-/planet/*  200
 /assets/*  200
 /*.js      200
 /*.css     200
