@@ -13,15 +13,27 @@ export default defineConfig({
   build: {
     rollupOptions: {
       output: {
-        manualChunks: {
-          vendor: ['react', 'react-dom'],
-          animations: ['framer-motion'],
-          three: ['three', '@react-three/fiber', '@react-three/drei'],
-          utils: ['clsx', 'tailwind-merge', 'maath']
+        manualChunks: (id) => {
+          // Separate vendor chunks
+          if (id.includes('node_modules')) {
+            if (id.includes('three') || id.includes('@react-three')) {
+              return 'three-vendor';
+            }
+            if (id.includes('react') || id.includes('react-dom')) {
+              return 'react-vendor';
+            }
+            if (id.includes('framer-motion')) {
+              return 'animations';
+            }
+            return 'vendor';
+          }
         }
       }
     },
-    sourcemap: true,
+    sourcemap: false, // تعطيل sourcemap للإنتاج
     chunkSizeWarningLimit: 1000
+  },
+  optimizeDeps: {
+    include: ['three', '@react-three/fiber', '@react-three/drei']
   }
 });

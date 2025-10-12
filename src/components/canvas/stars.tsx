@@ -35,7 +35,7 @@ const Stars = (props: PointsProps) => {
           transparent
           color="#f272c8"
           size={0.002}
-          sizeAttentuation
+          sizeAttenuation
           depthWrite={false}
         />
       </Points>
