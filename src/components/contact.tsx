@@ -4,6 +4,7 @@ import { useState, useRef, type FormEvent, type ChangeEvent } from "react";
 import { toast } from "sonner";
 
 import { EarthCanvas } from "./canvas";
+import ErrorBoundary from "./canvas/ErrorBoundary";
 import { SectionWrapper } from "../hoc";
 import { styles } from "../styles";
 import { slideIn } from "../utils/motion";
@@ -736,7 +737,9 @@ Notes: ${appointmentForm.notes || 'No additional notes'}`,
           variants={slideIn("right", "tween", 0.2, 1)}
           className="xl:flex-1 xl:h-auto md:h-[550px] h-[350px]"
         >
-          <EarthCanvas />
+          <ErrorBoundary>
+            <EarthCanvas />
+          </ErrorBoundary>
         </motion.div>
       </div>
     </SectionWrapper>
