@@ -11,29 +11,12 @@ export default defineConfig({
     },
   },
   build: {
+    sourcemap: false,
+    chunkSizeWarningLimit: 1000,
     rollupOptions: {
       output: {
-        manualChunks: (id) => {
-          // Separate vendor chunks
-          if (id.includes('node_modules')) {
-            if (id.includes('three') || id.includes('@react-three')) {
-              return 'three-vendor';
-            }
-            if (id.includes('react') || id.includes('react-dom')) {
-              return 'react-vendor';
-            }
-            if (id.includes('framer-motion')) {
-              return 'animations';
-            }
-            return 'vendor';
-          }
-        }
+        manualChunks: undefined, // Let Vite handle chunking automatically
       }
-    },
-    sourcemap: false, // تعطيل sourcemap للإنتاج
-    chunkSizeWarningLimit: 1000
-  },
-  optimizeDeps: {
-    include: ['three', '@react-three/fiber', '@react-three/drei']
+    }
   }
 });
