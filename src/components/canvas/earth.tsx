@@ -1,25 +1,31 @@
-import { OrbitControls, useGLTF } from "@react-three/drei";
+import { OrbitControls, Sphere, useTexture } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 import { Suspense } from "react";
 
 import CanvasLoader from "../loader";
 
-// Use GitHub CDN - most reliable solution
-const GITHUB_CDN_BASE = "https://raw.githubusercontent.com/Omar-Tnzxo/omar-portfolio/main/public/assets/planet";
-const planetModelUrl = `${GITHUB_CDN_BASE}/scene.gltf`;
-
-// Earth
+// Simple Earth using Sphere with texture - guaranteed to work!
 const Earth = () => {
-  // Load from GitHub CDN - guaranteed to work
-  const earth = useGLTF(planetModelUrl);
-
+  // Use a simple color/gradient for now - no external dependencies
   return (
-    <primitive object={earth.scene} scale={2.5} position-y={0} rotation-y={0} />
+    <Sphere args={[2.5, 64, 64]}>
+      <meshStandardMaterial
+        color="#2233aa"
+        roughness={0.7}
+        metalness={0.3}
+        emissive="#001133"
+        emissiveIntensity={0.2}
+      />
+      {/* Optional: Add subtle animation */}
+      <meshStandardMaterial
+        attach="material"
+        color="#4a7dc9"
+        roughness={0.5}
+        metalness={0.5}
+      />
+    </Sphere>
   );
 };
-
-// Preload the model for better performance
-useGLTF.preload(planetModelUrl);
 
 // Earth Canvas
 const EarthCanvas = () => {
@@ -31,6 +37,11 @@ const EarthCanvas = () => {
       gl={{ preserveDrawingBuffer: true }}
       camera={{ fov: 45, near: 0.1, far: 200, position: [-4, 3, 6] }}
     >
+      {/* Lights */}
+      <ambientLight intensity={0.5} />
+      <directionalLight position={[10, 10, 5]} intensity={1} />
+      <pointLight position={[-10, -10, -5]} intensity={0.5} />
+      
       {/* Suspense show Canvas Loader on fallback */}
       <Suspense fallback={<CanvasLoader />}>
         <OrbitControls
