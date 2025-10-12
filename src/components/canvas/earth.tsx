@@ -4,10 +4,13 @@ import { Suspense } from "react";
 
 import CanvasLoader from "../loader";
 
+// GitHub raw URL as CDN for the planet model
+const PLANET_MODEL_URL = "https://raw.githubusercontent.com/Omar-Tnzxo/omar-portfolio/main/public/planet/scene.gltf";
+
 // Earth
 const Earth = () => {
-  // Use absolute path for production - Netlify compatibility
-  const earth = useGLTF("/planet/scene.gltf");
+  // Use GitHub CDN URL - guaranteed to work
+  const earth = useGLTF(PLANET_MODEL_URL);
 
   return (
     <primitive object={earth.scene} scale={2.5} position-y={0} rotation-y={0} />
@@ -15,7 +18,7 @@ const Earth = () => {
 };
 
 // Preload the model for better performance
-useGLTF.preload("/planet/scene.gltf");
+useGLTF.preload(PLANET_MODEL_URL);
 
 // Earth Canvas
 const EarthCanvas = () => {
