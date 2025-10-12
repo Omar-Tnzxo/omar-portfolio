@@ -1,0 +1,162 @@
+[build]
+  publish = "dist"
+  command = "npm run build"
+
+# Static file redirects with force flag - MUST BE BEFORE SPA FALLBACK
+[[redirects]]
+  from = "/app-ads.txt"
+  to = "/app-ads.txt"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/.well-known/app-ads.txt"
+  to = "/app-ads.txt"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/ads.txt"
+  to = "/app-ads.txt"
+  status = 200
+  force = true
+
+# Catch all .txt files before SPA fallback
+[[redirects]]
+  from = "/*.txt"
+  to = "/:splat"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/sitemap.xml"
+  to = "/sitemap.xml"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/robots.txt"
+  to = "/robots.txt"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/google5e1426d4796c5036.html"
+  to = "/google5e1426d4796c5036.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/BingSiteAuth.xml"
+  to = "/BingSiteAuth.xml"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/y_key_verification.html"
+  to = "/y_key_verification.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/yandex_verification.html"
+  to = "/yandex_verification.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/yandex_184cd01d4b17b9f1.html"
+  to = "/yandex_184cd01d4b17b9f1.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/ai-info.txt"
+  to = "/ai-info.txt"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/ping-search-engines.txt"
+  to = "/ping-search-engines.txt"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/app-logo.png"
+  to = "/app-logo.png"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/favicon.ico"
+  to = "/app-logo.png"
+  status = 200
+  force = true
+
+# Security headers for all pages
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+
+# SPA fallback - MUST BE LAST
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+# Headers for static files
+[[headers]]
+  for = "/app-ads.txt"
+  [headers.values]
+    Content-Type = "text/plain; charset=utf-8"
+    Cache-Control = "public, max-age=86400"
+    Access-Control-Allow-Origin = "*"
+    X-Robots-Tag = "noindex, nofollow"
+
+[[headers]]
+  for = "/*.txt"
+  [headers.values]
+    Content-Type = "text/plain; charset=utf-8"
+    Cache-Control = "public, max-age=86400"
+    Access-Control-Allow-Origin = "*"
+    X-Robots-Tag = "noindex, nofollow"
+
+[[headers]]
+  for = "/sitemap.xml"
+  [headers.values]
+    Content-Type = "application/xml; charset=utf-8"
+    Cache-Control = "public, max-age=3600"
+
+[[headers]]
+  for = "/robots.txt"
+  [headers.values]
+    Content-Type = "text/plain; charset=utf-8"
+    Cache-Control = "public, max-age=3600"
+
+[[headers]]
+  for = "/google5e1426d4796c5036.html"
+  [headers.values]
+    Content-Type = "text/html; charset=utf-8"
+    Cache-Control = "public, max-age=3600"
+
+[[headers]]
+  for = "/BingSiteAuth.xml"
+  [headers.values]
+    Content-Type = "application/xml; charset=utf-8"
+    Cache-Control = "public, max-age=3600"
+
+[[headers]]
+  for = "/app-logo.png"
+  [headers.values]
+    Content-Type = "image/png"
+    Cache-Control = "public, max-age=31536000"
+    
+[[headers]]
+  for = "/favicon.ico"
+  [headers.values]
+    Content-Type = "image/x-icon"
+    Cache-Control = "public, max-age=31536000"

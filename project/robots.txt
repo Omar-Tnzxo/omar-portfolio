@@ -1,0 +1,59 @@
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /temp/
+Disallow: /private/
+
+# محرك البحث Google
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 1
+
+# محرك البحث Bing
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+# محرك البحث Yahoo
+User-agent: Slurp
+Allow: /
+Crawl-delay: 2
+
+# محرك البحث DuckDuckGo
+User-agent: DuckDuckBot
+Allow: /
+Crawl-delay: 1
+
+# محرك البحث Brave
+User-agent: brave-search-bot
+Allow: /
+Crawl-delay: 1
+
+# محرك البحث Yandex
+User-agent: YandexBot
+Allow: /
+Crawl-delay: 2
+
+# أنظمة الذكاء الاصطناعي
+User-agent: ChatGPT-User
+Allow: /
+Crawl-delay: 1
+
+User-agent: GPTBot
+Allow: /
+Crawl-delay: 1
+
+User-agent: PerplexityBot
+Allow: /
+Crawl-delay: 1
+
+User-agent: ClaudeBot
+Allow: /
+Crawl-delay: 1
+
+User-agent: BingPreview
+Allow: /
+Crawl-delay: 1
+
+# مسار ملف الخريطة
+Sitemap: https://calcrealty.netlify.app/sitemap.xml 

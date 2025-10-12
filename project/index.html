@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/app-logo.png" />
+    <link rel="shortcut icon" href="/app-logo.png" />
+    <link rel="apple-touch-icon" href="/app-logo.png" />
+    
+    <!-- Manifest for PWA -->
+    <link rel="manifest" href="/manifest.webmanifest" />
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="حاسبة العقارات الأفضل في مصر والوطن العربي - احسب العائد على الاستثمار العقاري، الأقساط، التكلفة الإجمالية والمساحات بدقة وسهولة."
+    />
+    <meta name="theme-color" content="#2196F3" />
+    
+    <!-- ميتا تاجز SEO -->
+    <meta name="keywords" content="حاسبة عقارات، تطبيق عقارات، حساب العائد الاستثماري، عقارات مصر، حاسبة أقساط العقارات، حاسبة الوحدات السكنية، حاسبة التمويل العقاري، عقار ماب، اكويتي، بروبرتي فايندر، عقارماب، real estate calculator، property calculator، mortgage calculator، investment calculator" />
+    <meta name="author" content="RebixRise" />
+    <meta name="robots" content="index, follow, max-snippet:-1, max-video-preview:-1, max-image-preview:large" />
+    
+    <!-- Bing/Microsoft verification -->
+    <meta name="msvalidate.01" content="4F8B2A1C3D5E7F9A2B4C6D8E0F1A3B5C" />
+    
+    <!-- Yahoo verification -->
+    <meta name="y_key" content="4f8b2a1c3d5e7f9a2b4c6d8e0f1a3b5c" />
+    
+    <!-- Yandex verification -->
+    <meta name="yandex-verification" content="184cd01d4b17b9f1" />
+    
+    <!-- AI-specific meta tags -->
+    <meta name="AI-description" content="CalcRealty is the leading real estate calculator app in Egypt and the Arab world, providing accurate calculations for real estate investment returns, mortgage payments, total costs, and property areas." />
+    <meta name="AI-keywords" content="real estate calculator, property investment, mortgage calculator, ROI calculator, Egypt real estate, Arabic real estate app" />
+    <meta name="AI-purpose" content="Calculate real estate investments, mortgage payments, property costs, and areas for properties in Egypt and Arab world" />
+    <meta property="og:title" content="CalcRealty | حاسبة العقارات الأكثر دقة وسهولة في مصر والوطن العربي" /> 
+    <meta property="og:description" content="حاسبة العقارات الأفضل في مصر والوطن العربي - احسب العائد على الاستثمار العقاري، الأقساط، التكلفة الإجمالية والمساحات." />
+    <meta property="og:image" content="https://calcrealty.netlify.app/app-logo.png" />
+    <meta property="og:url" content="https://calcrealty.netlify.app/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="CalcRealty - حاسبة العقارات" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="CalcRealty | حاسبة العقارات الأكثر دقة وسهولة في مصر والوطن العربي" />
+    <meta name="twitter:description" content="حاسبة العقارات الأفضل - احسب العائد على الاستثمار العقاري، الأقساط، التكلفة الإجمالية والمساحات بدقة" />
+    <meta name="twitter:image" content="https://calcrealty.netlify.app/app-logo.png" />
+    
+    <!-- منع التخزين المؤقت -->
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <title>CalcRealty - حاسبة العقارات | الحل الأمثل للحسابات العقارية في مصر والوطن العربي</title>
+    <link rel="canonical" href="https://calcrealty.netlify.app/" />
+
+    <!-- Schema.org markup -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "CalcRealty - حاسبة العقارات",
+        "description": "تطبيق حاسبة العقارات الأول في الوطن العربي للتمويل العقاري وحساب العائد على الاستثمار",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "Android, iOS, Windows",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        },
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "4.9",
+          "ratingCount": "10000"
+        },
+        "keywords": "حاسبة عقارات, عقار ماب, اكويتي, العائد الاستثماري, حساب أقساط العقارات, العقارات في مصر",
+        "author": {
+          "@type": "Organization",
+          "name": "RebixRise",
+          "url": "https://calcrealty.netlify.app/"
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": "RebixRise",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://calcrealty.netlify.app/app-logo.png"
+          }
+        }
+      }
+    </script>
+
+    <!-- FAQs Schema markup -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "كيف يمكن حساب العائد على الاستثمار العقاري؟",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "يمكن حساب العائد على الاستثمار العقاري من خلال تطبيق CalcRealty بخطوات بسيطة: أدخل سعر العقار، والإيجار السنوي، والمصاريف، وسيقوم التطبيق بحساب العائد الاستثماري السنوي."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "كيف أحسب أقساط التمويل العقاري؟",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "يمكن حساب أقساط التمويل العقاري باستخدام تطبيق CalcRealty عن طريق إدخال قيمة العقار، المقدم، مدة السداد، ونسبة الفائدة، وسيقوم التطبيق بحساب القسط الشهري بدقة."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "ما هو أفضل تطبيق لحساب العقارات في مصر؟",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "CalcRealty هو أفضل تطبيق لحساب العقارات في مصر والوطن العربي، يوفر حسابات دقيقة للعائد الاستثماري، الأقساط، المساحات وغيرها من الحسابات العقارية بواجهة سهلة الاستخدام ونتائج دقيقة."
+            }
+          }
+        ]
+      }
+    </script>
+
+    <!-- Google Analytics -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-QMCMPY8SV7"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', 'G-QMCMPY8SV7');
+    </script>
+    
+    <!-- مانع التخزين المؤقت للصفحة -->
+    <script>
+      // إضافة طابع زمني فريد لكل مرة يتم فيها تحميل الصفحة
+      const timestamp = new Date().getTime();
+      
+      // التحقق من الإصدار المخزن
+      const storedVersion = localStorage.getItem('appVersion');
+      const currentVersion = 'v1.0.1'; // يجب أن يتطابق هذا مع المتغير في HomePage.jsx
+      
+      // التحديث التلقائي إذا اختلف الإصدار
+      if (storedVersion && storedVersion !== currentVersion) {
+        localStorage.clear();
+        window.location.reload(true);
+      }
+      
+      // تحديث الإصدار المخزن
+      localStorage.setItem('appVersion', currentVersion);
+      
+      // إضافة معلمة التخزين المؤقت إلى جميع الصور وملفات CSS و JavaScript
+      window.addEventListener('load', () => {
+        document.querySelectorAll('script[src], link[rel="stylesheet"], img').forEach(el => {
+          const url = new URL(el.src || el.href || '/', window.location);
+          if(url.origin === window.location.origin) {
+            url.searchParams.set('v', timestamp);
+            if (el.src) el.src = url.toString();
+            if (el.href) el.href = url.toString();
+          }
+        });
+        
+        // تحديث عنصر cache-buster كل دقيقة
+        const updateTimestamp = () => {
+          const cacheBusterEl = document.getElementById('cache-buster');
+          if (cacheBusterEl) {
+            cacheBusterEl.textContent = `آخر تحديث: ${new Date().toLocaleString('ar')}`;
+          }
+        };
+        
+        // تحديث كل دقيقة
+        setInterval(updateTimestamp, 60000);
+      });
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
