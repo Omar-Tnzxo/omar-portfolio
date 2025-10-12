@@ -14,6 +14,7 @@ const EMAILJS_CONFIG = {
 import App from "./app";
 
 import "./index.css";
+import "./mobile-responsive.css"; // Mobile responsive improvements
 
 // Initialize EmailJS with fallback values
 try {
