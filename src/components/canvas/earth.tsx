@@ -24,13 +24,21 @@ useGLTF.preload("/models/earth.glb");
 
 // Earth Canvas
 const EarthCanvas = () => {
+  // Detect if mobile for performance optimization
+  const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
+  
   return (
     <Canvas
       shadows
-      frameloop="demand"
-      dpr={[1, 2]}
-      gl={{ preserveDrawingBuffer: true }}
+      frameloop="always"
+      dpr={isMobile ? [1, 1] : [1, 2]}
+      gl={{ 
+        preserveDrawingBuffer: true,
+        antialias: !isMobile,
+        powerPreference: isMobile ? 'low-power' : 'high-performance'
+      }}
       camera={{ fov: 45, near: 0.1, far: 200, position: [-4, 3, 6] }}
+      style={{ touchAction: 'none' }}
     >
       {/* Lights */}
       <ambientLight intensity={0.5} />
@@ -40,9 +48,11 @@ const EarthCanvas = () => {
       <Suspense fallback={<CanvasLoader />}>
         <OrbitControls
           autoRotate
+          autoRotateSpeed={isMobile ? 2 : 4}
           enableZoom={false}
           maxPolarAngle={Math.PI / 2}
           minPolarAngle={Math.PI / 2}
+          enablePan={false}
         />
 
         {/* Earth */}

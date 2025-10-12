@@ -7,9 +7,12 @@ import type { Points as PointsType } from "three";
 // Stars
 const Stars = (props: PointsProps) => {
   const ref = useRef<PointsType | null>(null);
-  // For each star
+  // Detect if mobile for performance optimization
+  const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
+  
+  // For each star - reduce count on mobile
   const [sphere] = useState(() =>
-    random.inSphere(new Float32Array(6000), { radius: 1.2 }),
+    random.inSphere(new Float32Array(isMobile ? 3000 : 6000), { radius: 1.2 }),
   );
 
   // Rotate multiple stars
@@ -34,7 +37,7 @@ const Stars = (props: PointsProps) => {
         <PointMaterial
           transparent
           color="#f272c8"
-          size={0.002}
+          size={isMobile ? 0.003 : 0.002}
           sizeAttenuation
           depthWrite={false}
         />
@@ -45,10 +48,21 @@ const Stars = (props: PointsProps) => {
 
 // Stars Canvas
 const StarsCanvas = () => {
+  // Detect if mobile for performance optimization
+  const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
+  
   return (
     <div className="w-full h-auto absolute inset-0 z-[-1]">
       {/* Canvas */}
-      <Canvas camera={{ position: [0, 0, 1] }}>
+      <Canvas 
+        camera={{ position: [0, 0, 1] }}
+        dpr={isMobile ? [1, 1] : [1, 2]}
+        gl={{ 
+          antialias: false,
+          powerPreference: isMobile ? 'low-power' : 'default'
+        }}
+        frameloop="always"
+      >
         {/* Show stars if not fallback */}
         <Suspense fallback={null}>
           <Stars />
