@@ -245,7 +245,7 @@ export const Navbar = () => {
                 animate={{ opacity: 1, y: 0, scale: 1 }}
                 exit={{ opacity: 0, y: -20, scale: 0.95 }}
                 transition={{ duration: 0.3, ease: "easeOut" }}
-                className="absolute top-16 right-0 w-64 p-6 bg-black/90 backdrop-blur-xl border border-white/10 rounded-2xl shadow-2xl z-40"
+                className="fixed top-20 right-4 w-64 p-6 bg-black/90 backdrop-blur-xl border border-white/10 rounded-2xl shadow-2xl z-[100]"
           >
             {/* Nav Links (Mobile) */}
                 <ul className="list-none flex flex-col gap-4">

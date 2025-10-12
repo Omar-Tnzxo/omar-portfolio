@@ -84,14 +84,14 @@ export const Hero = () => {
           {/* Title Bar + العنوان الرئيسي في نفس السطر */}
           <div className="flex items-start gap-3 mt-1">
         {/* Title Bar */}
-            <div className="flex flex-col justify-center items-center flex-shrink-0">
+            <div className="flex flex-col justify-start items-center flex-shrink-0 mt-1.5">
               <div className="w-3 h-3 rounded-full bg-[#915EFF]" />
-              <div className="w-1 h-20 violet-gradient" />
+              <div className="w-1 h-16 violet-gradient" />
         </div>
 
             {/* العنوان الرئيسي - محاذي بدقة مع Title Bar */}
           <motion.h1 
-              className="font-black text-white text-[36px] leading-[40px] text-left flex-1 -mt-1"
+              className="font-black text-white text-[36px] leading-[40px] text-left flex-1"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
@@ -102,7 +102,7 @@ export const Hero = () => {
 
           {/* النص المتحرك أسفل العنوان - محاذي بدقة */}
           <motion.div 
-            className="text-[#dfd9ff] font-medium text-[15px] leading-[1] -mt-8 min-h-0 flex items-center justify-start text-left px-2 ml-6"
+            className="text-[#dfd9ff] font-medium text-[15px] leading-[22px] mt-2 min-h-[60px] flex items-start justify-start text-left ml-6"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
