@@ -1,19 +1,8 @@
 import { Points, PointMaterial, Preload } from "@react-three/drei";
 import { Canvas, type PointsProps, useFrame } from "@react-three/fiber";
 import * as random from "maath/random";
-import { useRef, Suspense, useState, useEffect } from "react";
+import { useRef, Suspense, useState } from "react";
 import type { Points as PointsType } from "three";
-
-// Check WebGL support
-const checkWebGLSupport = (): boolean => {
-  try {
-    const canvas = document.createElement('canvas');
-    const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
-    return !!gl;
-  } catch (e) {
-    return false;
-  }
-};
 
 // Stars
 const Stars = (props: PointsProps) => {
@@ -59,19 +48,6 @@ const Stars = (props: PointsProps) => {
 
 // Stars Canvas
 const StarsCanvas = () => {
-  const [webGLSupported, setWebGLSupported] = useState(true);
-  const [isClient, setIsClient] = useState(false);
-  
-  useEffect(() => {
-    setIsClient(true);
-    setWebGLSupported(checkWebGLSupport());
-  }, []);
-  
-  // Don't render on server or if WebGL not supported
-  if (!isClient || !webGLSupported) {
-    return null;
-  }
-  
   // Detect if mobile for performance optimization
   const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
   
@@ -88,17 +64,6 @@ const StarsCanvas = () => {
           failIfMajorPerformanceCaveat: false,
         }}
         frameloop="always"
-        onCreated={(state) => {
-          // Handle WebGL context loss
-          state.gl.domElement.addEventListener('webglcontextlost', (event) => {
-            event.preventDefault();
-            console.warn('WebGL context lost for stars');
-          });
-          
-          state.gl.domElement.addEventListener('webglcontextrestored', () => {
-            console.log('WebGL context restored for stars');
-          });
-        }}
       >
         {/* Show stars if not fallback */}
         <Suspense fallback={null}>
