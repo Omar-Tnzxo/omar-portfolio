@@ -63,7 +63,7 @@ const StarsCanvas = () => {
           alpha: true,
           failIfMajorPerformanceCaveat: false,
         }}
-        frameloop="always"
+        frameloop="demand"
       >
         {/* Show stars if not fallback */}
         <Suspense fallback={null}>

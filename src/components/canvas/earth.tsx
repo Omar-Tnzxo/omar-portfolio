@@ -32,8 +32,8 @@ const EarthCanvas = () => {
       shadows
       frameloop="always"
       dpr={isMobile ? [1, 1] : [1, 2]}
-      gl={{ 
-        preserveDrawingBuffer: true,
+      gl={{
+        preserveDrawingBuffer: false,
         antialias: !isMobile,
         powerPreference: isMobile ? 'low-power' : 'high-performance',
         alpha: true,
