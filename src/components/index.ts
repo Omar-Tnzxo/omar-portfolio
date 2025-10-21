@@ -20,6 +20,7 @@ import MagicButton from "./ui/MagicButton";
 import WhatsAppButton from "./ui/WhatsAppButton";
 import Projects from "./projects";
 import BusinessCard from "./BusinessCard";
+import { NotFound } from "./NotFound";
 
 export {
   About,
@@ -33,7 +34,7 @@ export {
   Hero,
   MagicButton,
   Navbar,
-
+  NotFound,
   StarsCanvas,
   Tech,
   Works,

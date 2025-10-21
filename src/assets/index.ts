@@ -1,44 +1,44 @@
 // Export new images here
 // Don't remove anything from here if not sure
 
-import backend from "./backend.png";
+import backend from "./backend.webp";
 import bulb from "./bulb.svg";
 import close from "./close.svg";
-import creator from "./creator.png";
-import logo from "./logo.png";
+import creator from "./creator.webp";
+import logo from "./logo.webp";
 import menu from "./menu.svg";
-import mobile from "./mobile.png";
-import preview from "./preview.png";
-import web from "./web.png";
+import mobile from "./mobile.webp";
+import preview from "./preview.webp";
+import web from "./web.webp";
 import omarImage from "./omar-hassan.webp";
 // herobg is used from public folder in tailwind.config.ts
-// import herobg from "./herobg.png";
+// import herobg from "./herobg.webp";
 
-import dart from "./tech/dart.png";
-import mysql from "./tech/mysql.png";
-import flutter from "./tech/flutter.png";
-import git from "./tech/git.png";
-import python from "./tech/python.png";
-import supabase from "./tech/supabase.png";
+import dart from "./tech/dart.webp";
+import mysql from "./tech/mysql.webp";
+import flutter from "./tech/flutter.webp";
+import git from "./tech/git.webp";
+import python from "./tech/python.webp";
+import supabase from "./tech/supabase.webp";
 
 // New marketing tools
-import metaBusinessSuite from "./tech/MetaBusinessSuite.png";
-import canva from "./tech/canva.png";
-import n8n from "./tech/n8n.png";
-import buffer from "./tech/Buffer.png";
-import easyOrders from "./tech/EasyOrders.png";
-import notion from "./tech/Notion.png";
+import metaBusinessSuite from "./tech/MetaBusinessSuite.webp";
+import canva from "./tech/canva.webp";
+import n8n from "./tech/n8n.webp";
+import buffer from "./tech/Buffer.webp";
+import easyOrders from "./tech/EasyOrders.webp";
+import notion from "./tech/Notion.webp";
 
-import meta from "./company/meta.png";
-import avenueAdvertisingAgency from "./company/AvenueAdvertisingAgency.png";
-import avenueProperties from "./company/AvenueProperties.png";
+import meta from "./company/meta.webp";
+import avenueAdvertisingAgency from "./company/AvenueAdvertisingAgency.webp";
+import avenueProperties from "./company/AvenueProperties.webp";
 
-import project1 from "./projects/project1.png";
-import project2 from "./projects/project2.png";
-import project3 from "./projects/project3.png";
-import project4 from "./projects/project4.png";
-import project5 from "./projects/project5.png";
-import project6 from "./projects/project6.png";
+import project1 from "./projects/project1.webp";
+import project2 from "./projects/project2.webp";
+import project3 from "./projects/project3.webp";
+import project4 from "./projects/project4.webp";
+import project5 from "./projects/project5.webp";
+import project6 from "./projects/project6.webp";
 
 // import user1 from "./testimonials/user1.jpg";
 // import user2 from "./testimonials/user2.jpg";

@@ -30,7 +30,7 @@ export default {
         xs: "450px",
       },
       backgroundImage: {
-        "hero-pattern": "url('/herobg.png')",
+        "hero-pattern": "url('/herobg.webp')",
       },
       keyframes: {
         tilt: {

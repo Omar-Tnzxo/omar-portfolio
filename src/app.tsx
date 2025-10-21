@@ -8,6 +8,7 @@ import {
   Feedbacks,
   Hero,
   Navbar,
+  NotFound,
   Tech,
   Works,
   StarsCanvas,
@@ -47,6 +48,8 @@ const App = () => {
             <WhatsAppButton />
           </>
         } />
+        {/* Catch-all route for 404 - MUST be last */}
+        <Route path="*" element={<NotFound />} />
       </Routes>
       </div>
     </BrowserRouter>
