@@ -1,0 +1,59 @@
+# Favicon files - must-revalidate to ensure updates are shown
+/favicon.ico
+  Content-Type: image/x-icon
+  Cache-Control: public, max-age=604800, must-revalidate
+
+/favicon*.webp
+  Content-Type: image/webp
+  Cache-Control: public, max-age=604800, must-revalidate
+
+/favicon*.png
+  Content-Type: image/png
+  Cache-Control: public, max-age=604800, must-revalidate
+
+/apple-touch-icon.webp
+  Content-Type: image/webp
+  Cache-Control: public, max-age=604800, must-revalidate
+
+/og-image.png
+  Content-Type: image/png
+  Cache-Control: public, max-age=604800, must-revalidate
+
+# WebP images
+/*.webp
+  Content-Type: image/webp
+  Cache-Control: public, max-age=31536000, immutable
+
+# 3D models
+/models/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/*.gltf
+  Content-Type: model/gltf+json
+  Cache-Control: public, max-age=31536000, immutable
+
+/*.glb
+  Content-Type: model/gltf-binary
+  Cache-Control: public, max-age=31536000, immutable
+
+# Static assets
+/assets/*
+  Cache-Control: public, max-age=31536000, immutable
+
+*.js
+  Cache-Control: public, max-age=31536000, immutable
+
+*.css
+  Cache-Control: public, max-age=31536000, immutable
+
+# HTML files - always revalidate
+/*.html
+  Cache-Control: public, max-age=0, must-revalidate
+
+# Global security headers
+/*
+  X-Frame-Options: DENY
+  X-XSS-Protection: 1; mode=block
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=() 
