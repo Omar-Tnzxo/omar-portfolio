@@ -14,7 +14,11 @@
       "Bash(node parse-lighthouse.cjs:*)",
       "Bash(node convert-to-webp.js:*)",
       "Bash(node convert-to-webp.cjs:*)",
-      "Bash(npm run preview:*)"
+      "Bash(npm run preview:*)",
+      "Bash(pkill:*)",
+      "Bash(node create-og-image.cjs:*)",
+      "Bash(node create-herobg.cjs:*)",
+      "Bash(ls:*)"
     ],
     "deny": [],
     "ask": []
