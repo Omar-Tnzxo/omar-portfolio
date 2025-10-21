@@ -199,16 +199,14 @@ export const Contact = () => {
           import.meta.env.VITE_APP_EMAILJS_KEY || 'H4YFvBxDUh6YpVn0a',
         )
         .then(() => toast.success("Thanks for contacting me!"))
-        .catch((error) => {
-          console.log("[CONTACT_ERROR]: ", error);
+        .catch(() => {
           toast.error("Something went wrong.");
         })
         .finally(() => {
           setLoading(false);
           setContactForm({ name: "", email: "", message: "" });
         });
-    } catch (error) {
-      console.log("[CONTACT_ERROR]: ", error);
+    } catch {
       toast.error("Something went wrong.");
       setLoading(false);
     }
@@ -268,8 +266,7 @@ Notes: ${appointmentForm.notes || 'No additional notes'}`,
           import.meta.env.VITE_APP_EMAILJS_KEY || 'H4YFvBxDUh6YpVn0a',
         )
         .then(() => toast.success("Appointment request sent successfully!"))
-        .catch((error) => {
-          console.log("[APPOINTMENT_ERROR]: ", error);
+        .catch(() => {
           toast.error("Something went wrong.");
         })
         .finally(() => {
@@ -284,8 +281,7 @@ Notes: ${appointmentForm.notes || 'No additional notes'}`,
             notes: "",
           });
         });
-    } catch (error) {
-      console.log("[APPOINTMENT_ERROR]: ", error);
+    } catch {
       toast.error("Something went wrong.");
       setLoading(false);
     }

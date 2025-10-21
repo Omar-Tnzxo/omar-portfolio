@@ -17,15 +17,11 @@ import "./index.css";
 
 // Initialize EmailJS with fallback values
 try {
-  console.log('EmailJS Config:', EMAILJS_CONFIG);
   if (EMAILJS_CONFIG.key && EMAILJS_CONFIG.key !== 'undefined' && EMAILJS_CONFIG.key !== '') {
     emailjs.init(EMAILJS_CONFIG.key);
-    console.log('EmailJS initialized successfully');
-  } else {
-    console.warn('EmailJS key not available, skipping initialization');
   }
 } catch (error) {
-  console.warn('EmailJS initialization failed:', error);
+  // EmailJS initialization failed - silently continue
 }
 
 const rootEl = document.getElementById("root");

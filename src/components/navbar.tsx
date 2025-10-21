@@ -32,23 +32,14 @@ export const Navbar = () => {
 
   // دالة الانتقال السلس
   const smoothScrollTo = (elementId: string) => {
-    console.log("🔍 Searching for element with ID:", elementId);
-    
     setTimeout(() => {
       const element = document.getElementById(elementId);
-      console.log("📍 Element found:", element);
-      
+
       if (element) {
         // استخدام getBoundingClientRect بدلاً من offsetTop
         const rect = element.getBoundingClientRect();
         const elementPosition = rect.top + window.pageYOffset - 100; // 100px offset for navbar
-        console.log("✅ Element found, scrolling to:", elementPosition);
-        console.log("📊 Rect info:", {
-          top: rect.top,
-          pageYOffset: window.pageYOffset,
-          calculatedPosition: elementPosition
-        });
-        
+
         const startPosition = window.pageYOffset;
         const distance = elementPosition - startPosition;
         const duration = 1500; // 1.5 seconds
@@ -64,16 +55,9 @@ export const Navbar = () => {
 
         requestAnimationFrame(animation);
       } else {
-        console.log("❌ Element not found with ID:", elementId);
-        console.log("🔍 Available elements with IDs:");
-        document.querySelectorAll('[id]').forEach(el => {
-          console.log("  -", el.id, ":", el.tagName);
-        });
-        
         // محاولة ثانية باستخدام scrollIntoView كبديل
         const alternativeElement = document.querySelector(`[id*="${elementId}"]`);
         if (alternativeElement) {
-          console.log("🔄 Found alternative element:", alternativeElement);
           alternativeElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
       }

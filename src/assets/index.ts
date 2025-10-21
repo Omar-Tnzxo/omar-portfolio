@@ -11,7 +11,8 @@ import mobile from "./mobile.png";
 import preview from "./preview.png";
 import web from "./web.png";
 import omarImage from "./omar-hassan.webp";
-import herobg from "./herobg.png";
+// herobg is used from public folder in tailwind.config.ts
+// import herobg from "./herobg.png";
 
 import dart from "./tech/dart.png";
 import mysql from "./tech/mysql.png";
@@ -66,7 +67,7 @@ export {
   preview,
   web,
   omarImage,
-  herobg,
+  // herobg is loaded from public/ via tailwind config
   dart,
   mysql,
   flutter,
