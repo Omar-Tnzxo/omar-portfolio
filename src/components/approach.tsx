@@ -31,9 +31,6 @@ const Approach = () => {
           des="Marketing is a continuous loop of learning and improvement. I meticulously track performance against our set KPIs, analyzing the data to understand what truly resonates with your audience. Based on these insights, I provide clear, actionable reports and constantly refine our approach. This data-driven feedback loop allows us to optimize for better results and ensure we are always moving the needle."
           gradient="bg-gradient-to-br from-sky-600 to-sky-800"
         />
-            colors={[[135, 206, 250]]}
-          />
-        </Card>
       </div>
     </section>
   );
