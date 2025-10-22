@@ -79,13 +79,13 @@ export const Navbar = () => {
       transition={{ duration: 0.8, ease: "easeOut" }}
       className={cn(
         styles.paddingX,
-        "w-full flex items-center py-4 fixed top-0 z-[999] transition-all duration-300 overflow-x-hidden",
+        "w-full flex items-center py-4 fixed top-0 z-[999] transition-all duration-300",
         isAtBottom 
           ? "bg-black/80 backdrop-blur-md border-b border-white/10 shadow-2xl" 
           : "bg-transparent"
       )}
     >
-      <div className="w-full flex justify-between items-center max-w-7xl mx-auto overflow-x-hidden relative">
+      <div className="w-full flex justify-between items-center max-w-7xl mx-auto relative">
         {/* Logo */}
         <motion.div
           whileHover={{ scale: 1.05 }}
