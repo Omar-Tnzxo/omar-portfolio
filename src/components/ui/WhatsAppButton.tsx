@@ -1,13 +1,112 @@
-import React from "react";
-import { motion } from "framer-motion";
+import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 const WhatsAppButton: React.FC = () => {
+  const [showMenu, setShowMenu] = useState(false);
+
   const handleWhatsAppClick = () => {
-    window.open("https://wa.me/201029752972", "_blank");
+    setShowMenu(true);
+  };
+
+  const openWhatsApp = (type: 'business' | 'personal') => {
+    const url = type === 'business' 
+      ? "https://wa.me/201029752972" 
+      : "https://wa.me/201029752972"; // ضع رقم الواتساب الشخصي هنا
+    window.open(url, "_blank");
+    setShowMenu(false);
   };
 
   return (
-    <motion.div
+    <>
+      {/* قائمة الاختيار */}
+      <AnimatePresence>
+        {showMenu && (
+          <>
+            {/* خلفية شفافة */}
+            <motion.div
+              className="fixed inset-0 bg-black/50 z-[60]"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setShowMenu(false)}
+            />
+            
+            {/* قائمة الخيارات */}
+            <motion.div
+              className="fixed bottom-24 right-6 z-[70] bg-white dark:bg-gray-800 rounded-2xl shadow-2xl overflow-hidden"
+              initial={{ scale: 0, opacity: 0, y: 20 }}
+              animate={{ scale: 1, opacity: 1, y: 0 }}
+              exit={{ scale: 0, opacity: 0, y: 20 }}
+              transition={{ type: "spring", duration: 0.3 }}
+            >
+              <div className="p-4 space-y-2 min-w-[200px]">
+                <h3 className="text-sm font-semibold text-gray-700 dark:text-gray-300 mb-3 px-2">
+                  اختر نوع الواتساب
+                </h3>
+                
+                {/* واتساب بيزنس */}
+                <motion.button
+                  onClick={() => openWhatsApp('business')}
+                  className="w-full flex items-center gap-3 p-3 rounded-xl bg-green-50 dark:bg-green-900/20 hover:bg-green-100 dark:hover:bg-green-900/40 transition-colors duration-200"
+                  whileHover={{ x: 5 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <div className="bg-green-500 p-2 rounded-lg">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0,0,256,256"
+                      width="20px"
+                      height="20px"
+                      className="fill-white"
+                    >
+                      <path d="M128,0C57.307,0,0,57.307,0,128c0,22.508,5.812,44.299,16.823,63.147L0,256l66.711-17.5C85.309,249.198,106.275,256,128,256c70.693,0,128-57.307,128-128S198.693,0,128,0z M128,234c-19.988,0-39.37-5.688-56.232-16.462l-4.035-2.578l-41.892,10.988l11.013-40.293l-2.827-4.188C22.365,164.605,16,146.735,16,128C16,65.869,65.869,16,128,16s112,49.869,112,112S190.131,234,128,234z M187.5,155.5c-3.25-1.625-19.25-9.5-22.25-10.625s-5.125-1.625-7.25,1.625s-8.375,10.625-10.25,12.75s-3.75,2.438-7,0.813s-13.625-5.031-25.938-16c-9.594-8.563-16.063-19.125-17.938-22.375s-0.188-5,1.438-6.625c1.469-1.469,3.25-3.813,4.875-5.688s2.188-3.25,3.25-5.375s0.563-4.063-0.188-5.688s-7.25-17.5-9.938-23.938c-2.625-6.281-5.281-5.438-7.25-5.531c-1.875-0.094-4.063-0.094-6.188-0.094s-5.625,0.813-8.563,4.063s-11.313,11.063-11.313,26.938s11.563,31.25,13.188,33.375s22.688,34.656,54.969,48.594c7.688,3.313,13.688,5.281,18.375,6.781c7.719,2.438,14.75,2.094,20.313,1.281c6.188-0.938,19.25-7.875,21.938-15.5s2.688-14.125,1.875-15.5S190.75,157.125,187.5,155.5z"/>
+                    </svg>
+                  </div>
+                  <div className="text-left">
+                    <p className="text-sm font-semibold text-gray-800 dark:text-white">
+                      واتساب بيزنس
+                    </p>
+                    <p className="text-xs text-gray-500 dark:text-gray-400">
+                      للاستفسارات العملية
+                    </p>
+                  </div>
+                </motion.button>
+
+                {/* واتساب شخصي */}
+                <motion.button
+                  onClick={() => openWhatsApp('personal')}
+                  className="w-full flex items-center gap-3 p-3 rounded-xl bg-blue-50 dark:bg-blue-900/20 hover:bg-blue-100 dark:hover:bg-blue-900/40 transition-colors duration-200"
+                  whileHover={{ x: 5 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <div className="bg-blue-500 p-2 rounded-lg">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0,0,256,256"
+                      width="20px"
+                      height="20px"
+                      className="fill-white"
+                    >
+                      <path d="M128,0C57.307,0,0,57.307,0,128c0,22.508,5.812,44.299,16.823,63.147L0,256l66.711-17.5C85.309,249.198,106.275,256,128,256c70.693,0,128-57.307,128-128S198.693,0,128,0z M128,234c-19.988,0-39.37-5.688-56.232-16.462l-4.035-2.578l-41.892,10.988l11.013-40.293l-2.827-4.188C22.365,164.605,16,146.735,16,128C16,65.869,65.869,16,128,16s112,49.869,112,112S190.131,234,128,234z M187.5,155.5c-3.25-1.625-19.25-9.5-22.25-10.625s-5.125-1.625-7.25,1.625s-8.375,10.625-10.25,12.75s-3.75,2.438-7,0.813s-13.625-5.031-25.938-16c-9.594-8.563-16.063-19.125-17.938-22.375s-0.188-5,1.438-6.625c1.469-1.469,3.25-3.813,4.875-5.688s2.188-3.25,3.25-5.375s0.563-4.063-0.188-5.688s-7.25-17.5-9.938-23.938c-2.625-6.281-5.281-5.438-7.25-5.531c-1.875-0.094-4.063-0.094-6.188-0.094s-5.625,0.813-8.563,4.063s-11.313,11.063-11.313,26.938s11.563,31.25,13.188,33.375s22.688,34.656,54.969,48.594c7.688,3.313,13.688,5.281,18.375,6.781c7.719,2.438,14.75,2.094,20.313,1.281c6.188-0.938,19.25-7.875,21.938-15.5s2.688-14.125,1.875-15.5S190.75,157.125,187.5,155.5z"/>
+                    </svg>
+                  </div>
+                  <div className="text-left">
+                    <p className="text-sm font-semibold text-gray-800 dark:text-white">
+                      واتساب شخصي
+                    </p>
+                    <p className="text-xs text-gray-500 dark:text-gray-400">
+                      للمحادثات العادية
+                    </p>
+                  </div>
+                </motion.button>
+              </div>
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
+
+      {/* زر الواتساب الأساسي */}
+      <motion.div
       className="fixed bottom-6 right-6 z-50"
       initial={{ scale: 0, opacity: 0 }}
       animate={{ scale: 1, opacity: 1 }}
@@ -89,6 +188,7 @@ const WhatsAppButton: React.FC = () => {
         </motion.div>
       </motion.button>
     </motion.div>
+    </>
   );
 };
 
