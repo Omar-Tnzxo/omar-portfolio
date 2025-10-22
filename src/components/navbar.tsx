@@ -206,7 +206,7 @@ export const Navbar = () => {
         </ul>
 
         {/* Hamburger Menu (Mobile) */}
-        <div className="sm:hidden flex flex-1 justify-end items-center">
+        <div className="sm:hidden flex flex-1 justify-end items-center relative">
           <motion.button
             className="relative z-50 p-2 rounded-lg bg-white/5 backdrop-blur-sm border border-white/10"
             onClick={() => setToggle(!toggle)}
@@ -224,39 +224,15 @@ export const Navbar = () => {
 
           <AnimatePresence>
             {toggle && (
-              <>
-                {/* Backdrop overlay */}
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: 0.2 }}
-                  className="fixed inset-0 bg-black/50 backdrop-blur-sm z-40"
-                  onClick={() => setToggle(false)}
-                />
-                
-                {/* Mobile menu */}
-                <motion.div
-                  initial={{ opacity: 0, x: 300 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: 300 }}
-                  transition={{ duration: 0.3, ease: "easeOut" }}
-                  className="fixed top-0 right-0 h-full w-[280px] bg-black/95 backdrop-blur-xl border-l border-white/10 shadow-2xl z-50 overflow-y-auto"
-                >
-                  {/* Close button */}
-                  <div className="flex justify-end p-4">
-                    <motion.button
-                      onClick={() => setToggle(false)}
-                      className="p-2 rounded-lg bg-white/5 hover:bg-white/10 border border-white/10"
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                    >
-                      <img src={close} alt="Close" className="w-6 h-6" />
-                    </motion.button>
-                  </div>
-
-                  {/* Nav Links (Mobile) */}
-                  <ul className="list-none flex flex-col gap-2 px-6 mt-4">
+              <motion.div
+                initial={{ opacity: 0, y: -20, scale: 0.95 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                exit={{ opacity: 0, y: -20, scale: 0.95 }}
+                transition={{ duration: 0.3, ease: "easeOut" }}
+                className="absolute top-14 right-0 w-64 p-6 bg-black/90 backdrop-blur-xl border border-white/10 rounded-2xl shadow-2xl z-50"
+              >
+                {/* Nav Links (Mobile) */}
+                <ul className="list-none flex flex-col gap-4">
                   {NAV_LINKS.map((link, index) => (
                     <motion.li
                   key={link.id}
@@ -323,8 +299,7 @@ export const Navbar = () => {
                     </motion.li>
               ))}
             </ul>
-                </motion.div>
-              </>
+              </motion.div>
             )}
           </AnimatePresence>
         </div>
