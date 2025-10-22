@@ -36,11 +36,12 @@ const ProjectCard = ({
           className="relative w-full h-full overflow-hidden lg:rounded-3xl"
           style={{ backgroundColor: "#13162D" }}
         >
-          <img src="/bg.webp" alt="bgimg" />
+          <img src="/bg.webp" alt="bgimg" loading="lazy" />
         </div>
             <img
           src={img}
           alt="cover"
+          loading="lazy"
           className="z-10 absolute bottom-0"
             />
           </div>

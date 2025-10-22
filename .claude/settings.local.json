@@ -18,7 +18,8 @@
       "Bash(pkill:*)",
       "Bash(node create-og-image.cjs:*)",
       "Bash(node create-herobg.cjs:*)",
-      "Bash(ls:*)"
+      "Bash(ls:*)",
+      "WebFetch(domain:pagespeed.web.dev)"
     ],
     "deny": [],
     "ask": []

@@ -90,13 +90,14 @@ export const Hero = () => {
         </div>
 
             {/* العنوان الرئيسي - محاذي بدقة مع Title Bar */}
-          <motion.h1 
+          <motion.h1
               className="font-black text-white text-[36px] leading-[40px] text-left flex-1"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-              <span className="text-[#915EFF]">Hi, I'm Omar</span>
+              <span className="text-[#915EFF]">Hi, I'm Omar Hassan (Tnzxo)</span>
+              <span className="text-white text-[18px] block mt-1">Digital Marketing & Growth Specialist in Egypt</span>
           </motion.h1>
           </div>
 
@@ -242,13 +243,14 @@ export const Hero = () => {
           {/* About Me */}
           <div className="flex-1 w-full flex flex-col justify-center min-h-0">
             {/* العنوان الرئيسي */}
-            <motion.h1 
+            <motion.h1
               className="font-black text-white text-[32px] md:text-[40px] lg:text-[50px] xl:text-[60px] 2xl:text-[80px] leading-[36px] md:leading-[44px] lg:leading-[54px] xl:leading-[64px] 2xl:leading-[88px] text-left mt-2"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
             >
-              <span className="text-[#915EFF]">Hi, I'm Omar</span>
+              <span className="text-[#915EFF]">Hi, I'm Omar Hassan (Tnzxo)</span>
+              <span className="text-white text-[18px] md:text-[22px] lg:text-[26px] block mt-2">Digital Marketing & Growth Specialist in Egypt</span>
             </motion.h1>
 
             {/* النص المتحرك */}

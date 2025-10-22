@@ -29,7 +29,7 @@ const ServiceCard = ({ index, title, icon }: ServiceCardProps) => {
         className="w-full green-pink-gradient p-[1px] rounded-[20px] shadow-card"
       >
         <div className="bg-tertiary rounded-[20px] py-5 px-12 min-h-[280px] flex justify-evenly items-center flex-col">
-          <img src={icon} alt={title} className="w-16 h-16 object-contain" />
+          <img src={icon} alt={title} loading="lazy" className="w-16 h-16 object-contain" />
           <h3 className="text-white text-[20px] font-bold text-center">
             {title}
           </h3>
@@ -111,6 +111,7 @@ export const About = () => {
                   <img
                     src={omarImage}
                     alt="Omar Hassan - Marketing & Development Professional"
+                    loading="lazy"
                     className="w-64 h-64 sm:w-72 sm:h-72 lg:w-80 lg:h-80 object-cover rounded-full"
                   />
                   
