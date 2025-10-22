@@ -40,7 +40,6 @@ export default defineConfig({
       "@": path.resolve(__dirname, "./src"),
     },
   },
-  assetsInclude: ['**/*.gltf', '**/*.bin', '**/*.glb'],
   build: {
     sourcemap: false,
     minify: 'esbuild',
@@ -54,16 +53,6 @@ export default defineConfig({
           // React ecosystem
           if (id.includes('node_modules/react') || id.includes('node_modules/react-dom') || id.includes('node_modules/react-router')) {
             return 'react-vendor';
-          }
-          // Three.js ecosystem - split further
-          if (id.includes('node_modules/three/')) {
-            if (id.includes('three/build/three')) {
-              return 'three-core';
-            }
-            return 'three-addons';
-          }
-          if (id.includes('node_modules/@react-three')) {
-            return 'three-react';
           }
           // Animation libraries
           if (id.includes('node_modules/framer-motion')) {
@@ -79,13 +68,6 @@ export default defineConfig({
           }
         },
         assetFileNames: (assetInfo) => {
-          // Keep related files together
-          if (assetInfo.name?.endsWith('.bin')) {
-            return 'assets/[name]-[hash][extname]';
-          }
-          if (assetInfo.name?.endsWith('.gltf')) {
-            return 'assets/[name]-[hash][extname]';
-          }
           return 'assets/[name]-[hash][extname]';
         }
       }

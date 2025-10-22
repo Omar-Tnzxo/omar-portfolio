@@ -2,9 +2,6 @@
 // ! Don't remove anything from here
 
 import { About } from "./about";
-import {
-  BallCanvas,
-} from "./canvas";
 import { Contact } from "./contact";
 import { Experience } from "./experience";
 import { Feedbacks } from "./feedbacks";
@@ -23,7 +20,6 @@ import { NotFound } from "./NotFound";
 export {
   About,
   Approach,
-  BallCanvas,
   BusinessCard,
   Contact,
   Experience,
