@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import { useState, useEffect, useRef } from "react";
 
 import { styles } from "../styles";
@@ -6,48 +6,42 @@ import { cn } from "../utils/lib";
 import { resume } from "../assets";
 
 // Hook للعد من 0 إلى الرقم المطلوب
-const useCountAnimation = (target: number, duration: number = 2000) => {
+const useCountAnimation = (target: number, duration: number = 1500) => {
   const [count, setCount] = useState(0);
   const [hasStarted, setHasStarted] = useState(false);
-  const elementRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries[0].isIntersecting && !hasStarted) {
-          setHasStarted(true);
-        }
-      },
-      { threshold: 0.1 }
-    );
+    // Start immediately when component mounts
+    const timer = setTimeout(() => {
+      setHasStarted(true);
+    }, 500); // small delay for better UX
 
-    if (elementRef.current) {
-      observer.observe(elementRef.current);
-    }
-
-    return () => observer.disconnect();
-  }, [hasStarted]);
+    return () => clearTimeout(timer);
+  }, []);
 
   useEffect(() => {
     if (!hasStarted) return;
 
-    const increment = target / (duration / 16);
+    const steps = 60; // عدد الخطوات للأنيميشن
+    const increment = target / steps;
+    const stepDuration = duration / steps;
     let current = 0;
+    let step = 0;
 
     const timer = setInterval(() => {
-      current += increment;
+      step++;
+      current = Math.min(Math.floor(increment * step), target);
+      setCount(current);
+      
       if (current >= target) {
-        setCount(target);
         clearInterval(timer);
-      } else {
-        setCount(Math.floor(current));
       }
-    }, 16);
+    }, stepDuration);
 
     return () => clearInterval(timer);
   }, [hasStarted, target, duration]);
 
-  return { count, elementRef };
+  return count;
 };
 
 // Hero
@@ -65,9 +59,9 @@ export const Hero = () => {
   const [isDownloading, setIsDownloading] = useState(false);
 
   // استخدام Hook للأرقام
-  const yearsCount = useCountAnimation(2);
-  const projectsCount = useCountAnimation(20);
-  const satisfactionCount = useCountAnimation(100);
+  const yearsCount = useCountAnimation(2, 1500);
+  const projectsCount = useCountAnimation(20, 1800);
+  const satisfactionCount = useCountAnimation(100, 2000);
 
   useEffect(() => {
     const text = descriptions[currentDescription];
@@ -260,22 +254,21 @@ export const Hero = () => {
 
           {/* إحصائيات سريعة */}
           <motion.div 
-            ref={yearsCount.elementRef}
             className="flex flex-row justify-center gap-4 mt-6 px-4"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.8 }}
           >
             <div className="text-center">
-              <div className="text-lg font-bold text-[#915EFF]">{yearsCount.count}+</div>
+              <div className="text-lg font-bold text-[#915EFF]">{yearsCount}+</div>
               <div className="text-xs text-gray-400">Years Experience</div>
             </div>
             <div className="text-center">
-              <div className="text-lg font-bold text-[#915EFF]">{projectsCount.count}+</div>
+              <div className="text-lg font-bold text-[#915EFF]">{projectsCount}+</div>
               <div className="text-xs text-gray-400">Projects Completed</div>
             </div>
             <div className="text-center">
-              <div className="text-lg font-bold text-[#915EFF]">{satisfactionCount.count}%</div>
+              <div className="text-lg font-bold text-[#915EFF]">{satisfactionCount}%</div>
               <div className="text-xs text-gray-400">Client Satisfaction</div>
             </div>
           </motion.div>
@@ -422,15 +415,15 @@ export const Hero = () => {
             transition={{ duration: 0.8, delay: 0.8 }}
           >
             <div className="text-center">
-                <div className="text-xl md:text-2xl lg:text-3xl font-bold text-[#915EFF]">{yearsCount.count}+</div>
+                <div className="text-xl md:text-2xl lg:text-3xl font-bold text-[#915EFF]">{yearsCount}+</div>
                 <div className="text-sm text-gray-400">Years Experience</div>
             </div>
             <div className="text-center">
-                <div className="text-xl md:text-2xl lg:text-3xl font-bold text-[#915EFF]">{projectsCount.count}+</div>
+                <div className="text-xl md:text-2xl lg:text-3xl font-bold text-[#915EFF]">{projectsCount}+</div>
                 <div className="text-sm text-gray-400">Projects Completed</div>
             </div>
             <div className="text-center">
-                <div className="text-xl md:text-2xl lg:text-3xl font-bold text-[#915EFF]">{satisfactionCount.count}%</div>
+                <div className="text-xl md:text-2xl lg:text-3xl font-bold text-[#915EFF]">{satisfactionCount}%</div>
                 <div className="text-sm text-gray-400">Client Satisfaction</div>
             </div>
           </motion.div>
