@@ -44,14 +44,16 @@ const useCountAnimation = (target: number, duration: number = 1500) => {
   return count;
 };
 
+// Descriptions array outside component to avoid re-creation
+const descriptions = [
+  "I am a Content & Social Media Specialist who bridges the gap between marketing, sales, and technology to deliver measurable results.",
+  "I combine strategic marketing with frontline sales experience to create content-driven lead generation systems that work.",
+  "I develop PropTech solutions using Flutter and automation tools to solve real-world business challenges.",
+  "I build comprehensive brand identities and e-commerce platforms that drive growth and customer engagement."
+];
+
 // Hero
 export const Hero = () => {
-  const descriptions = [
-    "I am a Content & Social Media Specialist who bridges the gap between marketing, sales, and technology to deliver measurable results.",
-    "I combine strategic marketing with frontline sales experience to create content-driven lead generation systems that work.",
-    "I develop PropTech solutions using Flutter and automation tools to solve real-world business challenges.",
-    "I build comprehensive brand identities and e-commerce platforms that drive growth and customer engagement."
-  ];
 
   const [currentDescription, setCurrentDescription] = useState(0);
   const [displayText, setDisplayText] = useState("");
@@ -65,6 +67,8 @@ export const Hero = () => {
 
   useEffect(() => {
     const text = descriptions[currentDescription];
+    if (!text) return; // Safety check
+    
     setDisplayText("");
     setIsTyping(true);
     
