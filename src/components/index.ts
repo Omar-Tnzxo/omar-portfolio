@@ -4,8 +4,6 @@
 import { About } from "./about";
 import {
   BallCanvas,
-  EarthCanvas,
-  StarsCanvas,
 } from "./canvas";
 import { Contact } from "./contact";
 import { Experience } from "./experience";
@@ -28,14 +26,12 @@ export {
   BallCanvas,
   BusinessCard,
   Contact,
-  EarthCanvas,
   Experience,
   Feedbacks,
   Hero,
   MagicButton,
   Navbar,
   NotFound,
-  StarsCanvas,
   Tech,
   Works,
   WhatsAppButton,

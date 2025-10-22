@@ -11,7 +11,6 @@ import {
   NotFound,
   Tech,
   Works,
-  StarsCanvas,
   WhatsAppButton,
   Projects,
 } from "./components";
@@ -41,7 +40,6 @@ const App = () => {
               <Feedbacks />
               <div className="relative z-0">
                 <Contact />
-                <StarsCanvas />
               </div>
             </div>
             <Footer />

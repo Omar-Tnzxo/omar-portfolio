@@ -3,11 +3,10 @@ import { motion } from "framer-motion";
 import { useState, useRef, type FormEvent, type ChangeEvent } from "react";
 import { toast } from "sonner";
 
-import { EarthCanvas } from "./canvas";
-import ErrorBoundary from "./canvas/ErrorBoundary";
 import { SectionWrapper } from "../hoc";
 import { styles } from "../styles";
 import { slideIn } from "../utils/motion";
+import contactMeImg from "../assets/contact-me.svg";
 
 // Contact
 export const Contact = () => {
@@ -728,16 +727,19 @@ Notes: ${appointmentForm.notes || 'No additional notes'}`,
           )}
         </motion.div>
 
-        {/* Earth Model */}
+        {/* Contact Image */}
         <motion.div
           variants={slideIn("right", "tween", 0.2, 1)}
-          className="xl:flex-1 xl:h-auto md:h-[550px] h-[350px] relative"
+          className="xl:flex-1 xl:h-auto md:h-[550px] h-[350px] relative flex items-center justify-center"
         >
-          <ErrorBoundary>
-            <div className="w-full h-full min-h-[350px]">
-              <EarthCanvas />
-            </div>
-          </ErrorBoundary>
+          <motion.img
+            src={contactMeImg}
+            alt="Contact Me"
+            className="w-full h-full object-contain"
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+          />
         </motion.div>
       </div>
     </SectionWrapper>
