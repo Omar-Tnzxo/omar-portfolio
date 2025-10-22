@@ -1,9 +1,54 @@
 import { motion } from "framer-motion";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 import { styles } from "../styles";
 import { cn } from "../utils/lib";
 import { resume } from "../assets";
+
+// Hook للعد من 0 إلى الرقم المطلوب
+const useCountAnimation = (target: number, duration: number = 2000) => {
+  const [count, setCount] = useState(0);
+  const [hasStarted, setHasStarted] = useState(false);
+  const elementRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting && !hasStarted) {
+          setHasStarted(true);
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    if (elementRef.current) {
+      observer.observe(elementRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, [hasStarted]);
+
+  useEffect(() => {
+    if (!hasStarted) return;
+
+    const increment = target / (duration / 16);
+    let current = 0;
+
+    const timer = setInterval(() => {
+      current += increment;
+      if (current >= target) {
+        setCount(target);
+        clearInterval(timer);
+      } else {
+        setCount(Math.floor(current));
+      }
+    }, 16);
+
+    return () => clearInterval(timer);
+  }, [hasStarted, target, duration]);
+
+  return { count, elementRef };
+};
 
 // Hero
 export const Hero = () => {
@@ -18,6 +63,11 @@ export const Hero = () => {
   const [displayText, setDisplayText] = useState("");
   const [isTyping, setIsTyping] = useState(false);
   const [isDownloading, setIsDownloading] = useState(false);
+
+  // استخدام Hook للأرقام
+  const yearsCount = useCountAnimation(2);
+  const projectsCount = useCountAnimation(20);
+  const satisfactionCount = useCountAnimation(100);
 
   useEffect(() => {
     const text = descriptions[currentDescription];
@@ -47,21 +97,32 @@ export const Hero = () => {
     if (isDownloading) return;
     
     setIsDownloading(true);
-    
-    // انيميشن التحميل
-    await new Promise(resolve => setTimeout(resolve, 1500));
-    
-    const link = document.createElement('a');
-    link.href = resume;
-    link.download = "Omar's Resume - 20 Jul.pdf";
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-    
-    // إعادة تعيين الحالة بعد التحميل
-    setTimeout(() => {
-      setIsDownloading(false);
-    }, 500);
+
+    try {
+      const response = await fetch(resume);
+      const blob = await response.blob();
+      const url = window.URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = "Omar_Hassan_CV.pdf";
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      window.URL.revokeObjectURL(url);
+    } catch (error) {
+      console.error("Error downloading CV:", error);
+    } finally {
+      setTimeout(() => {
+        setIsDownloading(false);
+      }, 1000);
+    }
+  };
+
+  const scrollToWork = () => {
+    const workSection = document.getElementById('work');
+    if (workSection) {
+      workSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
   };
 
   return (
@@ -121,7 +182,10 @@ export const Hero = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
           >
-            <button className="bg-[#915EFF] text-white px-6 py-3 rounded-lg font-semibold hover:bg-[#7c4dff] transition-colors shadow-lg hover:shadow-xl text-sm">
+            <button 
+              onClick={scrollToWork}
+              className="bg-[#915EFF] text-white px-6 py-3 rounded-lg font-semibold hover:bg-[#7c4dff] transition-colors shadow-lg hover:shadow-xl text-sm"
+            >
               View My Work
             </button>
             <motion.button
@@ -196,21 +260,22 @@ export const Hero = () => {
 
           {/* إحصائيات سريعة */}
           <motion.div 
+            ref={yearsCount.elementRef}
             className="flex flex-row justify-center gap-4 mt-6 px-4"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.8 }}
           >
             <div className="text-center">
-              <div className="text-lg font-bold text-[#915EFF]">2+</div>
+              <div className="text-lg font-bold text-[#915EFF]">{yearsCount.count}+</div>
               <div className="text-xs text-gray-400">Years Experience</div>
             </div>
             <div className="text-center">
-              <div className="text-lg font-bold text-[#915EFF]">20+</div>
+              <div className="text-lg font-bold text-[#915EFF]">{projectsCount.count}+</div>
               <div className="text-xs text-gray-400">Projects Completed</div>
             </div>
             <div className="text-center">
-              <div className="text-lg font-bold text-[#915EFF]">100%</div>
+              <div className="text-lg font-bold text-[#915EFF]">{satisfactionCount.count}%</div>
               <div className="text-xs text-gray-400">Client Satisfaction</div>
             </div>
           </motion.div>
@@ -273,7 +338,10 @@ export const Hero = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
             >
-              <button className="bg-[#915EFF] text-white px-6 md:px-8 py-3 rounded-lg font-semibold hover:bg-[#7c4dff] transition-colors shadow-lg hover:shadow-xl text-base">
+              <button 
+                onClick={scrollToWork}
+                className="bg-[#915EFF] text-white px-6 md:px-8 py-3 rounded-lg font-semibold hover:bg-[#7c4dff] transition-colors shadow-lg hover:shadow-xl text-base"
+              >
                 View My Work
               </button>
               <motion.button 
@@ -354,15 +422,15 @@ export const Hero = () => {
             transition={{ duration: 0.8, delay: 0.8 }}
           >
             <div className="text-center">
-                <div className="text-xl md:text-2xl lg:text-3xl font-bold text-[#915EFF]">2+</div>
+                <div className="text-xl md:text-2xl lg:text-3xl font-bold text-[#915EFF]">{yearsCount.count}+</div>
                 <div className="text-sm text-gray-400">Years Experience</div>
             </div>
             <div className="text-center">
-                <div className="text-xl md:text-2xl lg:text-3xl font-bold text-[#915EFF]">20+</div>
+                <div className="text-xl md:text-2xl lg:text-3xl font-bold text-[#915EFF]">{projectsCount.count}+</div>
                 <div className="text-sm text-gray-400">Projects Completed</div>
             </div>
             <div className="text-center">
-                <div className="text-xl md:text-2xl lg:text-3xl font-bold text-[#915EFF]">100%</div>
+                <div className="text-xl md:text-2xl lg:text-3xl font-bold text-[#915EFF]">{satisfactionCount.count}%</div>
                 <div className="text-sm text-gray-400">Client Satisfaction</div>
             </div>
           </motion.div>
