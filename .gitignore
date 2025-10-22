@@ -104,3 +104,4 @@ temp/
 
 # Reference project
 reference-project/
+lighthouse*.json
