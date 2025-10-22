@@ -43,13 +43,7 @@ export default defineConfig({
   assetsInclude: ['**/*.gltf', '**/*.bin', '**/*.glb'],
   build: {
     sourcemap: false,
-    minify: 'terser',
-    terserOptions: {
-      compress: {
-        drop_console: true,
-        drop_debugger: true,
-      },
-    },
+    minify: 'esbuild',
     chunkSizeWarningLimit: 1000,
     rollupOptions: {
       output: {
