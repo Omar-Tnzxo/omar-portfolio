@@ -1,6 +1,5 @@
 import React from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { CanvasRevealEffect } from "./ui/CanvasRevealEffect";
 
 const Approach = () => {
   return (
@@ -18,36 +17,20 @@ const Approach = () => {
           title="Discovery & Strategy"
           icon={<AceternityIcon order="Phase 1" />}
           des="This is the foundation. Before a single post is created, I dive deep to understand the 'why' behind your brand. We'll collaborate to define your business objectives, profile your ideal target audience, and analyze the competitive landscape. The outcome of this phase is a rock-solid strategic plan, complete with key performance indicators (KPIs) and the core content pillars that will guide our entire campaign."
-        >
-          <CanvasRevealEffect
-            animationSpeed={5.1}
-            containerClassName="bg-emerald-900 rounded-3xl overflow-hidden"
-            colors={[[0, 255, 127]]}
-          />
-        </Card>
+          gradient="bg-gradient-to-br from-emerald-900 to-emerald-700"
+        />
         <Card
           title="Creative Execution & Management"
           icon={<AceternityIcon order="Phase 2" />}
           des="This is where strategy comes to life. I translate our plan into compelling, high-value content tailored for each social media platform. This includes everything from writing engaging copy and directing creative teams, to managing the content calendar and ensuring every post aligns perfectly with your brand voice. I handle the entire content lifecycle to ensure a consistent and professional online presence."
-        >
-          <CanvasRevealEffect
-            animationSpeed={3}
-            containerClassName="bg-pink-900 rounded-3xl overflow-hidden"
-            colors={[
-              [255, 105, 180],
-              [255, 182, 193],
-            ]}
-            dotSize={2}
-          />
-        </Card>
+          gradient="bg-gradient-to-br from-pink-900 to-pink-700"
+        />
         <Card
           title="Analysis & Optimization"
           icon={<AceternityIcon order="Phase 3" />}
           des="Marketing is a continuous loop of learning and improvement. I meticulously track performance against our set KPIs, analyzing the data to understand what truly resonates with your audience. Based on these insights, I provide clear, actionable reports and constantly refine our approach. This data-driven feedback loop allows us to optimize for better results and ensure we are always moving the needle."
-        >
-          <CanvasRevealEffect
-            animationSpeed={3}
-            containerClassName="bg-sky-600 rounded-3xl overflow-hidden"
+          gradient="bg-gradient-to-br from-sky-600 to-sky-800"
+        />
             colors={[[135, 206, 250]]}
           />
         </Card>
@@ -61,13 +44,13 @@ export default Approach;
 const Card = ({
   title,
   icon,
-  children,
   des,
+  gradient,
 }: {
   title: string;
   icon: React.ReactNode;
-  children?: React.ReactNode;
   des: string;
+  gradient: string;
 }) => {
   const [hovered, setHovered] = React.useState(false);
   return (
@@ -90,10 +73,8 @@ const Card = ({
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            className="h-full w-full absolute inset-0"
-          >
-            {children}
-          </motion.div>
+            className={`h-full w-full absolute inset-0 rounded-3xl ${gradient}`}
+          />
         )}
       </AnimatePresence>
 
