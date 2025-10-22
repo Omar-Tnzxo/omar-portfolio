@@ -43,14 +43,38 @@ export default defineConfig({
   assetsInclude: ['**/*.gltf', '**/*.bin', '**/*.glb'],
   build: {
     sourcemap: false,
+    minify: 'terser',
+    terserOptions: {
+      compress: {
+        drop_console: true,
+        drop_debugger: true,
+      },
+    },
     chunkSizeWarningLimit: 1000,
     rollupOptions: {
       output: {
         // Code splitting for better performance
-        manualChunks: {
-          'react-vendor': ['react', 'react-dom', 'react-router-dom'],
-          'three-vendor': ['three', '@react-three/fiber', '@react-three/drei'],
-          'animation-vendor': ['framer-motion'],
+        manualChunks: (id) => {
+          // React ecosystem
+          if (id.includes('node_modules/react') || id.includes('node_modules/react-dom') || id.includes('node_modules/react-router')) {
+            return 'react-vendor';
+          }
+          // Three.js ecosystem
+          if (id.includes('node_modules/three') || id.includes('node_modules/@react-three')) {
+            return 'three-vendor';
+          }
+          // Animation libraries
+          if (id.includes('node_modules/framer-motion')) {
+            return 'animation-vendor';
+          }
+          // UI libraries
+          if (id.includes('node_modules/lucide-react') || id.includes('node_modules/react-icons')) {
+            return 'ui-vendor';
+          }
+          // Email and form libraries
+          if (id.includes('node_modules/@emailjs') || id.includes('node_modules/sonner')) {
+            return 'form-vendor';
+          }
         },
         assetFileNames: (assetInfo) => {
           // Keep related files together
