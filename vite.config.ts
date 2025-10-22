@@ -46,6 +46,7 @@ export default defineConfig({
     target: 'es2015',
     cssCodeSplit: true,
     chunkSizeWarningLimit: 1000,
+    reportCompressedSize: false,
     rollupOptions: {
       output: {
         // Code splitting for better performance
