@@ -44,6 +44,8 @@ export default defineConfig({
   build: {
     sourcemap: false,
     minify: 'esbuild',
+    target: 'es2015',
+    cssCodeSplit: true,
     chunkSizeWarningLimit: 1000,
     rollupOptions: {
       output: {
@@ -53,9 +55,15 @@ export default defineConfig({
           if (id.includes('node_modules/react') || id.includes('node_modules/react-dom') || id.includes('node_modules/react-router')) {
             return 'react-vendor';
           }
-          // Three.js ecosystem
-          if (id.includes('node_modules/three') || id.includes('node_modules/@react-three')) {
-            return 'three-vendor';
+          // Three.js ecosystem - split further
+          if (id.includes('node_modules/three/')) {
+            if (id.includes('three/build/three')) {
+              return 'three-core';
+            }
+            return 'three-addons';
+          }
+          if (id.includes('node_modules/@react-three')) {
+            return 'three-react';
           }
           // Animation libraries
           if (id.includes('node_modules/framer-motion')) {
