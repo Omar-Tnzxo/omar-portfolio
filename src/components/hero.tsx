@@ -67,28 +67,35 @@ export const Hero = () => {
 
   useEffect(() => {
     const text = descriptions[currentDescription];
-    if (!text) return; // Safety check
+    if (!text) return;
     
     setDisplayText("");
     setIsTyping(true);
     
     let index = 0;
+    let currentText = "";
+    let timeoutId: NodeJS.Timeout;
+    
     const typeInterval = setInterval(() => {
       if (index < text.length) {
-        setDisplayText(prev => prev + text[index]);
+        currentText += text[index];
+        setDisplayText(currentText);
         index++;
       } else {
         setIsTyping(false);
         clearInterval(typeInterval);
         
-        // تأخير 2 ثانية بدلاً من 3
-        setTimeout(() => {
+        // تأخير 2 ثانية قبل الانتقال للنص التالي
+        timeoutId = setTimeout(() => {
           setCurrentDescription((prev) => (prev + 1) % descriptions.length);
         }, 2000);
       }
-    }, 30); // أسرع من 50ms
+    }, 30);
     
-    return () => clearInterval(typeInterval);
+    return () => {
+      clearInterval(typeInterval);
+      if (timeoutId) clearTimeout(timeoutId);
+    };
   }, [currentDescription]);
 
   const handleDownloadCV = async () => {
