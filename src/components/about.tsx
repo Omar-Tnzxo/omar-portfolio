@@ -13,7 +13,7 @@ type ServiceCardProps = {
   icon: string;
 };
 
-// Service Card
+// Service Card - محسّن للموبايل
 const ServiceCard = ({ index, title, icon }: ServiceCardProps) => {
   return (
     <Tilt
@@ -22,15 +22,15 @@ const ServiceCard = ({ index, title, icon }: ServiceCardProps) => {
         scale: 1,
         speed: 450,
       }}
-      className="xs:w-[250px] w-full"
+      className="w-[calc(50%-0.5rem)] sm:w-[calc(50%-1rem)] lg:w-[calc(25%-1.5rem)] min-w-[140px] max-w-[280px]"
     >
       <motion.div
         variants={fadeIn("right", "spring", 0.5 * index, 0.75)}
         className="w-full green-pink-gradient p-[1px] rounded-[20px] shadow-card"
       >
-        <div className="bg-tertiary rounded-[20px] py-5 px-12 min-h-[280px] flex justify-evenly items-center flex-col">
-          <img src={icon} alt={title} loading="lazy" className="w-16 h-16 object-contain" />
-          <h3 className="text-white text-[20px] font-bold text-center">
+        <div className="bg-tertiary rounded-[20px] py-4 px-4 sm:py-6 sm:px-8 min-h-[200px] sm:min-h-[240px] lg:min-h-[280px] flex justify-evenly items-center flex-col">
+          <img src={icon} alt={title} loading="lazy" className="w-12 h-12 sm:w-16 sm:h-16 object-contain" />
+          <h3 className="text-white text-[14px] sm:text-[18px] lg:text-[20px] font-bold text-center leading-tight">
             {title}
           </h3>
         </div>
@@ -171,8 +171,8 @@ export const About = () => {
           </motion.div>
         </div>
 
-        {/* Service Card */}
-        <div className="mt-24 flex flex-wrap gap-10">
+        {/* Service Cards - محسّن للموبايل */}
+        <div className="mt-12 sm:mt-16 lg:mt-24 flex flex-wrap justify-center gap-4 sm:gap-6 lg:gap-8">
           {SERVICES.map((service, i) => (
             <ServiceCard key={service.title} index={i} {...service} />
           ))}

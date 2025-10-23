@@ -19,7 +19,9 @@
       "Bash(node create-og-image.cjs:*)",
       "Bash(node create-herobg.cjs:*)",
       "Bash(ls:*)",
-      "WebFetch(domain:pagespeed.web.dev)"
+      "WebFetch(domain:pagespeed.web.dev)",
+      "Bash(git restore:*)",
+      "Bash(npm run build:main:*)"
     ],
     "deny": [],
     "ask": []

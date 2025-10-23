@@ -327,8 +327,8 @@ Notes: ${appointmentForm.notes || 'No additional notes'}`,
     <SectionWrapper idName="contact">
       <div className="xl:mt-12 xl:flex-row flex-col-reverse flex gap-10 overflow-hidden">
         <motion.div
-          variants={slideIn("left", "tween", 0.2, 1)}
-          className="flex-[0.75] bg-gradient-to-br from-black/40 to-black/20 backdrop-blur-xl border border-white/10 p-6 rounded-3xl shadow-2xl"
+          variants={slideIn("left", "tween", 0, 0.6)}
+          className="flex-[0.75] bg-gradient-to-br from-black/40 to-black/20 border border-white/10 p-6 rounded-3xl shadow-2xl will-change-transform"
         >
           {/* Title */}
           <div className="mb-6">
@@ -729,16 +729,15 @@ Notes: ${appointmentForm.notes || 'No additional notes'}`,
 
         {/* Contact Image */}
         <motion.div
-          variants={slideIn("right", "tween", 0.2, 1)}
-          className="xl:flex-1 xl:h-auto md:h-[550px] h-[350px] relative flex items-center justify-center"
+          variants={slideIn("right", "tween", 0.1, 0.6)}
+          className="xl:flex-1 xl:h-auto md:h-[550px] h-[350px] relative flex items-center justify-center will-change-transform"
         >
-          <motion.img
+          <img
             src={contactMeImg}
             alt="Contact Me"
             className="w-full h-full object-contain"
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
+            loading="lazy"
+            decoding="async"
           />
         </motion.div>
       </div>

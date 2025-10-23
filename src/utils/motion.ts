@@ -64,7 +64,7 @@ export const zoomIn = (delay: number, duration: number) => {
   };
 };
 
-// slide in motion
+// slide in motion - optimized for smooth performance
 export const slideIn = (
   direction: "left" | "right" | "up" | "down" | "",
   type: "tween" | "spring" | "inertia",
@@ -73,17 +73,19 @@ export const slideIn = (
 ) => {
   return {
     hidden: {
-      x: direction === "left" ? "-100%" : direction === "right" ? "100%" : 0,
-      y: direction === "up" ? "100%" : direction === "down" ? "100%" : 0,
+      x: direction === "left" ? "-30%" : direction === "right" ? "30%" : 0,
+      y: direction === "up" ? "30%" : direction === "down" ? "30%" : 0,
+      opacity: 0,
     },
     show: {
       x: 0,
       y: 0,
+      opacity: 1,
       transition: {
-        type: type,
+        type: "tween",
         delay: delay,
-        duration: duration,
-        ease: "easeOut" as const,
+        duration: duration * 0.7,
+        ease: [0.25, 0.1, 0.25, 1],
       },
     },
   };

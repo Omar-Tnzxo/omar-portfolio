@@ -14,7 +14,6 @@ const Contact = lazy(() => import("./components/contact").then(m => ({ default: 
 const Experience = lazy(() => import("./components/experience").then(m => ({ default: m.Experience })));
 const Feedbacks = lazy(() => import("./components/feedbacks").then(m => ({ default: m.Feedbacks })));
 const Tech = lazy(() => import("./components/tech").then(m => ({ default: m.Tech })));
-const Works = lazy(() => import("./components/works").then(m => ({ default: m.Works })));
 const Projects = lazy(() => import("./components/projects"));
 const NotFound = lazy(() => import("./components/NotFound").then(m => ({ default: m.NotFound })));
 const Footer = lazy(() => import("./components/footer"));
@@ -47,7 +46,6 @@ const App = () => {
                     <About />
                     <Experience />
                     <Tech />
-                    <Works />
                     <Approach />
                     <Feedbacks />
                     <div className="relative z-0">
