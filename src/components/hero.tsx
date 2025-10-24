@@ -301,176 +301,159 @@ export const Hero = () => {
           </motion.div>
         </div>
 
-        {/* تخطيط الحاسوب - محسن */}
-        <div className="hidden sm:flex flex-row items-center justify-center w-full h-full px-4 sm:px-6 lg:px-8">
-          {/* حاوية المحتوى */}
-          <div className="flex flex-row items-start gap-5 w-full">
-            {/* Title Bar */}
-            <div className="flex flex-col justify-center items-center mt-5">
-              <div className="w-5 h-5 rounded-full bg-[#915EFF]" />
-              <div className="w-1 h-80 violet-gradient" />
-            </div>
+        {/* تخطيط الحاسوب - كما هو */}
+        <div className="hidden sm:flex flex-row items-start gap-3 md:gap-5">
+          {/* Title Bar */}
+          <div className="flex flex-col justify-center items-center mt-2 md:mt-5">
+            <div className="w-4 md:w-5 h-4 md:h-5 rounded-full bg-[#915EFF]" />
+            <div className="w-1 h-32 md:h-80 violet-gradient" />
+          </div>
 
-            {/* About Me */}
-            <div className="flex-1 w-full flex flex-col justify-center min-h-0">
-              {/* العنوان الرئيسي */}
-              <motion.h1
-                className="font-black text-white text-left mt-2"
-                style={{
-                  fontSize: 'clamp(2.5rem, 6vw, 6rem)', // Responsive font size
-                  lineHeight: '1.1',
-                }}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8 }}
-              >
-                <span className="text-[#915EFF]">Hi, I'm Omar Hassan (Tnzxo)</span>
-                <span 
-                  className="text-white block mt-2"
-                  style={{
-                    fontSize: 'clamp(1.25rem, 3vw, 2rem)', // Responsive font size
-                  }}
-                >
-                  Digital Marketing & Growth Specialist in Egypt
-                </span>
-              </motion.h1>
+          {/* About Me */}
+          <div className="flex-1 w-full flex flex-col justify-center min-h-0">
+            {/* العنوان الرئيسي */}
+            <motion.h1
+              className="font-black text-white text-[32px] md:text-[40px] lg:text-[50px] xl:text-[60px] 2xl:text-[80px] leading-[36px] md:leading-[44px] lg:leading-[54px] xl:leading-[64px] 2xl:leading-[88px] text-left mt-2"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+            >
+              <span className="text-[#915EFF]">Hi, I'm Omar Hassan (Tnzxo)</span>
+              <span className="text-white text-[18px] md:text-[22px] lg:text-[26px] block mt-2">Digital Marketing & Growth Specialist in Egypt</span>
+            </motion.h1>
 
-              {/* النص المتحرك */}
-              <motion.div 
-                className="text-[#dfd9ff] font-medium text-left mt-6 min-h-[80px] flex items-center"
-                style={{
-                  fontSize: 'clamp(1rem, 2.5vw, 1.75rem)', // Responsive font size
-                  lineHeight: '1.4',
-                }}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.2 }}
-              >
-                <span className="relative max-w-full">
-                  {displayText}
-                  <span className={`ml-1 ${isTyping ? 'animate-pulse' : ''}`}>|</span>
-                </span>
-              </motion.div>
+            {/* النص المتحرك */}
+            <motion.div 
+              className="text-[#dfd9ff] font-medium text-[14px] md:text-[16px] lg:text-[20px] xl:text-[26px] 2xl:text-[30px] leading-[20px] md:leading-[24px] lg:leading-[28px] xl:leading-[35px] 2xl:leading-[40px] mt-4 md:mt-6 min-h-[60px] md:min-h-[80px] flex items-center justify-start text-left"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+            >
+              <span className="relative max-w-full">
+                {displayText}
+                <span className={`ml-1 ${isTyping ? 'animate-pulse' : ''}`}>|</span>
+              </span>
+            </motion.div>
 
-              {/* أزرار Call-to-Action */}
-              <motion.div 
-                className="flex flex-row gap-4 mt-8 justify-start"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.4 }}
+            {/* أزرار Call-to-Action */}
+            <motion.div 
+              className="flex flex-row gap-4 mt-6 md:mt-8 justify-start"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+            >
+              <button 
+                onClick={scrollToWork}
+                className="bg-[#915EFF] text-white px-6 md:px-8 py-3 rounded-lg font-semibold hover:bg-[#7c4dff] transition-colors shadow-lg hover:shadow-xl text-base"
               >
-                <button 
-                  onClick={scrollToWork}
-                  className="bg-[#915EFF] text-white px-8 py-3 rounded-lg font-semibold hover:bg-[#7c4dff] transition-colors shadow-lg hover:shadow-xl text-base"
-                >
-                  View My Work
-                </button>
-                <motion.button 
-                  onClick={handleDownloadCV}
-                  disabled={isDownloading}
-                  className={`relative overflow-hidden border border-[#915EFF] px-8 py-3 rounded-lg font-semibold transition-all duration-300 shadow-lg text-base ${
-                    isDownloading 
-                      ? 'bg-[#915EFF] text-white cursor-not-allowed' 
-                      : 'text-[#915EFF] hover:bg-[#915EFF] hover:text-white hover:shadow-xl'
-                  }`}
-                  whileHover={!isDownloading ? { scale: 1.02 } : {}}
-                  whileTap={!isDownloading ? { scale: 0.98 } : {}}
-                >
-                  {isDownloading ? (
-                    <div className="flex items-center justify-center gap-2">
-                      <motion.div
-                        className="w-4 h-4 border-2 border-white border-t-transparent rounded-full"
-                        animate={{ rotate: 360 }}
-                        transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
-                      />
-                      <span>Downloading...</span>
-                    </div>
-                  ) : (
-                    <div className="flex items-center justify-center gap-2">
-                      <motion.svg
-                        className="w-4 h-4"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                        xmlns="http://www.w3.org/2000/svg"
-                        whileHover={{ y: -2 }}
-                        transition={{ duration: 0.2 }}
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
-                        />
-                      </motion.svg>
-                      <span>Download CV</span>
-                    </div>
-                  )}
-                  
-                  {isDownloading && (
+                View My Work
+              </button>
+              <motion.button 
+                onClick={handleDownloadCV}
+                disabled={isDownloading}
+                className={`relative overflow-hidden border border-[#915EFF] px-6 md:px-8 py-3 rounded-lg font-semibold transition-all duration-300 shadow-lg text-base ${
+                  isDownloading 
+                    ? 'bg-[#915EFF] text-white cursor-not-allowed' 
+                    : 'text-[#915EFF] hover:bg-[#915EFF] hover:text-white hover:shadow-xl'
+                }`}
+                whileHover={!isDownloading ? { scale: 1.02 } : {}}
+                whileTap={!isDownloading ? { scale: 0.98 } : {}}
+              >
+                {isDownloading ? (
+                  <div className="flex items-center justify-center gap-2">
                     <motion.div
-                      className="absolute inset-0 bg-white/20"
-                      initial={{ scale: 0, opacity: 0 }}
-                      animate={{ scale: 2, opacity: 0 }}
-                      transition={{ duration: 1.5, repeat: Infinity }}
+                      className="w-4 h-4 border-2 border-white border-t-transparent rounded-full"
+                      animate={{ rotate: 360 }}
+                      transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
                     />
-                  )}
-              </motion.button>
-            </motion.div>
+                    <span>Downloading...</span>
+                  </div>
+                ) : (
+                  <div className="flex items-center justify-center gap-2">
+                    <motion.svg
+                      className="w-4 h-4"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                      whileHover={{ y: -2 }}
+                      transition={{ duration: 0.2 }}
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                      />
+                    </motion.svg>
+                    <span>Download CV</span>
+                  </div>
+                )}
+                
+                {/* تأثير الموجة */}
+                {isDownloading && (
+                  <motion.div
+                    className="absolute inset-0 bg-white/20"
+                    initial={{ scale: 0, opacity: 0 }}
+                    animate={{ scale: 2, opacity: 0 }}
+                    transition={{ duration: 1.5, repeat: Infinity }}
+                  />
+                )}
+            </motion.button>
+          </motion.div>
 
-            {/* شريط المهارات المتحرك */}
-            <motion.div 
-                className="mt-8 overflow-hidden"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.6 }}
-            >
-              <div className="flex flex-wrap justify-start gap-4 animate-pulse">
-                  <span className="text-[#915EFF] font-semibold text-base">Digital Marketing</span>
-                  <span className="text-[#915EFF] font-semibold text-base">Flutter Development</span>
-                  <span className="text-[#915EFF] font-semibold text-base">React.js</span>
-                  <span className="text-[#915EFF] font-semibold text-base">Content Strategy</span>
-                  <span className="text-[#915EFF] font-semibold text-base">UI/UX Design</span>
-              </div>
-            </motion.div>
-
-            {/* إحصائيات سريعة */}
-            <motion.div 
-                className="flex flex-row justify-start gap-8 mt-12"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.8 }}
-            >
-              <div className="text-center">
-                  <div className="text-3xl font-bold text-[#915EFF]">{yearsCount}+</div>
-                  <div className="text-sm text-gray-400">Years Experience</div>
-              </div>
-              <div className="text-center">
-                  <div className="text-3xl font-bold text-[#915EFF]">{projectsCount}+</div>
-                  <div className="text-sm text-gray-400">Projects Completed</div>
-              </div>
-              <div className="text-center">
-                  <div className="text-3xl font-bold text-[#915EFF]">{satisfactionCount}%</div>
-                  <div className="text-sm text-gray-400">Client Satisfaction</div>
-              </div>
-            </motion.div>
-
-            {/* شريط التقدم */}
-            <motion.div 
-                className="mt-6"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 1.0 }}
-            >
-              <div className="flex items-center gap-4 mb-2">
-                  <span className="text-sm text-gray-400">Available for work</span>
-                <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-              </div>
-              <div className="w-full bg-gray-700 rounded-full h-1">
-                <div className="bg-[#915EFF] h-1 rounded-full animate-pulse" style={{width: '85%'}}></div>
-              </div>
-            </motion.div>
+          {/* شريط المهارات المتحرك */}
+          <motion.div 
+              className="mt-6 md:mt-8 overflow-hidden"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.6 }}
+          >
+            <div className="flex flex-wrap justify-start gap-4 animate-pulse">
+                <span className="text-[#915EFF] font-semibold text-sm md:text-base">Digital Marketing</span>
+                <span className="text-[#915EFF] font-semibold text-sm md:text-base">Flutter Development</span>
+                <span className="text-[#915EFF] font-semibold text-sm md:text-base">React.js</span>
+                <span className="text-[#915EFF] font-semibold text-sm md:text-base">Content Strategy</span>
+                <span className="text-[#915EFF] font-semibold text-sm md:text-base">UI/UX Design</span>
             </div>
+          </motion.div>
+
+          {/* إحصائيات سريعة */}
+          <motion.div 
+              className="flex flex-row justify-start gap-6 md:gap-8 mt-6 md:mt-8 lg:mt-12"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.8 }}
+          >
+            <div className="text-center">
+                <div className="text-xl md:text-2xl lg:text-3xl font-bold text-[#915EFF]">{yearsCount}+</div>
+                <div className="text-sm text-gray-400">Years Experience</div>
+            </div>
+            <div className="text-center">
+                <div className="text-xl md:text-2xl lg:text-3xl font-bold text-[#915EFF]">{projectsCount}+</div>
+                <div className="text-sm text-gray-400">Projects Completed</div>
+            </div>
+            <div className="text-center">
+                <div className="text-xl md:text-2xl lg:text-3xl font-bold text-[#915EFF]">{satisfactionCount}%</div>
+                <div className="text-sm text-gray-400">Client Satisfaction</div>
+            </div>
+          </motion.div>
+
+          {/* شريط التقدم */}
+          <motion.div 
+              className="mt-4 md:mt-6"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 1.0 }}
+          >
+            <div className="flex items-center gap-4 mb-2">
+                <span className="text-sm text-gray-400">Available for work</span>
+              <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+            </div>
+            <div className="w-full bg-gray-700 rounded-full h-1">
+              <div className="bg-[#915EFF] h-1 rounded-full animate-pulse" style={{width: '85%'}}></div>
+            </div>
+          </motion.div>
           </div>
         </div>
       </div>
