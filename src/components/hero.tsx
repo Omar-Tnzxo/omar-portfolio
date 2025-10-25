@@ -320,9 +320,9 @@ export const Hero = () => {
             {/* العنوان الرئيسي */}
             <motion.h1
               className="font-black text-white text-[28px] sm:text-[32px] md:text-[38px] lg:text-[44px] xl:text-[50px] leading-[32px] sm:leading-[36px] md:leading-[42px] lg:leading-[48px] xl:leading-[54px] text-left mt-2"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.6 }}
             >
               <span className="text-[#915EFF]">Hi, I'm Omar Hassan (Tnzxo)</span>
               <span className="text-white text-[15px] sm:text-[16px] md:text-[18px] lg:text-[19px] xl:text-[20px] block mt-2 font-medium">Digital Marketing & Growth Specialist in Egypt</span>
@@ -331,9 +331,9 @@ export const Hero = () => {
             {/* النص المتحرك */}
             <motion.div 
               className="text-[#dfd9ff] font-normal text-[13px] sm:text-[14px] md:text-[15px] lg:text-[16px] xl:text-[17px] leading-[18px] sm:leading-[20px] md:leading-[22px] lg:leading-[24px] xl:leading-[25px] mt-4 md:mt-5 min-h-[50px] sm:min-h-[55px] md:min-h-[60px] flex items-center justify-start text-left"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
             >
               <span className="relative max-w-full">
                 {displayText}
@@ -344,9 +344,9 @@ export const Hero = () => {
             {/* أزرار Call-to-Action */}
             <motion.div 
               className="flex flex-row gap-3 md:gap-4 mt-5 md:mt-6 justify-start"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
             >
               <button 
                 onClick={scrollToWork}
@@ -397,9 +397,9 @@ export const Hero = () => {
             {/* إحصائيات سريعة */}
             <motion.div 
               className="flex flex-row justify-start gap-6 sm:gap-8 md:gap-10 mt-5 md:mt-6 lg:mt-8"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.6 }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.6, delay: 0.6 }}
             >
               <div className="text-center">
                 <div className="text-xl sm:text-2xl md:text-2xl lg:text-3xl font-bold text-[#915EFF]">{yearsCount}+</div>
@@ -418,9 +418,9 @@ export const Hero = () => {
             {/* شريط التقدم */}
             <motion.div 
               className="mt-5 md:mt-6 max-w-md"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.8 }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.6, delay: 0.8 }}
             >
               <div className="flex items-center gap-2 mb-2">
                 <span className="text-xs sm:text-sm text-gray-400">Available for work</span>
