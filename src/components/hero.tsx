@@ -181,36 +181,36 @@ export const Hero = () => {
         )}
       >
         {/* تخطيط خاص للموبايل */}
-        <div className="flex flex-col sm:hidden space-y-6">
+        <div className="flex flex-col sm:hidden space-y-4">
           {/* Title Bar + العنوان الرئيسي في نفس السطر */}
-          <div className="flex items-start gap-3">
+          <div className="flex items-start gap-2">
             {/* Title Bar */}
-            <div className="flex flex-col justify-start items-center flex-shrink-0 mt-1.5">
-              <div className="w-3 h-3 rounded-full bg-[#915EFF]" />
-              <div className="w-1 h-16 violet-gradient" />
+            <div className="flex flex-col justify-start items-center flex-shrink-0 mt-1">
+              <div className="w-2.5 h-2.5 rounded-full bg-[#915EFF]" />
+              <div className="w-0.5 h-12 violet-gradient" />
             </div>
 
             {/* العنوان الرئيسي - محاذي بدقة مع Title Bar */}
             <motion.h1
-              className="font-black text-white text-[28px] xs:text-[32px] leading-[32px] xs:leading-[36px] text-left flex-1"
+              className="font-black text-white text-[24px] xs:text-[28px] leading-[28px] xs:leading-[32px] text-left flex-1"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
             >
               <span className="text-[#915EFF]">Hi, I'm Omar Hassan</span>
-              <span className="block text-[#915EFF] text-[20px] xs:text-[22px]">(Tnzxo)</span>
-              <span className="text-white text-[14px] xs:text-[16px] block mt-2 font-medium">Digital Marketing & Growth Specialist</span>
+              <span className="block text-[#915EFF] text-[18px] xs:text-[20px]">(Tnzxo)</span>
+              <span className="text-white text-[13px] xs:text-[14px] block mt-1.5 font-medium">Digital Marketing & Growth Specialist</span>
             </motion.h1>
           </div>
 
           {/* النص المتحرك أسفل العنوان */}
           <motion.div 
-            className="text-[#dfd9ff] font-normal text-[13px] xs:text-[14px] leading-[20px] xs:leading-[22px] min-h-[60px] flex items-start justify-start text-left pl-6"
+            className="text-[#dfd9ff] font-normal text-[12px] xs:text-[13px] leading-[18px] xs:leading-[20px] min-h-[50px] flex items-start justify-start text-left pl-5"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <span className="relative max-w-full">
+            <span className="relative max-w-full line-clamp-3">
               {displayText}
               <span className={`ml-1 ${isTyping ? 'animate-pulse' : ''}`}>|</span>
             </span>
@@ -218,21 +218,21 @@ export const Hero = () => {
 
           {/* أزرار Call-to-Action */}
           <motion.div 
-            className="flex flex-col gap-3 w-full px-2"
+            className="flex flex-col gap-2.5 w-full px-1"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
           >
             <button 
               onClick={scrollToWork}
-              className="w-full bg-[#915EFF] text-white px-6 py-3 rounded-lg font-semibold hover:bg-[#7c4dff] transition-colors shadow-lg hover:shadow-xl text-sm"
+              className="w-full bg-[#915EFF] text-white px-5 py-2.5 rounded-lg font-semibold hover:bg-[#7c4dff] transition-colors shadow-lg hover:shadow-xl text-sm"
             >
               View My Work
             </button>
             <motion.button
               onClick={handleDownloadCV}
               disabled={isDownloading}
-              className={`w-full relative overflow-hidden border border-[#915EFF] px-6 py-3 rounded-lg font-semibold transition-all duration-300 shadow-lg text-sm ${
+              className={`w-full relative overflow-hidden border border-[#915EFF] px-5 py-2.5 rounded-lg font-semibold transition-all duration-300 shadow-lg text-sm ${
                 isDownloading 
                   ? 'bg-[#915EFF] text-white cursor-not-allowed' 
                   : 'text-[#915EFF] hover:bg-[#915EFF] hover:text-white hover:shadow-xl'
@@ -271,38 +271,38 @@ export const Hero = () => {
 
           {/* إحصائيات سريعة */}
           <motion.div 
-            className="flex flex-row justify-around gap-3 px-2"
+            className="flex flex-row justify-around gap-2 px-1"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
           >
             <div className="text-center flex-1">
-              <div className="text-xl xs:text-2xl font-bold text-[#915EFF]">{yearsCount}+</div>
-              <div className="text-[10px] xs:text-xs text-gray-400 mt-1">Years Exp</div>
+              <div className="text-lg xs:text-xl font-bold text-[#915EFF]">{yearsCount}+</div>
+              <div className="text-[9px] xs:text-[10px] text-gray-400 mt-0.5">Years</div>
             </div>
             <div className="text-center flex-1">
-              <div className="text-xl xs:text-2xl font-bold text-[#915EFF]">{projectsCount}+</div>
-              <div className="text-[10px] xs:text-xs text-gray-400 mt-1">Projects</div>
+              <div className="text-lg xs:text-xl font-bold text-[#915EFF]">{projectsCount}+</div>
+              <div className="text-[9px] xs:text-[10px] text-gray-400 mt-0.5">Projects</div>
             </div>
             <div className="text-center flex-1">
-              <div className="text-xl xs:text-2xl font-bold text-[#915EFF]">{satisfactionCount}%</div>
-              <div className="text-[10px] xs:text-xs text-gray-400 mt-1">Satisfaction</div>
+              <div className="text-lg xs:text-xl font-bold text-[#915EFF]">{satisfactionCount}%</div>
+              <div className="text-[9px] xs:text-[10px] text-gray-400 mt-0.5">Satisfied</div>
             </div>
           </motion.div>
 
           {/* شريط التقدم */}
           <motion.div 
-            className="px-2"
+            className="px-1"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.8 }}
           >
-            <div className="flex items-center gap-2 mb-2">
-              <span className="text-xs text-gray-400">Available for work</span>
+            <div className="flex items-center gap-2 mb-1.5">
+              <span className="text-[10px] xs:text-xs text-gray-400">Available for work</span>
               <div className="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse"></div>
             </div>
-            <div className="w-full bg-gray-700/50 rounded-full h-1.5">
-              <div className="bg-gradient-to-r from-[#915EFF] to-[#7c4dff] h-1.5 rounded-full" style={{width: '85%'}}></div>
+            <div className="w-full bg-gray-700/50 rounded-full h-1">
+              <div className="bg-gradient-to-r from-[#915EFF] to-[#7c4dff] h-1 rounded-full" style={{width: '85%'}}></div>
             </div>
           </motion.div>
         </div>
