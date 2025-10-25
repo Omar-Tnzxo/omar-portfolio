@@ -435,7 +435,7 @@ export const Hero = () => {
       </div>
 
       {/* Scroll to about section */}
-      <div className="absolute bottom-6 sm:bottom-8 md:bottom-12 lg:bottom-16 w-full flex justify-center items-center z-10">
+      <div className="absolute bottom-6 sm:bottom-8 md:bottom-16 lg:bottom-20 xl:bottom-24 w-full flex justify-center items-center z-10">
         <button 
           onClick={() => smoothScrollTo('about')}
           aria-label="Scroll to about section"
