@@ -166,7 +166,7 @@ export const Hero = () => {
   };
 
   return (
-    <section id="home" className="relative w-full h-screen mx-auto overflow-hidden flex items-center">
+    <section id="home" className="relative w-full h-screen mx-auto overflow-hidden">
       {/* خلفية متحركة - تقليل الأحجام */}
       <div className="absolute inset-0 -z-10">
         <div className="absolute top-0 left-0 w-20 sm:w-24 md:w-32 lg:w-40 h-20 sm:h-24 md:h-32 lg:h-40 bg-[#915EFF] rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse"></div>
@@ -177,13 +177,13 @@ export const Hero = () => {
       <div
         className={cn(
           styles.paddingX,
-          "w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 md:py-32",
+          "w-full h-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-center",
         )}
       >
         {/* تخطيط خاص للموبايل */}
-        <div className="flex flex-col sm:hidden space-y-5">
+        <div className="flex flex-col sm:hidden justify-center h-full w-full py-4">
           {/* Title Bar + العنوان الرئيسي في نفس السطر */}
-          <div className="flex items-start gap-3">
+          <div className="flex items-start gap-3 mb-4">
             {/* Title Bar */}
             <div className="flex flex-col justify-start items-center flex-shrink-0 mt-1.5">
               <div className="w-3 h-3 rounded-full bg-[#915EFF]" />
@@ -205,7 +205,7 @@ export const Hero = () => {
 
           {/* النص المتحرك */}
           <motion.div 
-            className="text-[#dfd9ff] font-normal text-[13px] xs:text-[14px] leading-[20px] xs:leading-[21px] min-h-[55px] flex items-start justify-start text-left pl-6"
+            className="text-[#dfd9ff] font-normal text-[13px] xs:text-[14px] leading-[20px] xs:leading-[21px] min-h-[55px] flex items-start justify-start text-left pl-6 mb-4"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
@@ -218,7 +218,7 @@ export const Hero = () => {
 
           {/* أزرار Call-to-Action */}
           <motion.div 
-            className="flex flex-col gap-3 w-full px-1"
+            className="flex flex-col gap-3 w-full px-1 mb-4"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
@@ -271,7 +271,7 @@ export const Hero = () => {
 
           {/* إحصائيات سريعة */}
           <motion.div 
-            className="flex flex-row justify-around gap-3 px-1 mt-2"
+            className="flex flex-row justify-around gap-3 px-1 mb-4"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
