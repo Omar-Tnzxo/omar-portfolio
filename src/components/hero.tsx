@@ -166,7 +166,7 @@ export const Hero = () => {
   };
 
   return (
-    <section id="home" className="relative w-full min-h-screen mx-auto overflow-hidden flex items-center">
+    <section id="home" className="relative w-full h-screen mx-auto overflow-hidden flex items-center">
       {/* خلفية متحركة - تقليل الأحجام */}
       <div className="absolute inset-0 -z-10">
         <div className="absolute top-0 left-0 w-20 sm:w-24 md:w-32 lg:w-40 h-20 sm:h-24 md:h-32 lg:h-40 bg-[#915EFF] rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse"></div>
