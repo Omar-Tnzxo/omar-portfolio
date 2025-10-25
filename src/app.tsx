@@ -38,17 +38,58 @@ const App = () => {
             <Route path="/" element={
               <>
                 <Navbar />
-                <div className="relative z-0 bg-primary overflow-x-hidden">
-                  <div className="bg-hero-pattern bg-cover bg-no-repeat bg-center">
+                <div className="relative z-0 overflow-x-hidden">
+                  {/* Hero Section - Dark Blue Background */}
+                  <div className="bg-primary bg-hero-pattern bg-cover bg-no-repeat bg-center">
                     <Hero />
                   </div>
+                  
+                  {/* Gradient Transition from Dark Blue to Black */}
+                  <div className="w-full h-32 bg-gradient-to-b from-primary to-black"></div>
+                  
                   <Suspense fallback={<div className="min-h-screen" />}>
-                    <About />
-                    <Experience />
-                    <Tech />
-                    <Approach />
-                    <Feedbacks />
-                    <div className="relative z-0">
+                    {/* About Section - Black Background */}
+                    <div className="bg-black">
+                      <About />
+                    </div>
+                    
+                    {/* Gradient Transition from Black to Dark Blue */}
+                    <div className="w-full h-32 bg-gradient-to-b from-black to-primary"></div>
+                    
+                    {/* Experience Section - Dark Blue Background */}
+                    <div className="bg-primary">
+                      <Experience />
+                    </div>
+                    
+                    {/* Gradient Transition from Dark Blue to Black */}
+                    <div className="w-full h-32 bg-gradient-to-b from-primary to-black"></div>
+                    
+                    {/* Tech Section - Black Background */}
+                    <div className="bg-black">
+                      <Tech />
+                    </div>
+                    
+                    {/* Gradient Transition from Black to Dark Blue */}
+                    <div className="w-full h-32 bg-gradient-to-b from-black to-primary"></div>
+                    
+                    {/* Approach Section - Dark Blue Background */}
+                    <div className="bg-primary">
+                      <Approach />
+                    </div>
+                    
+                    {/* Gradient Transition from Dark Blue to Black */}
+                    <div className="w-full h-32 bg-gradient-to-b from-primary to-black"></div>
+                    
+                    {/* Feedbacks Section - Black Background */}
+                    <div className="bg-black">
+                      <Feedbacks />
+                    </div>
+                    
+                    {/* Gradient Transition from Black to Dark Blue */}
+                    <div className="w-full h-32 bg-gradient-to-b from-black to-primary"></div>
+                    
+                    {/* Contact Section - Dark Blue Background */}
+                    <div className="relative z-0 bg-primary">
                       <Contact />
                     </div>
                   </Suspense>
