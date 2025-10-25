@@ -439,9 +439,9 @@ export const Hero = () => {
         <button 
           onClick={() => smoothScrollTo('about')}
           aria-label="Scroll to about section"
-          className="cursor-pointer focus:outline-none"
+          className="cursor-pointer focus:outline-none focus:ring-2 focus:ring-[#915EFF] focus:ring-offset-2 focus:ring-offset-transparent rounded-3xl"
         >
-          <div className="w-[20px] sm:w-[24px] md:w-[26px] h-[40px] sm:h-[48px] md:h-[52px] rounded-3xl border-3 sm:border-4 border-secondary flex justify-center items-start p-1.5 sm:p-2 hover:border-[#915EFF] transition-colors duration-300">
+          <div className="w-[20px] sm:w-[24px] md:w-[26px] h-[40px] sm:h-[48px] md:h-[52px] rounded-3xl border-2 sm:border-4 border-secondary flex justify-center items-start p-1.5 sm:p-2 hover:border-[#915EFF] transition-colors duration-300">
             <motion.div
               animate={{ y: [0, 10, 0] }}
               transition={{ duration: 1.5, repeat: Infinity, repeatType: "loop" }}
