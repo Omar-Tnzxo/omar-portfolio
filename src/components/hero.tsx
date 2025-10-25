@@ -330,12 +330,12 @@ export const Hero = () => {
 
             {/* النص المتحرك */}
             <motion.div 
-              className="text-[#dfd9ff] font-normal text-[13px] sm:text-[14px] md:text-[15px] lg:text-[16px] xl:text-[17px] leading-[18px] sm:leading-[20px] md:leading-[22px] lg:leading-[24px] xl:leading-[25px] mt-4 md:mt-5 min-h-[50px] sm:min-h-[55px] md:min-h-[60px] flex items-center justify-start text-left"
+              className="text-[#dfd9ff] font-normal text-[13px] sm:text-[14px] md:text-[15px] lg:text-[16px] xl:text-[17px] leading-[18px] sm:leading-[20px] md:leading-[22px] lg:leading-[24px] xl:leading-[25px] mt-4 md:mt-5 h-[75px] sm:h-[80px] md:h-[88px] lg:h-[96px] xl:h-[100px] flex items-center justify-start text-left overflow-hidden"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.2 }}
             >
-              <span className="relative max-w-full">
+              <span className="relative max-w-full line-clamp-3">
                 {displayText}
                 <span className={`ml-1 ${isTyping ? 'animate-pulse' : ''}`}>|</span>
               </span>
