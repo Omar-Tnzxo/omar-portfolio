@@ -181,7 +181,7 @@ export const Hero = () => {
         )}
       >
         {/* تخطيط خاص للموبايل */}
-        <div className="flex flex-col sm:hidden justify-between h-full w-full pb-20">
+        <div className="flex flex-col sm:hidden h-full w-full pb-20">
           <div className="space-y-4">
             {/* Title Bar + العنوان الرئيسي في نفس السطر */}
             <div className="flex items-start gap-3">
@@ -268,45 +268,6 @@ export const Hero = () => {
                   />
                 )}
               </motion.button>
-            </motion.div>
-          </div>
-
-          <div className="space-y-4">
-            {/* إحصائيات سريعة */}
-            <motion.div 
-              className="flex flex-row justify-around gap-3 px-1"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.6 }}
-            >
-              <div className="text-center flex-1">
-                <div className="text-xl xs:text-2xl font-bold text-[#915EFF]">{yearsCount}+</div>
-                <div className="text-[10px] xs:text-xs text-gray-400 mt-1">Years Exp</div>
-              </div>
-              <div className="text-center flex-1">
-                <div className="text-xl xs:text-2xl font-bold text-[#915EFF]">{projectsCount}+</div>
-                <div className="text-[10px] xs:text-xs text-gray-400 mt-1">Projects</div>
-              </div>
-              <div className="text-center flex-1">
-                <div className="text-xl xs:text-2xl font-bold text-[#915EFF]">{satisfactionCount}%</div>
-                <div className="text-[10px] xs:text-xs text-gray-400 mt-1">Satisfied</div>
-              </div>
-            </motion.div>
-
-            {/* شريط التقدم */}
-            <motion.div 
-              className="px-1"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.8 }}
-            >
-              <div className="flex items-center gap-2 mb-2">
-                <span className="text-xs text-gray-400">Available for work</span>
-                <div className="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse"></div>
-              </div>
-              <div className="w-full bg-gray-700/50 rounded-full h-1.5">
-                <div className="bg-gradient-to-r from-[#915EFF] to-[#7c4dff] h-1.5 rounded-full" style={{width: '85%'}}></div>
-              </div>
             </motion.div>
           </div>
         </div>
