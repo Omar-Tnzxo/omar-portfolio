@@ -177,7 +177,7 @@ export const Hero = () => {
       <div
         className={cn(
           styles.paddingX,
-          "w-full h-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-start justify-center pt-8",
+          "w-full h-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-center pt-8",
         )}
       >
         {/* تخطيط خاص للموبايل */}
@@ -308,15 +308,15 @@ export const Hero = () => {
         </div>
 
         {/* تخطيط الحاسوب والتابلت */}
-        <div className="hidden sm:flex flex-row items-start gap-3 md:gap-5">
+        <div className="hidden sm:flex flex-row items-center gap-3 md:gap-5 w-full">
           {/* Title Bar */}
-          <div className="flex flex-col justify-center items-center mt-2 md:mt-5">
+          <div className="flex flex-col justify-center items-center">
             <div className="w-4 md:w-5 h-4 md:h-5 rounded-full bg-[#915EFF]" />
             <div className="w-1 h-32 sm:h-40 md:h-52 lg:h-60 violet-gradient" />
           </div>
 
           {/* About Me */}
-          <div className="flex-1 w-full flex flex-col justify-center min-h-0">
+          <div className="flex-1 w-full flex flex-col justify-center">
             {/* العنوان الرئيسي */}
             <motion.h1
               className="font-black text-white text-[28px] sm:text-[32px] md:text-[38px] lg:text-[44px] xl:text-[50px] leading-[32px] sm:leading-[36px] md:leading-[42px] lg:leading-[48px] xl:leading-[54px] text-left mt-2"
