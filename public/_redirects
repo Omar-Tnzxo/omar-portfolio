@@ -1,31 +1,15 @@
 # Netlify Redirects for SPA (Single Page Application)
 # This file ensures React Router works correctly
 
-# Static files - serve directly without redirects
-/models/*       200
-/assets/*       200
-/planet/*       200
-/*.js           200
-/*.css          200
-/*.png          200
-/*.jpg          200
-/*.jpeg         200
-/*.gif          200
-/*.svg          200
-/*.ico          200
-/*.webp         200
-/*.pdf          200
-/*.gltf         200
-/*.glb          200
-/*.bin          200
-/robots.txt     200
-/sitemap.xml    200
-/favicon.ico    200
-/404.html       200
-
 # Specific routes for React Router pages
 /avenue-omar    /index.html   200
 /projects       /index.html   200
+/admin          /index.html   200
+/admin/*        /index.html   200
+/portfolio      /index.html   200
+/portfolio/*    /index.html   200
+/software       /index.html   200
+/software/*     /index.html   200
 
 # SPA fallback - MUST BE LAST
 # This catches all other routes and sends them to index.html

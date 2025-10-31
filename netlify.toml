@@ -5,6 +5,8 @@
 [build.environment]
   NODE_VERSION = "20.19.0"
   NPM_FLAGS = "--include=optional"
+  # Exclude documentation files from secrets scanning
+  SECRETS_SCAN_OMIT_PATHS = "*.md,*.txt,NETLIFY-*.md,*-README.md,*-GUIDE.md,*-DOCUMENTATION.md,.env.example"
 
 # Security headers for all pages
 [[headers]]

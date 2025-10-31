@@ -1,0 +1,18 @@
+# Documentation files (contain example values)
+*.md
+*.txt
+NETLIFY-*.md
+*-README.md
+*-GUIDE.md
+*-DOCUMENTATION.md
+*.sql
+
+# Reference projects
+reference-project/
+omar-reference-portfolio/
+
+# Development files
+.env.example
+.env.local
+lighthouse*.json
+tsconfig.tsbuildinfo
