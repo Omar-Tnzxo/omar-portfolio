@@ -417,10 +417,137 @@ export const searchProjects = async (keyword: string): Promise<PortfolioProject[
 // EXPORTS
 // =============================================
 
+// =============================================
+// ADMIN FUNCTIONS
+// =============================================
+
+/**
+ * Get all projects (including unpublished) - Admin only
+ */
+export const getAllProjects = async (): Promise<any[]> => {
+  if (!SUPABASE_ENABLED) {
+    return STATIC_PROJECTS;
+  }
+
+  try {
+    const { data, error } = await supabase
+      .from('portfolio_projects')
+      .select(`
+        *,
+        portfolio_categories (name, slug, color),
+        project_sub_categories (name, slug)
+      `)
+      .order('created_at', { ascending: false });
+
+    if (error) throw error;
+
+    return data.map(item => ({
+      id: item.id,
+      slug: item.slug,
+      title: item.title,
+      client: item.client,
+      my_role: item.my_role,
+      category: item.portfolio_categories?.slug,
+      category_name: item.portfolio_categories?.name,
+      sub_category: item.project_sub_categories?.slug,
+      short_description: item.short_description,
+      full_description: item.full_description,
+      challenge: item.challenge,
+      solution: item.solution,
+      cover_image_url: item.cover_image_url,
+      video_url: item.video_url,
+      project_date: item.project_date,
+      project_link: item.project_link,
+      github_link: item.github_link,
+      live_link: item.live_link,
+      is_featured: item.is_featured,
+      is_published: item.is_published,
+      display_order: item.display_order,
+      meta_title: item.meta_title,
+      meta_description: item.meta_description,
+      created_at: item.created_at,
+      updated_at: item.updated_at,
+    }));
+  } catch (error) {
+    console.error('Error fetching all projects:', error);
+    return [];
+  }
+};
+
+/**
+ * Get all categories (including inactive) - Admin only
+ */
+export const getCategories = async (): Promise<any[]> => {
+  if (!SUPABASE_ENABLED) {
+    return STATIC_CATEGORIES;
+  }
+
+  try {
+    const { data, error } = await supabase
+      .from('portfolio_categories')
+      .select('*')
+      .order('display_order', { ascending: true });
+
+    if (error) throw error;
+
+    return data;
+  } catch (error) {
+    console.error('Error fetching categories:', error);
+    return [];
+  }
+};
+
+/**
+ * Update project - Admin only
+ */
+export const updateProject = async (id: string, updates: any): Promise<{ data: any; error: Error | null }> => {
+  if (!SUPABASE_ENABLED) {
+    return { data: null, error: new Error('Supabase not configured') };
+  }
+
+  try {
+    const { data, error } = await supabase
+      .from('portfolio_projects')
+      .update(updates)
+      .eq('id', id)
+      .select()
+      .single();
+
+    if (error) throw error;
+
+    return { data, error: null };
+  } catch (error) {
+    return { data: null, error: error as Error };
+  }
+};
+
+/**
+ * Delete project - Admin only
+ */
+export const deleteProject = async (id: string): Promise<{ success: boolean; error: Error | null }> => {
+  if (!SUPABASE_ENABLED) {
+    return { success: false, error: new Error('Supabase not configured') };
+  }
+
+  try {
+    const { error } = await supabase
+      .from('portfolio_projects')
+      .delete()
+      .eq('id', id);
+
+    if (error) throw error;
+
+    return { success: true, error: null };
+  } catch (error) {
+    return { success: false, error: error as Error };
+  }
+};
+
 export const portfolioApi = {
   // Categories
   fetchCategories,
   fetchCategoryBySlug,
+  getCategories,
   
   // Sub-categories
   fetchSubCategories,
@@ -429,6 +556,9 @@ export const portfolioApi = {
   fetchFeaturedProjects,
   fetchProjectsByCategory,
   fetchProjectBySlug,
+  getAllProjects,
+  updateProject,
+  deleteProject,
   
   // Search
   searchProjects,

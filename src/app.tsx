@@ -31,6 +31,10 @@ const ProjectCaseStudy = lazy(() => import("./pages/ProjectCaseStudy").then(m =>
 
 // Lazy load admin pages
 const AdminLogin = lazy(() => import("./pages/admin/AdminLogin").then(m => ({ default: m.AdminLogin || m.default })));
+const AdminDashboard = lazy(() => import("./pages/admin/AdminDashboard").then(m => ({ default: m.default })));
+const AdminProjects = lazy(() => import("./pages/admin/AdminProjects").then(m => ({ default: m.default })));
+const AdminProjectForm = lazy(() => import("./pages/admin/AdminProjectForm").then(m => ({ default: m.default })));
+const AdminCategories = lazy(() => import("./pages/admin/AdminCategories").then(m => ({ default: m.default })));
 const ProtectedRoute = lazy(() => import("./components/ProtectedRoute").then(m => ({ default: m.ProtectedRoute || m.default })));
 
 // Loading component
@@ -49,19 +53,30 @@ const App = () => {
         <Suspense fallback={<LoadingFallback />}>
           <Routes>
             {/* Admin Routes */}
-            <Route path="/admin/login" element={<AdminLogin />} />
-            <Route path="/admin" element={
+            <Route path="/admin" element={<AdminLogin />} />
+            <Route path="/admin/dashboard" element={
               <ProtectedRoute>
-                <div className="min-h-screen bg-primary flex items-center justify-center">
-                  <div className="text-center text-white">
-                    <h1 className="text-4xl font-bold mb-4">لوحة التحكم</h1>
-                    <p className="text-gray-400 mb-6">مرحباً في لوحة إدارة البورتفوليو</p>
-                    <p className="text-sm text-gray-500">
-                      لإكمال لوحة التحكم، قم بإنشاء المكونات المطلوبة في:<br />
-                      src/pages/admin/AdminDashboard.tsx
-                    </p>
-                  </div>
-                </div>
+                <AdminDashboard />
+              </ProtectedRoute>
+            } />
+            <Route path="/admin/projects" element={
+              <ProtectedRoute>
+                <AdminProjects />
+              </ProtectedRoute>
+            } />
+            <Route path="/admin/projects/new" element={
+              <ProtectedRoute>
+                <AdminProjectForm />
+              </ProtectedRoute>
+            } />
+            <Route path="/admin/projects/edit/:id" element={
+              <ProtectedRoute>
+                <AdminProjectForm />
+              </ProtectedRoute>
+            } />
+            <Route path="/admin/categories" element={
+              <ProtectedRoute>
+                <AdminCategories />
               </ProtectedRoute>
             } />
             
