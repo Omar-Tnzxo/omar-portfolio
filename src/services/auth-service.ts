@@ -26,6 +26,10 @@ export const signIn = async (
       throw new Error('No user returned');
     }
 
+    // Store session
+    localStorage.setItem('isAuthenticated', 'true');
+    localStorage.setItem('userEmail', data.user.email || '');
+
     return {
       user: {
         id: data.user.id,
@@ -49,6 +53,11 @@ export const signOut = async (): Promise<{ error: Error | null }> => {
   try {
     const { error } = await supabase.auth.signOut();
     if (error) throw error;
+    
+    // Clear session
+    localStorage.removeItem('isAuthenticated');
+    localStorage.removeItem('userEmail');
+    
     return { error: null };
   } catch (error) {
     return { error: error as Error };

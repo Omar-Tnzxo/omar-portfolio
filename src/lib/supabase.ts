@@ -20,12 +20,15 @@ if (!isSupabaseConfigured()) {
 const dummyUrl = 'https://placeholder.supabase.co';
 const dummyKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBsYWNlaG9sZGVyIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NDUxOTI4MDAsImV4cCI6MTk2MDc2ODgwMH0.placeholder';
 
+// Create Supabase client with session persistence
 export const supabase: SupabaseClient = createClient(
   supabaseUrl || dummyUrl,
   supabaseAnonKey || dummyKey,
   {
     auth: {
-      persistSession: false,
+      persistSession: true, // Enable session persistence
+      autoRefreshToken: true,
+      detectSessionInUrl: true,
     },
     global: {
       headers: {

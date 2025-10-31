@@ -14,7 +14,7 @@ export const AdminLogin = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
-  const from = (location.state as any)?.from?.pathname || '/admin';
+  const from = (location.state as any)?.from?.pathname || '/admin/dashboard';
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -34,6 +34,7 @@ export const AdminLogin = () => {
 
     if (user) {
       toast.success('تم تسجيل الدخول بنجاح');
+      // Navigate to admin dashboard after successful login
       navigate(from, { replace: true });
     }
 
