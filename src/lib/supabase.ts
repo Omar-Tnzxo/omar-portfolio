@@ -1,34 +1,39 @@
-import { createClient } from '@supabase/supabase-js';
+import { createClient, SupabaseClient } from '@supabase/supabase-js';
 
 // Supabase configuration
 const supabaseUrl = import.meta.env.VITE_SUPABASE_URL || '';
 const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY || '';
 
-// Validate environment variables
-if (!supabaseUrl) {
-  console.warn('⚠️ Supabase URL is not configured');
-}
-
-if (!supabaseAnonKey) {
-  console.warn('⚠️ Supabase Anon Key is not configured');
-}
-
-// Create Supabase client
-export const supabase = createClient(supabaseUrl, supabaseAnonKey, {
-  auth: {
-    persistSession: false, // We don't need auth persistence for public portfolio
-  },
-  global: {
-    headers: {
-      'x-application-name': 'omar-portfolio',
-    },
-  },
-});
-
 // Helper function to check if Supabase is configured
 export const isSupabaseConfigured = (): boolean => {
   return Boolean(supabaseUrl && supabaseAnonKey);
 };
+
+// Validate environment variables
+if (!isSupabaseConfigured()) {
+  console.warn('⚠️ Supabase is not configured. Using fallback to static data.');
+  console.info('ℹ️ To enable dynamic portfolio, add VITE_SUPABASE_URL and VITE_SUPABASE_ANON_KEY to .env.local');
+}
+
+// Create Supabase client with dummy values if not configured
+// This prevents errors when Supabase is not set up
+const dummyUrl = 'https://placeholder.supabase.co';
+const dummyKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBsYWNlaG9sZGVyIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NDUxOTI4MDAsImV4cCI6MTk2MDc2ODgwMH0.placeholder';
+
+export const supabase: SupabaseClient = createClient(
+  supabaseUrl || dummyUrl,
+  supabaseAnonKey || dummyKey,
+  {
+    auth: {
+      persistSession: false,
+    },
+    global: {
+      headers: {
+        'x-application-name': 'omar-portfolio',
+      },
+    },
+  }
+);
 
 // Storage bucket name for portfolio images
 export const PORTFOLIO_BUCKET = 'portfolio-images';
