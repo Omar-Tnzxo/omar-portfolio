@@ -1,0 +1,29 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm run build:*)",
+      "Bash(ln:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)",
+      "Bash(npm install:*)",
+      "Bash(curl:*)",
+      "Bash(lighthouse:*)",
+      "Bash(cat:*)",
+      "Bash(node parse-lighthouse.js:*)",
+      "Bash(node parse-lighthouse.cjs:*)",
+      "Bash(node convert-to-webp.js:*)",
+      "Bash(node convert-to-webp.cjs:*)",
+      "Bash(npm run preview:*)",
+      "Bash(pkill:*)",
+      "Bash(node create-og-image.cjs:*)",
+      "Bash(node create-herobg.cjs:*)",
+      "Bash(ls:*)",
+      "WebFetch(domain:pagespeed.web.dev)",
+      "Bash(git restore:*)",
+      "Bash(npm run build:main:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

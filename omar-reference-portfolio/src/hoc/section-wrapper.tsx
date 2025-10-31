@@ -1,0 +1,26 @@
+import { motion } from "framer-motion";
+
+import { styles } from "../styles";
+import { cn } from "../utils/lib";
+import { staggerContainer } from "../utils/motion";
+
+type SectionWrapperProps = {
+  children: React.ReactNode;
+  idName?: string;
+};
+
+export const SectionWrapper = ({ children, idName }: SectionWrapperProps) => (
+  <motion.section
+    id={idName}
+    variants={staggerContainer()}
+    initial="hidden"
+    whileInView="show"
+    viewport={{ once: true, amount: 0.15, margin: "0px" }}
+    className={cn(styles.padding, "max-w-7xl mx-auto relative z-0")}
+  >
+    <span className="hash-span" id={`${idName}-anchor`}>
+      &nbsp;
+    </span>
+    {children}
+  </motion.section>
+);

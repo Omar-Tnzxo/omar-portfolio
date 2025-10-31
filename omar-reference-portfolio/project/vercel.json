@@ -1,0 +1,88 @@
+{
+  "rewrites": [
+    {
+      "source": "/app-ads.txt",
+      "destination": "/app-ads.txt"
+    },
+    {
+      "source": "/.well-known/app-ads.txt",
+      "destination": "/app-ads.txt"
+    },
+    {
+      "source": "/ads.txt",
+      "destination": "/app-ads.txt"
+    },
+    {
+      "source": "/sitemap.xml",
+      "destination": "/sitemap.xml"
+    },
+    {
+      "source": "/robots.txt",
+      "destination": "/robots.txt"
+    },
+    {
+      "source": "/google5e1426d4796c5036.html",
+      "destination": "/google5e1426d4796c5036.html"
+    },
+    {
+      "source": "/BingSiteAuth.xml",
+      "destination": "/BingSiteAuth.xml"
+    },
+    {
+      "source": "/ai-info.txt",
+      "destination": "/ai-info.txt"
+    },
+    {
+      "source": "/ping-search-engines.txt",
+      "destination": "/ping-search-engines.txt"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/app-ads.txt",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "text/plain; charset=utf-8"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=86400"
+        },
+        {
+          "key": "Access-Control-Allow-Origin",
+          "value": "*"
+        },
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
+        }
+      ]
+    },
+    {
+      "source": "/*.txt",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "text/plain; charset=utf-8"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=86400"
+        },
+        {
+          "key": "Access-Control-Allow-Origin",
+          "value": "*"
+        },
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
+        }
+      ]
+    }
+  ]
+}
