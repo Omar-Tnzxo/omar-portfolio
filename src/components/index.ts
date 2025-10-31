@@ -19,6 +19,9 @@ import { NotFound } from "./NotFound";
 import { SoftwarePreview } from "./SoftwarePreview";
 import { SoftwareCard } from "./SoftwareCard";
 import { CategoryFolder } from "./CategoryFolder";
+import { FeaturedProjects } from "./FeaturedProjects";
+import { ProjectCard } from "./ProjectCard";
+import { PortfolioFolder } from "./PortfolioFolder";
 
 export {
   About,
@@ -28,10 +31,13 @@ export {
   Contact,
   Experience,
   Feedbacks,
+  FeaturedProjects,
   Hero,
   MagicButton,
   Navbar,
   NotFound,
+  PortfolioFolder,
+  ProjectCard,
   Projects,
   SoftwareCard,
   SoftwarePreview,

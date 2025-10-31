@@ -18,10 +18,20 @@ const Projects = lazy(() => import("./components/projects"));
 const NotFound = lazy(() => import("./components/NotFound").then(m => ({ default: m.NotFound })));
 const Footer = lazy(() => import("./components/footer"));
 const SoftwarePreview = lazy(() => import("./components/SoftwarePreview").then(m => ({ default: m.SoftwarePreview })));
+const FeaturedProjects = lazy(() => import("./components/FeaturedProjects").then(m => ({ default: m.FeaturedProjects })));
 
 // Lazy load software pages
 const SoftwareHub = lazy(() => import("./pages/SoftwareHub").then(m => ({ default: m.SoftwareHub })));
 const CategoryDetail = lazy(() => import("./pages/CategoryDetail").then(m => ({ default: m.CategoryDetail })));
+
+// Lazy load portfolio pages
+const PortfolioHub = lazy(() => import("./pages/PortfolioHub").then(m => ({ default: m.PortfolioHub })));
+const PortfolioCategoryPage = lazy(() => import("./pages/PortfolioCategoryPage").then(m => ({ default: m.PortfolioCategoryPage })));
+const ProjectCaseStudy = lazy(() => import("./pages/ProjectCaseStudy").then(m => ({ default: m.ProjectCaseStudy })));
+
+// Lazy load admin pages
+const AdminLogin = lazy(() => import("./pages/admin/AdminLogin").then(m => ({ default: m.AdminLogin || m.default })));
+const ProtectedRoute = lazy(() => import("./components/ProtectedRoute").then(m => ({ default: m.ProtectedRoute || m.default })));
 
 // Loading component
 const LoadingFallback = () => (
@@ -38,10 +48,31 @@ const App = () => {
       <div className="overflow-x-hidden max-w-full">
         <Suspense fallback={<LoadingFallback />}>
           <Routes>
+            {/* Admin Routes */}
+            <Route path="/admin/login" element={<AdminLogin />} />
+            <Route path="/admin" element={
+              <ProtectedRoute>
+                <div className="min-h-screen bg-primary flex items-center justify-center">
+                  <div className="text-center text-white">
+                    <h1 className="text-4xl font-bold mb-4">لوحة التحكم</h1>
+                    <p className="text-gray-400 mb-6">مرحباً في لوحة إدارة البورتفوليو</p>
+                    <p className="text-sm text-gray-500">
+                      لإكمال لوحة التحكم، قم بإنشاء المكونات المطلوبة في:<br />
+                      src/pages/admin/AdminDashboard.tsx
+                    </p>
+                  </div>
+                </div>
+              </ProtectedRoute>
+            } />
+            
+            {/* Public Routes */}
             <Route path="/avenue-omar" element={<BusinessCard />} />
             <Route path="/projects" element={<Projects />} />
             <Route path="/software" element={<SoftwareHub />} />
             <Route path="/software/:slug" element={<CategoryDetail />} />
+            <Route path="/portfolio" element={<PortfolioHub />} />
+            <Route path="/portfolio/:categorySlug" element={<PortfolioCategoryPage />} />
+            <Route path="/portfolio/:categorySlug/:projectSlug" element={<ProjectCaseStudy />} />
             <Route path="/" element={
               <>
                 <Navbar />
@@ -95,16 +126,24 @@ const App = () => {
                     {/* Gradient Transition from Black to Dark Blue */}
                     <div className="w-full h-32 bg-gradient-to-b from-black to-primary"></div>
                     
-                    {/* Software Arsenal Preview Section - Dark Blue Background */}
+                    {/* Featured Projects Section - Dark Blue Background */}
                     <div className="bg-primary">
-                      <SoftwarePreview />
+                      <FeaturedProjects />
                     </div>
                     
                     {/* Gradient Transition from Dark Blue to Black */}
                     <div className="w-full h-32 bg-gradient-to-b from-primary to-black"></div>
                     
-                    {/* Contact Section - Black Background */}
-                    <div className="relative z-0 bg-black">
+                    {/* Software Arsenal Preview Section - Black Background */}
+                    <div className="bg-black">
+                      <SoftwarePreview />
+                    </div>
+                    
+                    {/* Gradient Transition from Black to Dark Blue */}
+                    <div className="w-full h-32 bg-gradient-to-b from-black to-primary"></div>
+                    
+                    {/* Contact Section - Dark Blue Background */}
+                    <div className="relative z-0 bg-primary">
                       <Contact />
                     </div>
                   </Suspense>
