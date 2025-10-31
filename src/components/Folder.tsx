@@ -163,3 +163,4 @@ const Folder: React.FC<FolderProps> = ({ color = '#5227FF', size = 1, items = []
 };
 
 export default Folder;
+export { Folder };
