@@ -16,11 +16,15 @@ import WhatsAppButton from "./ui/WhatsAppButton";
 import Projects from "./projects";
 import BusinessCard from "./BusinessCard";
 import { NotFound } from "./NotFound";
+import { SoftwarePreview } from "./SoftwarePreview";
+import { SoftwareCard } from "./SoftwareCard";
+import { CategoryFolder } from "./CategoryFolder";
 
 export {
   About,
   Approach,
   BusinessCard,
+  CategoryFolder,
   Contact,
   Experience,
   Feedbacks,
@@ -28,8 +32,10 @@ export {
   MagicButton,
   Navbar,
   NotFound,
+  Projects,
+  SoftwareCard,
+  SoftwarePreview,
   Tech,
   Works,
   WhatsAppButton,
-  Projects,
 };

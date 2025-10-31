@@ -34,7 +34,19 @@ const copyNetlifyFiles = () => {
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react(), copyNetlifyFiles()],
+  plugins: [
+    react(), 
+    copyNetlifyFiles()
+  ],
+  css: {
+    transformer: 'postcss',
+    preprocessorOptions: {
+      css: {
+        charset: false
+      }
+    },
+    postcss: './postcss.config.cjs',
+  },
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
