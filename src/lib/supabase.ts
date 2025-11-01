@@ -1,34 +1,39 @@
 import { createClient, SupabaseClient } from '@supabase/supabase-js';
 
-// Supabase configuration
+// Supabase configuration - get from environment variables
 const supabaseUrl = import.meta.env.VITE_SUPABASE_URL || '';
 const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY || '';
 
-// Helper function to check if Supabase is configured
+// Helper function to check if Supabase is properly configured
 export const isSupabaseConfigured = (): boolean => {
-  return Boolean(supabaseUrl && supabaseAnonKey);
+  const hasUrl = Boolean(supabaseUrl && supabaseUrl !== '' && !supabaseUrl.includes('placeholder') && !supabaseUrl.includes('your-project'));
+  const hasKey = Boolean(supabaseAnonKey && supabaseAnonKey !== '' && !supabaseAnonKey.includes('your-') && supabaseAnonKey.length > 50);
+  return hasUrl && hasKey;
 };
 
-// Validate environment variables
-if (!isSupabaseConfigured()) {
-  console.warn('⚠️ Supabase is not configured. Using fallback to static data.');
-  console.info('ℹ️ To enable dynamic portfolio, add VITE_SUPABASE_URL and VITE_SUPABASE_ANON_KEY to .env.local');
+// Validate and log configuration status
+const configured = isSupabaseConfigured();
+if (!configured) {
+  console.warn('⚠️ Supabase URL is not configured');
+  console.warn('⚠️ Supabase Anon Key is not configured');
+  console.info('ℹ️ The portfolio will use static fallback data.');
+  console.info('ℹ️ To enable dynamic content, configure Supabase in Netlify environment variables.');
 }
 
-// Create Supabase client with dummy values if not configured
-// This prevents errors when Supabase is not set up
-const dummyUrl = 'https://placeholder.supabase.co';
-const dummyKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBsYWNlaG9sZGVyIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NDUxOTI4MDAsImV4cCI6MTk2MDc2ODgwMH0.placeholder';
+// Create dummy credentials for fallback mode
+const dummyUrl = 'https://fallback.supabase.co';
+const dummyKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZhbGxiYWNrIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NDUxOTI4MDAsImV4cCI6MTk2MDc2ODgwMH0.fallback';
 
 // Create Supabase client with session persistence
 export const supabase: SupabaseClient = createClient(
-  supabaseUrl || dummyUrl,
-  supabaseAnonKey || dummyKey,
+  configured ? supabaseUrl : dummyUrl,
+  configured ? supabaseAnonKey : dummyKey,
   {
     auth: {
-      persistSession: true, // Enable session persistence
-      autoRefreshToken: true,
-      detectSessionInUrl: true,
+      persistSession: true, // Enable session persistence in localStorage
+      autoRefreshToken: true, // Automatically refresh expired tokens
+      detectSessionInUrl: true, // Detect OAuth sessions in URL
+      storage: typeof window !== 'undefined' ? window.localStorage : undefined,
     },
     global: {
       headers: {

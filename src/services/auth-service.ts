@@ -22,13 +22,15 @@ export const signIn = async (
 
     if (error) throw error;
 
-    if (!data.user) {
-      throw new Error('No user returned');
+    if (!data.user || !data.session) {
+      throw new Error('فشل في تسجيل الدخول - لم يتم إرجاع بيانات المستخدم');
     }
 
-    // Store session
-    localStorage.setItem('isAuthenticated', 'true');
-    localStorage.setItem('userEmail', data.user.email || '');
+    // Store additional auth indicators for quick checks
+    // Supabase handles session storage automatically via localStorage
+    localStorage.setItem('admin_authenticated', 'true');
+    localStorage.setItem('admin_email', data.user.email || '');
+    localStorage.setItem('admin_session_expires', data.session.expires_at?.toString() || '');
 
     return {
       user: {
@@ -39,6 +41,11 @@ export const signIn = async (
       error: null,
     };
   } catch (error) {
+    // Clear any partial auth data
+    localStorage.removeItem('admin_authenticated');
+    localStorage.removeItem('admin_email');
+    localStorage.removeItem('admin_session_expires');
+    
     return {
       user: null,
       error: error as Error,
@@ -54,7 +61,11 @@ export const signOut = async (): Promise<{ error: Error | null }> => {
     const { error } = await supabase.auth.signOut();
     if (error) throw error;
     
-    // Clear session
+    // Clear all auth-related data
+    localStorage.removeItem('admin_authenticated');
+    localStorage.removeItem('admin_email');
+    localStorage.removeItem('admin_session_expires');
+    // Also clear old keys for backwards compatibility
     localStorage.removeItem('isAuthenticated');
     localStorage.removeItem('userEmail');
     

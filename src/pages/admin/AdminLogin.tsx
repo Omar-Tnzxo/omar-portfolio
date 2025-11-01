@@ -36,24 +36,36 @@ export const AdminLogin = () => {
     setError('');
     setLoading(true);
 
-    const { user, error } = await authService.signIn(email, password);
+    try {
+      const { user, error } = await authService.signIn(email, password);
 
-    if (error) {
-      setError(error.message || 'فشل تسجيل الدخول');
-      toast.error('فشل تسجيل الدخول', {
-        description: 'الرجاء التحقق من البريد الإلكتروني وكلمة المرور',
-      });
+      if (error) {
+        setError(error.message || 'فشل تسجيل الدخول');
+        toast.error('فشل تسجيل الدخول', {
+          description: 'الرجاء التحقق من البريد الإلكتروني وكلمة المرور',
+        });
+        setLoading(false);
+        return;
+      }
+
+      if (user) {
+        toast.success('تم تسجيل الدخول بنجاح', {
+          description: `مرحباً ${user.email}`,
+        });
+        
+        // Navigate immediately to dashboard after successful login
+        setTimeout(() => {
+          navigate('/admin/dashboard', { replace: true });
+        }, 100);
+        return;
+      }
+    } catch (err) {
+      console.error('Login error:', err);
+      setError('حدث خطأ غير متوقع');
+      toast.error('حدث خطأ غير متوقع');
+    } finally {
       setLoading(false);
-      return;
     }
-
-    if (user) {
-      toast.success('تم تسجيل الدخول بنجاح');
-      // Navigate to admin dashboard after successful login
-      navigate(from, { replace: true });
-    }
-
-    setLoading(false);
   };
 
   // Show loading while checking session

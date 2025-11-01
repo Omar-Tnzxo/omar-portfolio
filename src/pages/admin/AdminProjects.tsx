@@ -37,7 +37,7 @@ const AdminProjects = () => {
       const data = await portfolioApi.getAllProjects();
       setProjects(data);
     } catch (error) {
-      toast.error('Failed to load projects');
+      toast.error('فشل في تحميل المشاريع');
     } finally {
       setLoading(false);
     }
@@ -67,14 +67,14 @@ const AdminProjects = () => {
   };
 
   const handleDelete = async (id: string) => {
-    if (!confirm('Are you sure you want to delete this project?')) return;
+    if (!confirm('هل أنت متأكد من حذف هذا المشروع؟')) return;
 
     try {
       await portfolioApi.deleteProject(id);
-      toast.success('Project deleted successfully');
+      toast.success('تم حذف المشروع بنجاح');
       loadProjects();
     } catch (error) {
-      toast.error('Failed to delete project');
+      toast.error('فشل في حذف المشروع');
     }
   };
 
@@ -83,10 +83,10 @@ const AdminProjects = () => {
       await portfolioApi.updateProject(project.id, {
         is_published: !project.is_published
       });
-      toast.success(`Project ${!project.is_published ? 'published' : 'unpublished'}`);
+      toast.success(`تم ${!project.is_published ? 'نشر' : 'إلغاء نشر'} المشروع`);
       loadProjects();
     } catch (error) {
-      toast.error('Failed to update project');
+      toast.error('فشل في تحديث المشروع');
     }
   };
 
@@ -95,10 +95,10 @@ const AdminProjects = () => {
       await portfolioApi.updateProject(project.id, {
         is_featured: !project.is_featured
       });
-      toast.success(`Project ${!project.is_featured ? 'featured' : 'unfeatured'}`);
+      toast.success(`تم ${!project.is_featured ? 'إضافة' : 'إزالة'} المشروع ${!project.is_featured ? 'إلى' : 'من'} المميزة`);
       loadProjects();
     } catch (error) {
-      toast.error('Failed to update project');
+      toast.error('فشل في تحديث المشروع');
     }
   };
 
@@ -117,7 +117,7 @@ const AdminProjects = () => {
               </Link>
               <div className="flex items-center gap-3">
                 <FileText className="w-8 h-8 text-blue-400" />
-                <h1 className="text-2xl font-bold text-white">Manage Projects</h1>
+                <h1 className="text-2xl font-bold text-white">إدارة المشاريع</h1>
               </div>
             </div>
             <Link
@@ -125,7 +125,7 @@ const AdminProjects = () => {
               className="flex items-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition"
             >
               <Plus className="w-4 h-4" />
-              Add New Project
+              إضافة مشروع جديد
             </Link>
           </div>
         </div>
@@ -135,29 +135,57 @@ const AdminProjects = () => {
         {/* Filters */}
         <div className="mb-6 flex flex-col sm:flex-row gap-4">
           <div className="flex-1 relative">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
+            <Search className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
             <input
               type="text"
-              placeholder="Search projects..."
+              placeholder="البحث في المشاريع..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full pl-10 pr-4 py-2 bg-black/40 border border-white/10 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-blue-500"
+              className="w-full pr-10 pl-4 py-2 bg-black/40 border border-white/10 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-blue-500"
+              dir="rtl"
             />
           </div>
           <div className="flex gap-2">
-            {['all', 'published', 'draft', 'featured'].map((status) => (
-              <button
-                key={status}
-                onClick={() => setFilterStatus(status as any)}
-                className={`px-4 py-2 rounded-lg capitalize transition ${
-                  filterStatus === status
-                    ? 'bg-blue-600 text-white'
-                    : 'bg-black/40 text-gray-400 hover:bg-white/10'
-                }`}
-              >
-                {status}
-              </button>
-            ))}
+            <button
+              onClick={() => setFilterStatus('all')}
+              className={`px-4 py-2 rounded-lg transition ${
+                filterStatus === 'all'
+                  ? 'bg-blue-600 text-white'
+                  : 'bg-black/40 text-gray-400 hover:bg-white/10'
+              }`}
+            >
+              الكل
+            </button>
+            <button
+              onClick={() => setFilterStatus('published')}
+              className={`px-4 py-2 rounded-lg transition ${
+                filterStatus === 'published'
+                  ? 'bg-blue-600 text-white'
+                  : 'bg-black/40 text-gray-400 hover:bg-white/10'
+              }`}
+            >
+              المنشورة
+            </button>
+            <button
+              onClick={() => setFilterStatus('draft')}
+              className={`px-4 py-2 rounded-lg transition ${
+                filterStatus === 'draft'
+                  ? 'bg-blue-600 text-white'
+                  : 'bg-black/40 text-gray-400 hover:bg-white/10'
+              }`}
+            >
+              المسودات
+            </button>
+            <button
+              onClick={() => setFilterStatus('featured')}
+              className={`px-4 py-2 rounded-lg transition ${
+                filterStatus === 'featured'
+                  ? 'bg-blue-600 text-white'
+                  : 'bg-black/40 text-gray-400 hover:bg-white/10'
+              }`}
+            >
+              المميزة
+            </button>
           </div>
         </div>
 
@@ -169,7 +197,7 @@ const AdminProjects = () => {
         ) : filteredProjects.length === 0 ? (
           <div className="text-center py-12">
             <FileText className="w-16 h-16 text-gray-600 mx-auto mb-4" />
-            <p className="text-gray-400">No projects found</p>
+            <p className="text-gray-400">لا توجد مشاريع</p>
           </div>
         ) : (
           <div className="space-y-4">
@@ -203,7 +231,7 @@ const AdminProjects = () => {
                       <div className="flex gap-2">
                         {project.is_featured && (
                           <span className="px-2 py-1 bg-yellow-500/20 text-yellow-400 text-xs rounded">
-                            Featured
+                            مميز
                           </span>
                         )}
                         <span
@@ -213,7 +241,7 @@ const AdminProjects = () => {
                               : 'bg-red-500/20 text-red-400'
                           }`}
                         >
-                          {project.is_published ? 'Published' : 'Draft'}
+                          {project.is_published ? 'منشور' : 'مسودة'}
                         </span>
                       </div>
                     </div>
@@ -229,7 +257,7 @@ const AdminProjects = () => {
                         className="flex items-center gap-1 px-3 py-1 bg-blue-600 hover:bg-blue-700 text-white text-sm rounded transition"
                       >
                         <Edit className="w-4 h-4" />
-                        Edit
+                        تعديل
                       </Link>
                       <button
                         onClick={() => togglePublish(project)}
@@ -238,12 +266,12 @@ const AdminProjects = () => {
                         {project.is_published ? (
                           <>
                             <EyeOff className="w-4 h-4" />
-                            Unpublish
+                            إلغاء النشر
                           </>
                         ) : (
                           <>
                             <Eye className="w-4 h-4" />
-                            Publish
+                            نشر
                           </>
                         )}
                       </button>
@@ -256,14 +284,14 @@ const AdminProjects = () => {
                         }`}
                       >
                         <Star className="w-4 h-4" />
-                        {project.is_featured ? 'Unfeatured' : 'Feature'}
+                        {project.is_featured ? 'إلغاء التمييز' : 'تمييز'}
                       </button>
                       <button
                         onClick={() => handleDelete(project.id)}
                         className="flex items-center gap-1 px-3 py-1 bg-red-600 hover:bg-red-700 text-white text-sm rounded transition"
                       >
                         <Trash2 className="w-4 h-4" />
-                        Delete
+                        حذف
                       </button>
                     </div>
                   </div>
