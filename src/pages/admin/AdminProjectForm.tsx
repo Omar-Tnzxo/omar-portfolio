@@ -31,24 +31,24 @@ const AdminProjectForm = () => {
     githubLink: '',
     liveLink: '',
     isFeatured: false,
-    isPublished: true,
+    isمنشور: true,
     displayOrder: 0,
     metaTitle: '',
     metaDescription: '',
-    skills: [] as string[],
+    المهارات: [] as string[],
     techStack: {
-      frontend: [] as string[],
-      backend: [] as string[],
-      tools: [] as string[],
+      الواجهة الأمامية: [] as string[],
+      الخادم: [] as string[],
+      الأدوات: [] as string[],
     },
     gallery: [] as string[],
     results: [] as string[],
   });
 
   const [newSkill, setNewSkill] = useState('');
-  const [newTechFrontend, setNewTechFrontend] = useState('');
-  const [newTechBackend, setNewTechBackend] = useState('');
-  const [newTechTools, setNewTechTools] = useState('');
+  const [newTechالواجهة الأمامية, setNewTechالواجهة الأمامية] = useState('');
+  const [newTechالخادم, setNewTechالخادم] = useState('');
+  const [newTechالأدوات, setNewTechالأدوات] = useState('');
   const [newGalleryUrl, setNewGalleryUrl] = useState('');
   const [newResult, setNewResult] = useState('');
 
@@ -64,7 +64,7 @@ const AdminProjectForm = () => {
       const data = await portfolioApi.getCategories();
       setCategories(data);
     } catch (error) {
-      toast.error('Failed to load categories');
+      toast.error('فشل في تحميل التصنيفات');
     }
   };
 
@@ -91,26 +91,26 @@ const AdminProjectForm = () => {
     setFormData(prev => ({ ...prev, slug }));
   };
 
-  // Skills handlers
+  // المهارات handlers
   const addSkill = () => {
     if (newSkill.trim()) {
       setFormData(prev => ({
         ...prev,
-        skills: [...prev.skills, newSkill.trim()],
+        المهارات: [...prev.المهارات, newSkill.trim()],
       }));
       setNewSkill('');
     }
   };
 
-  const removeSkill = (index: number) => {
+  const إزالةSkill = (index: number) => {
     setFormData(prev => ({
       ...prev,
-      skills: prev.skills.filter((_, i) => i !== index),
+      المهارات: prev.المهارات.filter((_, i) => i !== index),
     }));
   };
 
-  // Tech Stack handlers
-  const addTech = (category: 'frontend' | 'backend' | 'tools', value: string) => {
+  // التقنيات المستخدمة handlers
+  const addTech = (category: 'الواجهة الأمامية' | 'الخادم' | 'الأدوات', value: string) => {
     if (value.trim()) {
       setFormData(prev => ({
         ...prev,
@@ -120,13 +120,13 @@ const AdminProjectForm = () => {
         },
       }));
       
-      if (category === 'frontend') setNewTechFrontend('');
-      if (category === 'backend') setNewTechBackend('');
-      if (category === 'tools') setNewTechTools('');
+      if (category === 'الواجهة الأمامية') setNewTechالواجهة الأمامية('');
+      if (category === 'الخادم') setNewTechالخادم('');
+      if (category === 'الأدوات') setNewTechالأدوات('');
     }
   };
 
-  const removeTech = (category: 'frontend' | 'backend' | 'tools', index: number) => {
+  const إزالةTech = (category: 'الواجهة الأمامية' | 'الخادم' | 'الأدوات', index: number) => {
     setFormData(prev => ({
       ...prev,
       techStack: {
@@ -147,7 +147,7 @@ const AdminProjectForm = () => {
     }
   };
 
-  const removeGalleryUrl = (index: number) => {
+  const إزالةGalleryUrl = (index: number) => {
     setFormData(prev => ({
       ...prev,
       gallery: prev.gallery.filter((_, i) => i !== index),
@@ -165,7 +165,7 @@ const AdminProjectForm = () => {
     }
   };
 
-  const removeResult = (index: number) => {
+  const إزالةResult = (index: number) => {
     setFormData(prev => ({
       ...prev,
       results: prev.results.filter((_, i) => i !== index),
@@ -176,7 +176,7 @@ const AdminProjectForm = () => {
     e.preventDefault();
     
     if (!formData.title || !formData.slug || !formData.categoryId) {
-      toast.error('Please fill in all required fields');
+      toast.error('يرجى ملء جميع الحقول المطلوبة');
       return;
     }
 
@@ -185,15 +185,15 @@ const AdminProjectForm = () => {
       if (isEdit && id) {
         const result = await adminApi.updateProject(id, formData);
         if (result.error) throw result.error;
-        toast.success('Project updated successfully');
+        toast.success('تم تحديث المشروع بنجاح');
       } else {
         const result = await adminApi.createProject(formData);
         if (result.error) throw result.error;
-        toast.success('Project created successfully');
+        toast.success('تم إنشاء المشروع بنجاح');
       }
       navigate('/admin/projects');
     } catch (error) {
-      toast.error(isEdit ? 'Failed to update project' : 'Failed to create project');
+      toast.error(isEdit ? 'فشل في تحديث المشروع' : 'فشل في إنشاء المشروع');
     } finally {
       setLoading(false);
     }
@@ -212,7 +212,7 @@ const AdminProjectForm = () => {
               <ArrowLeft className="w-6 h-6 text-white" />
             </Link>
             <h1 className="text-2xl font-bold text-white">
-              {isEdit ? 'Edit Project' : 'Add New Project'}
+              {isEdit ? 'تعديل المشروع' : 'إضافة مشروع جديد'}
             </h1>
           </div>
         </div>
@@ -222,12 +222,12 @@ const AdminProjectForm = () => {
         <form onSubmit={handleSubmit} className="space-y-6">
           {/* Basic Info */}
           <div className="bg-black/40 backdrop-blur-sm border border-white/10 rounded-xl p-6">
-            <h2 className="text-xl font-bold text-white mb-4">Basic Information</h2>
+            <h2 className="text-xl font-bold text-white mb-4">المعلومات الأساسية</h2>
             
             <div className="space-y-4">
               <div>
                 <label className="block text-sm font-medium text-gray-300 mb-2">
-                  Project Title *
+                  عنوان المشروع *
                 </label>
                 <input
                   type="text"
@@ -235,6 +235,7 @@ const AdminProjectForm = () => {
                   value={formData.title}
                   onChange={handleInputChange}
                   required
+                  dir="rtl"
                   className="w-full px-4 py-2 bg-black/40 border border-white/10 rounded-lg text-white focus:outline-none focus:border-blue-500"
                 />
               </div>
@@ -242,7 +243,7 @@ const AdminProjectForm = () => {
               <div className="flex gap-4">
                 <div className="flex-1">
                   <label className="block text-sm font-medium text-gray-300 mb-2">
-                    Slug *
+                    الرابط المختصر *
                   </label>
                   <input
                     type="text"
@@ -258,14 +259,14 @@ const AdminProjectForm = () => {
                   onClick={handleSlugGenerate}
                   className="mt-7 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition"
                 >
-                  Generate from Title
+                  إنشاء من العنوان
                 </button>
               </div>
 
               <div className="grid grid-cols-2 gap-4">
                 <div>
                   <label className="block text-sm font-medium text-gray-300 mb-2">
-                    Client *
+                    العميل *
                   </label>
                   <input
                     type="text"
@@ -273,12 +274,13 @@ const AdminProjectForm = () => {
                     value={formData.client}
                     onChange={handleInputChange}
                     required
+                    dir="rtl"
                     className="w-full px-4 py-2 bg-black/40 border border-white/10 rounded-lg text-white focus:outline-none focus:border-blue-500"
                   />
                 </div>
                 <div>
                   <label className="block text-sm font-medium text-gray-300 mb-2">
-                    My Role *
+                    دوري في المشروع *
                   </label>
                   <input
                     type="text"
@@ -286,6 +288,7 @@ const AdminProjectForm = () => {
                     value={formData.myRole}
                     onChange={handleInputChange}
                     required
+                    dir="rtl"
                     className="w-full px-4 py-2 bg-black/40 border border-white/10 rounded-lg text-white focus:outline-none focus:border-blue-500"
                   />
                 </div>
@@ -294,16 +297,17 @@ const AdminProjectForm = () => {
               <div className="grid grid-cols-2 gap-4">
                 <div>
                   <label className="block text-sm font-medium text-gray-300 mb-2">
-                    Category *
+                    التصنيف *
                   </label>
                   <select
                     name="categoryId"
                     value={formData.categoryId}
                     onChange={handleInputChange}
                     required
+                    dir="rtl"
                     className="w-full px-4 py-2 bg-black/40 border border-white/10 rounded-lg text-white focus:outline-none focus:border-blue-500"
                   >
-                    <option value="">Select category</option>
+                    <option value="">اختر التصنيف</option>
                     {categories.map(cat => (
                       <option key={cat.id} value={cat.id}>
                         {cat.name}
@@ -313,15 +317,16 @@ const AdminProjectForm = () => {
                 </div>
                 <div>
                   <label className="block text-sm font-medium text-gray-300 mb-2">
-                    Project Date *
+                    تاريخ المشروع *
                   </label>
                   <input
                     type="text"
                     name="projectDate"
                     value={formData.projectDate}
                     onChange={handleInputChange}
-                    placeholder="e.g., January 2024"
+                    placeholder="مثال: يناير 2024"
                     required
+                    dir="rtl"
                     className="w-full px-4 py-2 bg-black/40 border border-white/10 rounded-lg text-white focus:outline-none focus:border-blue-500"
                   />
                 </div>
@@ -329,7 +334,7 @@ const AdminProjectForm = () => {
 
               <div>
                 <label className="block text-sm font-medium text-gray-300 mb-2">
-                  Short Description *
+                  وصف مختصر *
                 </label>
                 <textarea
                   name="shortDescription"
@@ -337,20 +342,21 @@ const AdminProjectForm = () => {
                   onChange={handleInputChange}
                   rows={2}
                   required
+                  dir="rtl"
                   className="w-full px-4 py-2 bg-black/40 border border-white/10 rounded-lg text-white focus:outline-none focus:border-blue-500"
                 />
               </div>
 
               <div>
                 <label className="block text-sm font-medium text-gray-300 mb-2">
-                  Full Description *
+                  الوصف الكامل *
                 </label>
                 <textarea
                   name="fullDescription"
                   value={formData.fullDescription}
                   onChange={handleInputChange}
                   rows={4}
-                  required
+                  required dir="rtl"
                   className="w-full px-4 py-2 bg-black/40 border border-white/10 rounded-lg text-white focus:outline-none focus:border-blue-500"
                 />
               </div>
@@ -358,27 +364,27 @@ const AdminProjectForm = () => {
               <div className="grid grid-cols-2 gap-4">
                 <div>
                   <label className="block text-sm font-medium text-gray-300 mb-2">
-                    Challenge *
+                    التحدي *
                   </label>
                   <textarea
                     name="challenge"
                     value={formData.challenge}
                     onChange={handleInputChange}
                     rows={3}
-                    required
+                    required dir="rtl"
                     className="w-full px-4 py-2 bg-black/40 border border-white/10 rounded-lg text-white focus:outline-none focus:border-blue-500"
                   />
                 </div>
                 <div>
                   <label className="block text-sm font-medium text-gray-300 mb-2">
-                    Solution *
+                    الحل *
                   </label>
                   <textarea
                     name="solution"
                     value={formData.solution}
                     onChange={handleInputChange}
                     rows={3}
-                    required
+                    required dir="rtl"
                     className="w-full px-4 py-2 bg-black/40 border border-white/10 rounded-lg text-white focus:outline-none focus:border-blue-500"
                   />
                 </div>
@@ -386,14 +392,14 @@ const AdminProjectForm = () => {
             </div>
           </div>
 
-          {/* Media */}
+          {/* الوسائط */}
           <div className="bg-black/40 backdrop-blur-sm border border-white/10 rounded-xl p-6">
-            <h2 className="text-xl font-bold text-white mb-4">Media</h2>
+            <h2 className="text-xl font-bold text-white mb-4">الوسائط</h2>
             
             <div className="space-y-4">
               <div>
                 <label className="block text-sm font-medium text-gray-300 mb-2">
-                  Cover Image URL *
+                  رابط صورة الغلاف *
                 </label>
                 <input
                   type="url"
@@ -407,7 +413,7 @@ const AdminProjectForm = () => {
 
               <div>
                 <label className="block text-sm font-medium text-gray-300 mb-2">
-                  Video URL (optional)
+                  رابط الفيديو (اختياري)
                 </label>
                 <input
                   type="url"
@@ -421,14 +427,14 @@ const AdminProjectForm = () => {
               {/* Gallery */}
               <div>
                 <label className="block text-sm font-medium text-gray-300 mb-2">
-                  Gallery Images
+                  معرض الصور
                 </label>
                 <div className="flex gap-2 mb-2">
                   <input
                     type="url"
                     value={newGalleryUrl}
                     onChange={(e) => setNewGalleryUrl(e.target.value)}
-                    placeholder="Image URL"
+                    placeholder="رابط الصورة"
                     className="flex-1 px-4 py-2 bg-black/40 border border-white/10 rounded-lg text-white focus:outline-none focus:border-blue-500"
                   />
                   <button
@@ -448,7 +454,7 @@ const AdminProjectForm = () => {
                       <span className="text-sm truncate max-w-[200px]">{url}</span>
                       <button
                         type="button"
-                        onClick={() => removeGalleryUrl(index)}
+                        onClick={() => إزالةGalleryUrl(index)}
                         className="hover:text-red-400"
                       >
                         <X className="w-4 h-4" />
@@ -460,15 +466,15 @@ const AdminProjectForm = () => {
             </div>
           </div>
 
-          {/* Skills & Tech Stack */}
+          {/* المهارات & التقنيات المستخدمة */}
           <div className="bg-black/40 backdrop-blur-sm border border-white/10 rounded-xl p-6">
-            <h2 className="text-xl font-bold text-white mb-4">Skills & Technologies</h2>
+            <h2 className="text-xl font-bold text-white mb-4">المهارات & Technologies</h2>
             
             <div className="space-y-4">
-              {/* Skills */}
+              {/* المهارات */}
               <div>
                 <label className="block text-sm font-medium text-gray-300 mb-2">
-                  Skills
+                  المهارات
                 </label>
                 <div className="flex gap-2 mb-2">
                   <input
@@ -476,7 +482,7 @@ const AdminProjectForm = () => {
                     value={newSkill}
                     onChange={(e) => setNewSkill(e.target.value)}
                     onKeyPress={(e) => e.key === 'Enter' && (e.preventDefault(), addSkill())}
-                    placeholder="Add skill"
+                    placeholder="إضافة مهارة"
                     className="flex-1 px-4 py-2 bg-black/40 border border-white/10 rounded-lg text-white focus:outline-none focus:border-blue-500"
                   />
                   <button
@@ -488,7 +494,7 @@ const AdminProjectForm = () => {
                   </button>
                 </div>
                 <div className="flex flex-wrap gap-2">
-                  {formData.skills.map((skill, index) => (
+                  {formData.المهارات.map((skill, index) => (
                     <div
                       key={index}
                       className="flex items-center gap-2 px-3 py-1 bg-blue-600/20 text-blue-400 rounded-lg"
@@ -496,7 +502,7 @@ const AdminProjectForm = () => {
                       <span className="text-sm">{skill}</span>
                       <button
                         type="button"
-                        onClick={() => removeSkill(index)}
+                        onClick={() => إزالةSkill(index)}
                         className="hover:text-red-400"
                       >
                         <X className="w-4 h-4" />
@@ -506,30 +512,30 @@ const AdminProjectForm = () => {
                 </div>
               </div>
 
-              {/* Frontend Tech */}
+              {/* الواجهة الأمامية Tech */}
               <div>
                 <label className="block text-sm font-medium text-gray-300 mb-2">
-                  Frontend Technologies
+                  الواجهة الأمامية Technologies
                 </label>
                 <div className="flex gap-2 mb-2">
                   <input
                     type="text"
-                    value={newTechFrontend}
-                    onChange={(e) => setNewTechFrontend(e.target.value)}
-                    onKeyPress={(e) => e.key === 'Enter' && (e.preventDefault(), addTech('frontend', newTechFrontend))}
-                    placeholder="Add frontend tech"
+                    value={newTechالواجهة الأمامية}
+                    onChange={(e) => setNewTechالواجهة الأمامية(e.target.value)}
+                    onKeyPress={(e) => e.key === 'Enter' && (e.preventDefault(), addTech('الواجهة الأمامية', newTechالواجهة الأمامية))}
+                    placeholder="Add الواجهة الأمامية tech"
                     className="flex-1 px-4 py-2 bg-black/40 border border-white/10 rounded-lg text-white focus:outline-none focus:border-blue-500"
                   />
                   <button
                     type="button"
-                    onClick={() => addTech('frontend', newTechFrontend)}
+                    onClick={() => addTech('الواجهة الأمامية', newTechالواجهة الأمامية)}
                     className="px-4 py-2 bg-green-600 hover:bg-green-700 text-white rounded-lg transition"
                   >
                     Add
                   </button>
                 </div>
                 <div className="flex flex-wrap gap-2">
-                  {formData.techStack.frontend.map((tech, index) => (
+                  {formData.techStack.الواجهة الأمامية.map((tech, index) => (
                     <div
                       key={index}
                       className="flex items-center gap-2 px-3 py-1 bg-purple-600/20 text-purple-400 rounded-lg"
@@ -537,7 +543,7 @@ const AdminProjectForm = () => {
                       <span className="text-sm">{tech}</span>
                       <button
                         type="button"
-                        onClick={() => removeTech('frontend', index)}
+                        onClick={() => إزالةTech('الواجهة الأمامية', index)}
                         className="hover:text-red-400"
                       >
                         <X className="w-4 h-4" />
@@ -547,30 +553,30 @@ const AdminProjectForm = () => {
                 </div>
               </div>
 
-              {/* Backend Tech */}
+              {/* الخادم Tech */}
               <div>
                 <label className="block text-sm font-medium text-gray-300 mb-2">
-                  Backend Technologies
+                  الخادم Technologies
                 </label>
                 <div className="flex gap-2 mb-2">
                   <input
                     type="text"
-                    value={newTechBackend}
-                    onChange={(e) => setNewTechBackend(e.target.value)}
-                    onKeyPress={(e) => e.key === 'Enter' && (e.preventDefault(), addTech('backend', newTechBackend))}
-                    placeholder="Add backend tech"
+                    value={newTechالخادم}
+                    onChange={(e) => setNewTechالخادم(e.target.value)}
+                    onKeyPress={(e) => e.key === 'Enter' && (e.preventDefault(), addTech('الخادم', newTechالخادم))}
+                    placeholder="Add الخادم tech"
                     className="flex-1 px-4 py-2 bg-black/40 border border-white/10 rounded-lg text-white focus:outline-none focus:border-blue-500"
                   />
                   <button
                     type="button"
-                    onClick={() => addTech('backend', newTechBackend)}
+                    onClick={() => addTech('الخادم', newTechالخادم)}
                     className="px-4 py-2 bg-green-600 hover:bg-green-700 text-white rounded-lg transition"
                   >
                     Add
                   </button>
                 </div>
                 <div className="flex flex-wrap gap-2">
-                  {formData.techStack.backend.map((tech, index) => (
+                  {formData.techStack.الخادم.map((tech, index) => (
                     <div
                       key={index}
                       className="flex items-center gap-2 px-3 py-1 bg-green-600/20 text-green-400 rounded-lg"
@@ -578,7 +584,7 @@ const AdminProjectForm = () => {
                       <span className="text-sm">{tech}</span>
                       <button
                         type="button"
-                        onClick={() => removeTech('backend', index)}
+                        onClick={() => إزالةTech('الخادم', index)}
                         className="hover:text-red-400"
                       >
                         <X className="w-4 h-4" />
@@ -588,30 +594,30 @@ const AdminProjectForm = () => {
                 </div>
               </div>
 
-              {/* Tools */}
+              {/* الأدوات */}
               <div>
                 <label className="block text-sm font-medium text-gray-300 mb-2">
-                  Tools & Others
+                  الأدوات & Others
                 </label>
                 <div className="flex gap-2 mb-2">
                   <input
                     type="text"
-                    value={newTechTools}
-                    onChange={(e) => setNewTechTools(e.target.value)}
-                    onKeyPress={(e) => e.key === 'Enter' && (e.preventDefault(), addTech('tools', newTechTools))}
+                    value={newTechالأدوات}
+                    onChange={(e) => setNewTechالأدوات(e.target.value)}
+                    onKeyPress={(e) => e.key === 'Enter' && (e.preventDefault(), addTech('الأدوات', newTechالأدوات))}
                     placeholder="Add tool"
                     className="flex-1 px-4 py-2 bg-black/40 border border-white/10 rounded-lg text-white focus:outline-none focus:border-blue-500"
                   />
                   <button
                     type="button"
-                    onClick={() => addTech('tools', newTechTools)}
+                    onClick={() => addTech('الأدوات', newTechالأدوات)}
                     className="px-4 py-2 bg-green-600 hover:bg-green-700 text-white rounded-lg transition"
                   >
                     Add
                   </button>
                 </div>
                 <div className="flex flex-wrap gap-2">
-                  {formData.techStack.tools.map((tech, index) => (
+                  {formData.techStack.الأدوات.map((tech, index) => (
                     <div
                       key={index}
                       className="flex items-center gap-2 px-3 py-1 bg-orange-600/20 text-orange-400 rounded-lg"
@@ -619,7 +625,7 @@ const AdminProjectForm = () => {
                       <span className="text-sm">{tech}</span>
                       <button
                         type="button"
-                        onClick={() => removeTech('tools', index)}
+                        onClick={() => إزالةTech('الأدوات', index)}
                         className="hover:text-red-400"
                       >
                         <X className="w-4 h-4" />
@@ -638,7 +644,7 @@ const AdminProjectForm = () => {
             <div className="grid grid-cols-3 gap-4">
               <div>
                 <label className="block text-sm font-medium text-gray-300 mb-2">
-                  Project Link
+                  رابط المشروع
                 </label>
                 <input
                   type="url"
@@ -650,7 +656,7 @@ const AdminProjectForm = () => {
               </div>
               <div>
                 <label className="block text-sm font-medium text-gray-300 mb-2">
-                  GitHub Link
+                  رابط GitHub
                 </label>
                 <input
                   type="url"
@@ -686,7 +692,7 @@ const AdminProjectForm = () => {
                   value={newResult}
                   onChange={(e) => setNewResult(e.target.value)}
                   onKeyPress={(e) => e.key === 'Enter' && (e.preventDefault(), addResult())}
-                  placeholder="Add result"
+                  placeholder="إضافة نتيجة"
                   className="flex-1 px-4 py-2 bg-black/40 border border-white/10 rounded-lg text-white focus:outline-none focus:border-blue-500"
                 />
                 <button
@@ -706,7 +712,7 @@ const AdminProjectForm = () => {
                     <span className="flex-1 text-sm">{result}</span>
                     <button
                       type="button"
-                      onClick={() => removeResult(index)}
+                      onClick={() => إزالةResult(index)}
                       className="hover:text-red-400"
                     >
                       <X className="w-4 h-4" />
@@ -726,14 +732,14 @@ const AdminProjectForm = () => {
                 <div className="flex items-center gap-2">
                   <input
                     type="checkbox"
-                    name="isPublished"
-                    id="isPublished"
-                    checked={formData.isPublished}
+                    name="isمنشور"
+                    id="isمنشور"
+                    checked={formData.isمنشور}
                     onChange={handleInputChange}
                     className="w-4 h-4"
                   />
-                  <label htmlFor="isPublished" className="text-sm text-gray-300">
-                    Published
+                  <label htmlFor="isمنشور" className="text-sm text-gray-300">
+                    منشور
                   </label>
                 </div>
                 <div className="flex items-center gap-2">
@@ -751,7 +757,7 @@ const AdminProjectForm = () => {
                 </div>
                 <div>
                   <label className="block text-sm font-medium text-gray-300 mb-2">
-                    Display Order
+                    ترتيب العرض
                   </label>
                   <input
                     type="number"
@@ -765,7 +771,7 @@ const AdminProjectForm = () => {
 
               <div>
                 <label className="block text-sm font-medium text-gray-300 mb-2">
-                  Meta Title (SEO)
+                  عنوان الصفحة (SEO)
                 </label>
                 <input
                   type="text"
@@ -778,7 +784,7 @@ const AdminProjectForm = () => {
 
               <div>
                 <label className="block text-sm font-medium text-gray-300 mb-2">
-                  Meta Description (SEO)
+                  وصف الصفحة (SEO)
                 </label>
                 <textarea
                   name="metaDescription"
