@@ -28,7 +28,7 @@ const AdminCategories = () => {
       const data = await portfolioApi.getCategories();
       setCategories(data);
     } catch (error) {
-      toast.error('Failed to load categories');
+      toast.error('فشل في تحميل التصنيفات');
     } finally {
       setLoading(false);
     }
@@ -51,7 +51,7 @@ const AdminCategories = () => {
     e.preventDefault();
 
     if (!formData.name || !formData.slug) {
-      toast.error('Please fill in all required fields');
+      toast.error('يرجى ملء جميع الحقول المطلوبة');
       return;
     }
 
@@ -59,11 +59,11 @@ const AdminCategories = () => {
       if (editingCategory) {
         const result = await adminApi.updateCategory(editingCategory.id, formData);
         if (result.error) throw result.error;
-        toast.success('Category updated successfully');
+        toast.success('تم تحديث التصنيف بنجاح');
       } else {
         const result = await adminApi.createCategory(formData);
         if (result.error) throw result.error;
-        toast.success('Category created successfully');
+        toast.success('تم إنشاء التصنيف بنجاح');
       }
       
       setShowForm(false);
@@ -71,7 +71,7 @@ const AdminCategories = () => {
       setFormData({ name: '', slug: '', color: '#3B82F6', description: '' });
       loadCategories();
     } catch (error) {
-      toast.error(editingCategory ? 'Failed to update category' : 'Failed to create category');
+      toast.error(editingCategory ? 'فشل في تحديث التصنيف' : 'فشل في إنشاء التصنيف');
     }
   };
 
@@ -87,17 +87,17 @@ const AdminCategories = () => {
   };
 
   const handleDelete = async (id: string) => {
-    if (!confirm('Are you sure you want to delete this category? This will also delete all projects in this category.')) {
+    if (!confirm('هل أنت متأكد من حذف هذا التصنيف؟ سيؤدي ذلك أيضاً إلى حذف جميع المشاريع في هذا التصنيف.')) {
       return;
     }
 
     try {
       const result = await adminApi.deleteCategory(id);
       if (result.error) throw result.error;
-      toast.success('Category deleted successfully');
+      toast.success('تم حذف التصنيف بنجاح');
       loadCategories();
     } catch (error) {
-      toast.error('Failed to delete category');
+      toast.error('فشل في حذف التصنيف');
     }
   };
 
@@ -122,7 +122,7 @@ const AdminCategories = () => {
               </Link>
               <div className="flex items-center gap-3">
                 <FolderOpen className="w-8 h-8 text-green-400" />
-                <h1 className="text-2xl font-bold text-white">Manage Categories</h1>
+                <h1 className="text-2xl font-bold text-white">إدارة التصنيفات</h1>
               </div>
             </div>
             <button
@@ -130,7 +130,7 @@ const AdminCategories = () => {
               className="flex items-center gap-2 px-4 py-2 bg-green-600 hover:bg-green-700 text-white rounded-lg transition"
             >
               <Plus className="w-4 h-4" />
-              Add New Category
+              إضافة تصنيف جديد
             </button>
           </div>
         </div>
@@ -152,13 +152,13 @@ const AdminCategories = () => {
               className="bg-gray-900 border border-white/10 rounded-xl p-6 max-w-2xl w-full"
             >
               <h2 className="text-2xl font-bold text-white mb-6">
-                {editingCategory ? 'Edit Category' : 'Add New Category'}
+                {editingCategory ? 'تعديل التصنيف' : 'إضافة تصنيف جديد'}
               </h2>
 
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div>
                   <label className="block text-sm font-medium text-gray-300 mb-2">
-                    Category Name *
+                    اسم التصنيف *
                   </label>
                   <input
                     type="text"
@@ -166,6 +166,7 @@ const AdminCategories = () => {
                     value={formData.name}
                     onChange={handleInputChange}
                     required
+                    dir="rtl"
                     className="w-full px-4 py-2 bg-black/40 border border-white/10 rounded-lg text-white focus:outline-none focus:border-blue-500"
                   />
                 </div>
@@ -173,7 +174,7 @@ const AdminCategories = () => {
                 <div className="flex gap-4">
                   <div className="flex-1">
                     <label className="block text-sm font-medium text-gray-300 mb-2">
-                      Slug *
+                      الرابط المختصر *
                     </label>
                     <input
                       type="text"
@@ -189,13 +190,13 @@ const AdminCategories = () => {
                     onClick={handleSlugGenerate}
                     className="mt-7 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition"
                   >
-                    Generate
+                    إنشاء من الاسم
                   </button>
                 </div>
 
                 <div>
                   <label className="block text-sm font-medium text-gray-300 mb-2">
-                    Color *
+                    اللون *
                   </label>
                   <div className="flex gap-4 items-center">
                     <input
@@ -217,13 +218,14 @@ const AdminCategories = () => {
 
                 <div>
                   <label className="block text-sm font-medium text-gray-300 mb-2">
-                    Description
+                    الوصف
                   </label>
                   <textarea
                     name="description"
                     value={formData.description}
                     onChange={handleInputChange}
                     rows={3}
+                    dir="rtl"
                     className="w-full px-4 py-2 bg-black/40 border border-white/10 rounded-lg text-white focus:outline-none focus:border-blue-500"
                   />
                 </div>
@@ -233,14 +235,14 @@ const AdminCategories = () => {
                     type="submit"
                     className="flex-1 px-6 py-3 bg-green-600 hover:bg-green-700 text-white rounded-lg transition"
                   >
-                    {editingCategory ? 'Update Category' : 'Create Category'}
+                    {editingCategory ? 'تحديث التصنيف' : 'إنشاء التصنيف'}
                   </button>
                   <button
                     type="button"
                     onClick={handleCancel}
                     className="px-6 py-3 bg-gray-600 hover:bg-gray-700 text-white rounded-lg transition"
                   >
-                    Cancel
+                    إلغاء
                   </button>
                 </div>
               </form>
@@ -256,7 +258,7 @@ const AdminCategories = () => {
         ) : categories.length === 0 ? (
           <div className="text-center py-12">
             <FolderOpen className="w-16 h-16 text-gray-600 mx-auto mb-4" />
-            <p className="text-gray-400">No categories found</p>
+            <p className="text-gray-400">لا توجد تصنيفات</p>
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -298,10 +300,10 @@ const AdminCategories = () => {
                 )}
                 <div className="mt-4 pt-4 border-t border-white/10">
                   <span className="text-sm text-gray-400">
-                    Status: {category.is_active ? (
-                      <span className="text-green-400">Active</span>
+                    الحالة: {category.is_active ? (
+                      <span className="text-green-400">نشط</span>
                     ) : (
-                      <span className="text-red-400">Inactive</span>
+                      <span className="text-red-400">غير نشط</span>
                     )}
                   </span>
                 </div>
