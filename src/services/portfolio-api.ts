@@ -510,8 +510,8 @@ export const updateProject = async (id: string, updates: any): Promise<{ data: a
       .from('portfolio_projects')
       .update(updates)
       .eq('id', id)
-      .select()
-      .single();
+      .select('*')
+      .maybeSingle();
 
     if (error) throw error;
 
