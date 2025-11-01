@@ -5,6 +5,8 @@ import { ArrowLeft, Save, X } from 'lucide-react';
 import { adminApi } from '../../services/admin-api';
 import { portfolioApi } from '../../services/portfolio-api';
 import { toast } from 'sonner';
+import { ImageUploader } from '../../components/ImageUploader';
+import { MultiImageUploader } from '../../components/MultiImageUploader';
 
 const AdminProjectForm = () => {
   const { id } = useParams();
@@ -49,7 +51,6 @@ const AdminProjectForm = () => {
   const [newTechFrontend, setNewTechFrontend] = useState('');
   const [newTechBackend, setNewTechBackend] = useState('');
   const [newTechTools, setNewTechTools] = useState('');
-  const [newGalleryUrl, setNewGalleryUrl] = useState('');
   const [newResult, setNewResult] = useState('');
 
   useEffect(() => {
@@ -177,24 +178,6 @@ const AdminProjectForm = () => {
         ...prev.techStack,
         [category]: prev.techStack[category].filter((_, i) => i !== index),
       },
-    }));
-  };
-
-  // Gallery handlers
-  const addGalleryUrl = () => {
-    if (newGalleryUrl.trim()) {
-      setFormData(prev => ({
-        ...prev,
-        gallery: [...prev.gallery, newGalleryUrl.trim()],
-      }));
-      setNewGalleryUrl('');
-    }
-  };
-
-  const removeGalleryUrl = (index: number) => {
-    setFormData(prev => ({
-      ...prev,
-      gallery: prev.gallery.filter((_, i) => i !== index),
     }));
   };
 
@@ -440,73 +423,34 @@ const AdminProjectForm = () => {
           <div className="bg-black/40 backdrop-blur-sm border border-white/10 rounded-xl p-6">
             <h2 className="text-xl font-bold text-white mb-4">الوسائط</h2>
             
-            <div className="space-y-4">
-              <div>
-                <label className="block text-sm font-medium text-gray-300 mb-2">
-                  رابط صورة الغلاف *
-                </label>
-                <input
-                  type="url"
-                  name="coverImageUrl"
-                  value={formData.coverImageUrl}
-                  onChange={handleInputChange}
-                  required
-                  className="w-full px-4 py-2 bg-black/40 border border-white/10 rounded-lg text-white focus:outline-none focus:border-blue-500"
-                />
-              </div>
+            <div className="space-y-6">
+              {/* صورة الغلاف */}
+              <ImageUploader
+                label="صورة الغلاف"
+                existingUrl={formData.coverImageUrl}
+                onUploadComplete={(url) => setFormData(prev => ({ ...prev, coverImageUrl: url }))}
+                required={true}
+                maxSizeMB={10}
+              />
 
-              <div>
-                <label className="block text-sm font-medium text-gray-300 mb-2">
-                  رابط الفيديو (اختياري)
-                </label>
-                <input
-                  type="url"
-                  name="videoUrl"
-                  value={formData.videoUrl}
-                  onChange={handleInputChange}
-                  className="w-full px-4 py-2 bg-black/40 border border-white/10 rounded-lg text-white focus:outline-none focus:border-blue-500"
-                />
-              </div>
+              {/* فيديو */}
+              <ImageUploader
+                label="فيديو المشروع (اختياري)"
+                existingUrl={formData.videoUrl}
+                onUploadComplete={(url) => setFormData(prev => ({ ...prev, videoUrl: url }))}
+                required={false}
+                accept="video/*,image/*"
+                maxSizeMB={50}
+              />
 
-              {/* Gallery */}
-              <div>
-                <label className="block text-sm font-medium text-gray-300 mb-2">
-                  معرض الصور
-                </label>
-                <div className="flex gap-2 mb-2">
-                  <input
-                    type="url"
-                    value={newGalleryUrl}
-                    onChange={(e) => setNewGalleryUrl(e.target.value)}
-                    placeholder="رابط الصورة"
-                    className="flex-1 px-4 py-2 bg-black/40 border border-white/10 rounded-lg text-white focus:outline-none focus:border-blue-500"
-                  />
-                  <button
-                    type="button"
-                    onClick={addGalleryUrl}
-                    className="px-4 py-2 bg-green-600 hover:bg-green-700 text-white rounded-lg transition"
-                  >
-                    Add
-                  </button>
-                </div>
-                <div className="flex flex-wrap gap-2">
-                  {formData.gallery.map((url, index) => (
-                    <div
-                      key={index}
-                      className="flex items-center gap-2 px-3 py-1 bg-blue-600/20 text-blue-400 rounded-lg"
-                    >
-                      <span className="text-sm truncate max-w-[200px]">{url}</span>
-                      <button
-                        type="button"
-                        onClick={() => removeGalleryUrl(index)}
-                        className="hover:text-red-400"
-                      >
-                        <X className="w-4 h-4" />
-                      </button>
-                    </div>
-                  ))}
-                </div>
-              </div>
+              {/* معرض الصور */}
+              <MultiImageUploader
+                label="معرض الصور"
+                images={formData.gallery}
+                onImagesChange={(images) => setFormData(prev => ({ ...prev, gallery: images }))}
+                maxImages={15}
+                maxSizeMB={10}
+              />
             </div>
           </div>
 
