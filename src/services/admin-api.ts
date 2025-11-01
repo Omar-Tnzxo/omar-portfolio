@@ -222,8 +222,8 @@ export const updateProject = async (id: string, updates: any) => {
         meta_description: updates.metaDescription,
       })
       .eq('id', id)
-      .select()
-      .single();
+      .select('*')
+      .maybeSingle();
 
     if (projectError) throw projectError;
 
