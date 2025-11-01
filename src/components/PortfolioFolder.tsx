@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
-import Folder from "./Folder";
+import { Folder } from "./Folder";
 import { PortfolioCategory } from "../types/portfolio";
 
 type PortfolioFolderProps = {

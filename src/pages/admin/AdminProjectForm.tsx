@@ -31,24 +31,24 @@ const AdminProjectForm = () => {
     githubLink: '',
     liveLink: '',
     isFeatured: false,
-    isمنشور: true,
+    isPublished: true,
     displayOrder: 0,
     metaTitle: '',
     metaDescription: '',
-    المهارات: [] as string[],
+    skills: [] as string[],
     techStack: {
-      الواجهة الأمامية: [] as string[],
-      الخادم: [] as string[],
-      الأدوات: [] as string[],
+      frontend: [] as string[],
+      backend: [] as string[],
+      tools: [] as string[],
     },
     gallery: [] as string[],
     results: [] as string[],
   });
 
   const [newSkill, setNewSkill] = useState('');
-  const [newTechالواجهة الأمامية, setNewTechالواجهة الأمامية] = useState('');
-  const [newTechالخادم, setNewTechالخادم] = useState('');
-  const [newTechالأدوات, setNewTechالأدوات] = useState('');
+  const [newTechFrontend, setNewTechFrontend] = useState('');
+  const [newTechBackend, setNewTechBackend] = useState('');
+  const [newTechTools, setNewTechTools] = useState('');
   const [newGalleryUrl, setNewGalleryUrl] = useState('');
   const [newResult, setNewResult] = useState('');
 
@@ -91,26 +91,26 @@ const AdminProjectForm = () => {
     setFormData(prev => ({ ...prev, slug }));
   };
 
-  // المهارات handlers
+  // Skills handlers
   const addSkill = () => {
     if (newSkill.trim()) {
       setFormData(prev => ({
         ...prev,
-        المهارات: [...prev.المهارات, newSkill.trim()],
+        skills: [...prev.skills, newSkill.trim()],
       }));
       setNewSkill('');
     }
   };
 
-  const إزالةSkill = (index: number) => {
+  const removeSkill = (index: number) => {
     setFormData(prev => ({
       ...prev,
-      المهارات: prev.المهارات.filter((_, i) => i !== index),
+      skills: prev.skills.filter((_, i) => i !== index),
     }));
   };
 
-  // التقنيات المستخدمة handlers
-  const addTech = (category: 'الواجهة الأمامية' | 'الخادم' | 'الأدوات', value: string) => {
+  // Tech stack handlers
+  const addTech = (category: 'frontend' | 'backend' | 'tools', value: string) => {
     if (value.trim()) {
       setFormData(prev => ({
         ...prev,
@@ -120,13 +120,13 @@ const AdminProjectForm = () => {
         },
       }));
       
-      if (category === 'الواجهة الأمامية') setNewTechالواجهة الأمامية('');
-      if (category === 'الخادم') setNewTechالخادم('');
-      if (category === 'الأدوات') setNewTechالأدوات('');
+      if (category === 'frontend') setNewTechFrontend('');
+      if (category === 'backend') setNewTechBackend('');
+      if (category === 'tools') setNewTechTools('');
     }
   };
 
-  const إزالةTech = (category: 'الواجهة الأمامية' | 'الخادم' | 'الأدوات', index: number) => {
+  const removeTech = (category: 'frontend' | 'backend' | 'tools', index: number) => {
     setFormData(prev => ({
       ...prev,
       techStack: {
@@ -147,7 +147,7 @@ const AdminProjectForm = () => {
     }
   };
 
-  const إزالةGalleryUrl = (index: number) => {
+  const removeGalleryUrl = (index: number) => {
     setFormData(prev => ({
       ...prev,
       gallery: prev.gallery.filter((_, i) => i !== index),
@@ -165,7 +165,7 @@ const AdminProjectForm = () => {
     }
   };
 
-  const إزالةResult = (index: number) => {
+  const removeResult = (index: number) => {
     setFormData(prev => ({
       ...prev,
       results: prev.results.filter((_, i) => i !== index),
@@ -454,7 +454,7 @@ const AdminProjectForm = () => {
                       <span className="text-sm truncate max-w-[200px]">{url}</span>
                       <button
                         type="button"
-                        onClick={() => إزالةGalleryUrl(index)}
+                        onClick={() => removeGalleryUrl(index)}
                         className="hover:text-red-400"
                       >
                         <X className="w-4 h-4" />
@@ -494,7 +494,7 @@ const AdminProjectForm = () => {
                   </button>
                 </div>
                 <div className="flex flex-wrap gap-2">
-                  {formData.المهارات.map((skill, index) => (
+                  {formData.skills.map((skill, index) => (
                     <div
                       key={index}
                       className="flex items-center gap-2 px-3 py-1 bg-blue-600/20 text-blue-400 rounded-lg"
@@ -502,7 +502,7 @@ const AdminProjectForm = () => {
                       <span className="text-sm">{skill}</span>
                       <button
                         type="button"
-                        onClick={() => إزالةSkill(index)}
+                        onClick={() => removeSkill(index)}
                         className="hover:text-red-400"
                       >
                         <X className="w-4 h-4" />
@@ -512,30 +512,31 @@ const AdminProjectForm = () => {
                 </div>
               </div>
 
-              {/* الواجهة الأمامية Tech */}
+              {/* Frontend Tech */}
               <div>
                 <label className="block text-sm font-medium text-gray-300 mb-2">
-                  الواجهة الأمامية Technologies
+                  تقنيات الواجهة الأمامية
                 </label>
                 <div className="flex gap-2 mb-2">
                   <input
                     type="text"
-                    value={newTechالواجهة الأمامية}
-                    onChange={(e) => setNewTechالواجهة الأمامية(e.target.value)}
-                    onKeyPress={(e) => e.key === 'Enter' && (e.preventDefault(), addTech('الواجهة الأمامية', newTechالواجهة الأمامية))}
-                    placeholder="Add الواجهة الأمامية tech"
+                    value={newTechFrontend}
+                    onChange={(e) => setNewTechFrontend(e.target.value)}
+                    onKeyPress={(e) => e.key === 'Enter' && (e.preventDefault(), addTech('frontend', newTechFrontend))}
+                    placeholder="أضف تقنية للواجهة الأمامية"
+                    dir="rtl"
                     className="flex-1 px-4 py-2 bg-black/40 border border-white/10 rounded-lg text-white focus:outline-none focus:border-blue-500"
                   />
                   <button
                     type="button"
-                    onClick={() => addTech('الواجهة الأمامية', newTechالواجهة الأمامية)}
+                    onClick={() => addTech('frontend', newTechFrontend)}
                     className="px-4 py-2 bg-green-600 hover:bg-green-700 text-white rounded-lg transition"
                   >
-                    Add
+                    إضافة
                   </button>
                 </div>
                 <div className="flex flex-wrap gap-2">
-                  {formData.techStack.الواجهة الأمامية.map((tech, index) => (
+                  {formData.techStack.frontend.map((tech, index) => (
                     <div
                       key={index}
                       className="flex items-center gap-2 px-3 py-1 bg-purple-600/20 text-purple-400 rounded-lg"
@@ -543,7 +544,7 @@ const AdminProjectForm = () => {
                       <span className="text-sm">{tech}</span>
                       <button
                         type="button"
-                        onClick={() => إزالةTech('الواجهة الأمامية', index)}
+                        onClick={() => removeTech('frontend', index)}
                         className="hover:text-red-400"
                       >
                         <X className="w-4 h-4" />
@@ -553,30 +554,31 @@ const AdminProjectForm = () => {
                 </div>
               </div>
 
-              {/* الخادم Tech */}
+              {/* Backend Tech */}
               <div>
                 <label className="block text-sm font-medium text-gray-300 mb-2">
-                  الخادم Technologies
+                  تقنيات الخادم
                 </label>
                 <div className="flex gap-2 mb-2">
                   <input
                     type="text"
-                    value={newTechالخادم}
-                    onChange={(e) => setNewTechالخادم(e.target.value)}
-                    onKeyPress={(e) => e.key === 'Enter' && (e.preventDefault(), addTech('الخادم', newTechالخادم))}
-                    placeholder="Add الخادم tech"
+                    value={newTechBackend}
+                    onChange={(e) => setNewTechBackend(e.target.value)}
+                    onKeyPress={(e) => e.key === 'Enter' && (e.preventDefault(), addTech('backend', newTechBackend))}
+                    placeholder="أضف تقنية للخادم"
+                    dir="rtl"
                     className="flex-1 px-4 py-2 bg-black/40 border border-white/10 rounded-lg text-white focus:outline-none focus:border-blue-500"
                   />
                   <button
                     type="button"
-                    onClick={() => addTech('الخادم', newTechالخادم)}
+                    onClick={() => addTech('backend', newTechBackend)}
                     className="px-4 py-2 bg-green-600 hover:bg-green-700 text-white rounded-lg transition"
                   >
-                    Add
+                    إضافة
                   </button>
                 </div>
                 <div className="flex flex-wrap gap-2">
-                  {formData.techStack.الخادم.map((tech, index) => (
+                  {formData.techStack.backend.map((tech, index) => (
                     <div
                       key={index}
                       className="flex items-center gap-2 px-3 py-1 bg-green-600/20 text-green-400 rounded-lg"
@@ -584,7 +586,7 @@ const AdminProjectForm = () => {
                       <span className="text-sm">{tech}</span>
                       <button
                         type="button"
-                        onClick={() => إزالةTech('الخادم', index)}
+                        onClick={() => removeTech('backend', index)}
                         className="hover:text-red-400"
                       >
                         <X className="w-4 h-4" />
@@ -594,30 +596,31 @@ const AdminProjectForm = () => {
                 </div>
               </div>
 
-              {/* الأدوات */}
+              {/* Tools */}
               <div>
                 <label className="block text-sm font-medium text-gray-300 mb-2">
-                  الأدوات & Others
+                  الأدوات والتقنيات الأخرى
                 </label>
                 <div className="flex gap-2 mb-2">
                   <input
                     type="text"
-                    value={newTechالأدوات}
-                    onChange={(e) => setNewTechالأدوات(e.target.value)}
-                    onKeyPress={(e) => e.key === 'Enter' && (e.preventDefault(), addTech('الأدوات', newTechالأدوات))}
-                    placeholder="Add tool"
+                    value={newTechTools}
+                    onChange={(e) => setNewTechTools(e.target.value)}
+                    onKeyPress={(e) => e.key === 'Enter' && (e.preventDefault(), addTech('tools', newTechTools))}
+                    placeholder="أضف أداة"
+                    dir="rtl"
                     className="flex-1 px-4 py-2 bg-black/40 border border-white/10 rounded-lg text-white focus:outline-none focus:border-blue-500"
                   />
                   <button
                     type="button"
-                    onClick={() => addTech('الأدوات', newTechالأدوات)}
+                    onClick={() => addTech('tools', newTechTools)}
                     className="px-4 py-2 bg-green-600 hover:bg-green-700 text-white rounded-lg transition"
                   >
-                    Add
+                    إضافة
                   </button>
                 </div>
                 <div className="flex flex-wrap gap-2">
-                  {formData.techStack.الأدوات.map((tech, index) => (
+                  {formData.techStack.tools.map((tech, index) => (
                     <div
                       key={index}
                       className="flex items-center gap-2 px-3 py-1 bg-orange-600/20 text-orange-400 rounded-lg"
@@ -625,7 +628,7 @@ const AdminProjectForm = () => {
                       <span className="text-sm">{tech}</span>
                       <button
                         type="button"
-                        onClick={() => إزالةTech('الأدوات', index)}
+                        onClick={() => removeTech('tools', index)}
                         className="hover:text-red-400"
                       >
                         <X className="w-4 h-4" />
@@ -712,7 +715,7 @@ const AdminProjectForm = () => {
                     <span className="flex-1 text-sm">{result}</span>
                     <button
                       type="button"
-                      onClick={() => إزالةResult(index)}
+                      onClick={() => removeResult(index)}
                       className="hover:text-red-400"
                     >
                       <X className="w-4 h-4" />
@@ -732,13 +735,13 @@ const AdminProjectForm = () => {
                 <div className="flex items-center gap-2">
                   <input
                     type="checkbox"
-                    name="isمنشور"
-                    id="isمنشور"
-                    checked={formData.isمنشور}
+                    name="isPublished"
+                    id="isPublished"
+                    checked={formData.isPublished}
                     onChange={handleInputChange}
                     className="w-4 h-4"
                   />
-                  <label htmlFor="isمنشور" className="text-sm text-gray-300">
+                  <label htmlFor="isPublished" className="text-sm text-gray-300">
                     منشور
                   </label>
                 </div>
@@ -805,13 +808,13 @@ const AdminProjectForm = () => {
               className="flex-1 flex items-center justify-center gap-2 px-6 py-3 bg-blue-600 hover:bg-blue-700 disabled:bg-gray-600 text-white rounded-lg transition"
             >
               <Save className="w-5 h-5" />
-              {loading ? 'Saving...' : isEdit ? 'Update Project' : 'Create Project'}
+              {loading ? 'جاري الحفظ...' : isEdit ? 'تحديث المشروع' : 'إنشاء المشروع'}
             </button>
             <Link
               to="/admin/projects"
               className="px-6 py-3 bg-gray-600 hover:bg-gray-700 text-white rounded-lg transition"
             >
-              Cancel
+              إلغاء
             </Link>
           </div>
         </form>
