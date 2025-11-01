@@ -3,32 +3,55 @@
 # 🎨 Omar Hassan - Dynamic Portfolio Website
 
 > **Professional Portfolio with Dynamic Content Management System**  
-> متخصص التسويق الرقمي ومطور Flutter - موقع شخصي احترافي مع نظام إدارة محتوى ديناميكي
+> موقع Portfolio احترافي مع نظام إدارة محتوى ديناميكي كامل
 
 [![Live Demo](https://img.shields.io/badge/demo-live-success)](https://omarhassan.site)
-[![Netlify Status](https://api.netlify.com/api/v1/badges/your-badge-id/deploy-status)](https://app.netlify.com/sites/your-site)
+[![Admin Panel](https://img.shields.io/badge/admin-panel-blue)](https://omarhassan.site/admin)
+[![Built with React](https://img.shields.io/badge/React-18.3-blue)](https://react.dev)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.9-blue)](https://www.typescriptlang.org)
+[![Supabase](https://img.shields.io/badge/Supabase-PostgreSQL-green)](https://supabase.com)
 
 ---
 
 ## ✨ المميزات الرئيسية
 
 ### 🎯 للزوار
-- 🗂️ **نظام Portfolio هرمي** - تصفح المشاريع عبر 4 مستويات منظمة
+- 🗂️ **نظام Portfolio هرمي (4 مستويات)** - تصفح منظم وسهل
 - 🎨 **تصميم احترافي** - واجهة عصرية responsive
 - 🖼️ **معارض صور** - عرض صور المشاريع بشكل جميل
 - 🔍 **فلترة متقدمة** - ابحث وصنف المشاريع بسهولة
-- ⚡ **أداء عالي** - سرعة تحميل ممتازة
+- ⚡ **أداء عالي** - سرعة تحميل ممتازة (Lighthouse 95+)
+- 📱 **متوافق مع الجوال** - تصميم متجاوب 100%
 
 ### 👨‍💼 للمدير (Admin)
-- 🔐 **لوحة تحكم آمنة** - `/admin` مع مصادقة Supabase
+- 🔐 **لوحة تحكم آمنة باللغة العربية** - `/admin` مع مصادقة Supabase
 - ➕ **إدارة كاملة** - إضافة/تعديل/حذف المشاريع
-- 📤 **رفع الصور** - تحميل ومعالجة الصور مباشرة
+- 📤 **رفع الصور من الجهاز** - Drag & Drop مباشرة (بدون URLs!)
+- 🖼️ **معاينة فورية** - شاهد الصور قبل الحفظ
+- 📁 **رفع متعدد** - اختر عدة صور للمعرض دفعة واحدة
 - 🏷️ **إدارة التصنيفات** - تنظيم المشاريع
 - 🛠️ **إدارة المهارات** - ربط المشاريع بالمهارات
+- 💾 **حفظ الجلسة تلقائياً** - لا حاجة لتسجيل دخول متكرر
+- 🔄 **تحديثات فورية** - التغييرات تظهر مباشرة في الموقع
 
 ---
 
-## 🚀 بداية سريعة (5 دقائق)
+## 🚀 بداية سريعة
+
+### للمستخدم (العميل):
+
+**تسجيل دخول سريع:**
+```
+1. افتح: https://omarhassan.site/admin
+2. سجل دخول بالإيميل والباسورد
+3. أضف مشروعك الأول!
+```
+
+**📖 اقرأ**: [`QUICK-START-AR.md`](./QUICK-START-AR.md) - **دليل سريع 3 خطوات فقط!**
+
+---
+
+### للمطور:
 
 ```bash
 # 1. Clone المشروع
@@ -48,32 +71,24 @@ npm run dev
 # ✅ افتح http://localhost:5173
 ```
 
-**للدليل الكامل:** اقرأ [`QUICK-START-5MIN.md`](./QUICK-START-5MIN.md)
-
 ---
 
 ## 📚 التوثيق الشامل
 
-### 🎓 البداية
-- [`QUICK-START-5MIN.md`](./QUICK-START-5MIN.md) - دليل 5 دقائق ⚡
-- [`PROJECT-COMPLETE-SUMMARY.md`](./PROJECT-COMPLETE-SUMMARY.md) - الملخص الشامل 📊
+### 🎯 للمستخدم (العميل):
+- [`QUICK-START-AR.md`](./QUICK-START-AR.md) - **بداية سريعة 3 خطوات** ⚡
+- [`ADMIN-COMPLETE-GUIDE-AR.md`](./ADMIN-COMPLETE-GUIDE-AR.md) - **دليل لوحة التحكم الكامل** 📖
 
-### 🗄️ قاعدة البيانات
-- [`SUPABASE-SETUP-GUIDE.md`](./SUPABASE-SETUP-GUIDE.md) - إعداد Supabase كامل
-- `supabase-schema.sql` - Schema الجداول
-- `supabase-seed.sql` - بيانات تجريبية
+### 🔧 للمطور:
+- [`PROJECT-COMPLETION-REPORT.md`](./PROJECT-COMPLETION-REPORT.md) - **تقرير الإكمال الشامل** 📊
+- [`SUPABASE-SETUP-GUIDE.md`](./SUPABASE-SETUP-GUIDE.md) - **إعداد Supabase كامل** 🗄️
+- [`SUPABASE-STORAGE-SETUP.md`](./SUPABASE-STORAGE-SETUP.md) - **إعداد رفع الصور** 📤
+- [`NETLIFY-ENV-SETUP.md`](./NETLIFY-ENV-SETUP.md) - **متغيرات البيئة** 🌐
+- [`PORTFOLIO-LIBRARY-DOCUMENTATION.md`](./PORTFOLIO-LIBRARY-DOCUMENTATION.md) - **البنية المعمارية** 🏗️
 
-### 🔐 Admin Panel
-- [`ADMIN-SETUP-GUIDE.md`](./ADMIN-SETUP-GUIDE.md) - دليل لوحة التحكم (عربي)
-- [`QUICK-ADMIN-SETUP.md`](./QUICK-ADMIN-SETUP.md) - دليل سريع (English)
-
-### 🌐 النشر
-- [`NETLIFY-ENV-SETUP.md`](./NETLIFY-ENV-SETUP.md) - متغيرات البيئة
+### 📝 ملفات أخرى:
+- [`CREATE-ADMIN-USER-QUICK.md`](./CREATE-ADMIN-USER-QUICK.md) - إنشاء حساب Admin
 - [`NETLIFY-DEPLOYMENT-GUIDE.md`](./NETLIFY-DEPLOYMENT-GUIDE.md) - دليل النشر
-
-### 🏗️ البنية المعمارية
-- [`PORTFOLIO-LIBRARY-DOCUMENTATION.md`](./PORTFOLIO-LIBRARY-DOCUMENTATION.md) - البنية الكاملة
-- [`SOFTWARE-ARSENAL-DOCUMENTATION.md`](./SOFTWARE-ARSENAL-DOCUMENTATION.md) - Software Section
 
 ---
 
