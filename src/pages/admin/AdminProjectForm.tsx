@@ -55,7 +55,7 @@ const AdminProjectForm = () => {
   useEffect(() => {
     loadCategories();
     if (isEdit && id) {
-      // loadProject(id);
+      loadProject(id);
     }
   }, [isEdit, id]);
 
@@ -65,6 +65,50 @@ const AdminProjectForm = () => {
       setCategories(data);
     } catch (error) {
       toast.error('فشل في تحميل التصنيفات');
+    }
+  };
+
+  const loadProject = async (projectId: string) => {
+    setLoading(true);
+    try {
+      const result = await adminApi.getProjectById(projectId);
+      if (result.error) throw result.error;
+      
+      const project = result.data;
+      if (project) {
+        setFormData({
+          slug: project.slug || '',
+          title: project.title || '',
+          client: project.client || '',
+          myRole: project.my_role || '',
+          categoryId: project.category_id || '',
+          subCategoryId: project.sub_category_id || '',
+          shortDescription: project.short_description || '',
+          fullDescription: project.full_description || '',
+          challenge: project.challenge || '',
+          solution: project.solution || '',
+          coverImageUrl: project.cover_image_url || '',
+          videoUrl: project.video_url || '',
+          projectDate: project.project_date || '',
+          projectLink: project.project_link || '',
+          githubLink: project.github_link || '',
+          liveLink: project.live_link || '',
+          isFeatured: project.is_featured || false,
+          isPublished: project.is_published || true,
+          displayOrder: project.display_order || 0,
+          metaTitle: project.meta_title || '',
+          metaDescription: project.meta_description || '',
+          skills: project.skills || [],
+          techStack: project.techStack || { frontend: [], backend: [], tools: [] },
+          gallery: project.gallery || [],
+          results: project.results || [],
+        });
+      }
+    } catch (error) {
+      toast.error('فشل في تحميل بيانات المشروع');
+      console.error('Load project error:', error);
+    } finally {
+      setLoading(false);
     }
   };
 

@@ -323,6 +323,79 @@ export const updateProject = async (id: string, updates: any) => {
 };
 
 /**
+ * Get project by ID with all relations
+ */
+export const getProjectById = async (id: string) => {
+  try {
+    // Get main project data
+    const { data: project, error: projectError } = await supabase
+      .from('portfolio_projects')
+      .select(`
+        *,
+        portfolio_categories (
+          id,
+          name,
+          slug,
+          color
+        )
+      `)
+      .eq('id', id)
+      .single();
+
+    if (projectError) throw projectError;
+    if (!project) return { data: null, error: new Error('Project not found') };
+
+    // Get skills
+    const { data: skills } = await supabase
+      .from('project_skills')
+      .select('skill_name')
+      .eq('project_id', id)
+      .order('display_order', { ascending: true });
+
+    // Get tech stack
+    const { data: techStack } = await supabase
+      .from('project_tech_stack')
+      .select('category, tech_name')
+      .eq('project_id', id)
+      .order('display_order', { ascending: true });
+
+    // Get gallery
+    const { data: gallery } = await supabase
+      .from('project_gallery')
+      .select('image_url')
+      .eq('project_id', id)
+      .order('display_order', { ascending: true });
+
+    // Get results
+    const { data: results } = await supabase
+      .from('project_results')
+      .select('result_text')
+      .eq('project_id', id)
+      .order('display_order', { ascending: true });
+
+    // Format tech stack
+    const techStackFormatted = {
+      frontend: techStack?.filter(t => t.category === 'frontend').map(t => t.tech_name) || [],
+      backend: techStack?.filter(t => t.category === 'backend').map(t => t.tech_name) || [],
+      tools: techStack?.filter(t => t.category === 'tools').map(t => t.tech_name) || [],
+    };
+
+    // Combine all data
+    const fullProject = {
+      ...project,
+      skills: skills?.map(s => s.skill_name) || [],
+      techStack: techStackFormatted,
+      gallery: gallery?.map(g => g.image_url) || [],
+      results: results?.map(r => r.result_text) || [],
+    };
+
+    return { data: fullProject, error: null };
+  } catch (error) {
+    return { data: null, error: error as Error };
+  }
+};
+
+/**
  * Delete project
  */
 export const deleteProject = async (id: string) => {
@@ -507,6 +580,7 @@ export const adminApi = {
 
   // Projects
   createProject,
+  getProjectById,
   updateProject,
   deleteProject,
   toggleProjectFeatured,
