@@ -41,7 +41,7 @@ const AdminDashboard = () => {
         publishedProjects: projects.filter(p => p.is_published).length
       });
     } catch (error) {
-      toast.error('Failed to load statistics');
+      toast.error('فشل في تحميل الإحصائيات');
     } finally {
       setLoading(false);
     }
@@ -50,37 +50,37 @@ const AdminDashboard = () => {
   const handleLogout = async () => {
     const { error } = await authService.signOut();
     if (error) {
-      toast.error('Failed to logout');
+      toast.error('فشل تسجيل الخروج');
     } else {
-      toast.success('Logged out successfully');
+      toast.success('تم تسجيل الخروج بنجاح');
       navigate('/admin');
     }
   };
 
   const statCards = [
     {
-      title: 'Total Projects',
+      title: 'إجمالي المشاريع',
       value: stats.totalProjects,
       icon: FileText,
       color: 'bg-blue-500',
       link: '/admin/projects'
     },
     {
-      title: 'Categories',
+      title: 'الفئات',
       value: stats.totalCategories,
       icon: FolderOpen,
       color: 'bg-green-500',
       link: '/admin/categories'
     },
     {
-      title: 'Featured',
+      title: 'المميزة',
       value: stats.featuredProjects,
       icon: LayoutDashboard,
       color: 'bg-purple-500',
       link: '/admin/projects?filter=featured'
     },
     {
-      title: 'Published',
+      title: 'المنشورة',
       value: stats.publishedProjects,
       icon: Settings,
       color: 'bg-orange-500',
@@ -90,22 +90,22 @@ const AdminDashboard = () => {
 
   const quickActions = [
     {
-      title: 'Add New Project',
-      description: 'Create a new portfolio project',
+      title: 'إضافة مشروع جديد',
+      description: 'إنشاء مشروع بورتفوليو جديد',
       icon: PlusCircle,
       link: '/admin/projects/new',
       color: 'bg-blue-600 hover:bg-blue-700'
     },
     {
-      title: 'Manage Categories',
-      description: 'Edit portfolio categories',
+      title: 'إدارة الفئات',
+      description: 'تعديل فئات البورتفوليو',
       icon: FolderOpen,
       link: '/admin/categories',
       color: 'bg-green-600 hover:bg-green-700'
     },
     {
-      title: 'View All Projects',
-      description: 'Browse all portfolio projects',
+      title: 'عرض جميع المشاريع',
+      description: 'تصفح كل مشاريع البورتفوليو',
       icon: FileText,
       link: '/admin/projects',
       color: 'bg-purple-600 hover:bg-purple-700'
@@ -120,14 +120,14 @@ const AdminDashboard = () => {
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
               <LayoutDashboard className="w-8 h-8 text-blue-400" />
-              <h1 className="text-2xl font-bold text-white">Admin Dashboard</h1>
+              <h1 className="text-2xl font-bold text-white">لوحة التحكم</h1>
             </div>
             <button
               onClick={handleLogout}
               className="flex items-center gap-2 px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded-lg transition"
             >
               <LogOut className="w-4 h-4" />
-              Logout
+              تسجيل الخروج
             </button>
           </div>
         </div>
@@ -167,7 +167,7 @@ const AdminDashboard = () => {
 
         {/* Quick Actions */}
         <div className="mb-8">
-          <h2 className="text-xl font-bold text-white mb-4">Quick Actions</h2>
+          <h2 className="text-xl font-bold text-white mb-4">الإجراءات السريعة</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {quickActions.map((action, index) => {
               const Icon = action.icon;
@@ -193,21 +193,21 @@ const AdminDashboard = () => {
 
         {/* Recent Activity */}
         <div className="bg-black/40 backdrop-blur-sm border border-white/10 rounded-xl p-6">
-          <h2 className="text-xl font-bold text-white mb-4">Management Options</h2>
+          <h2 className="text-xl font-bold text-white mb-4">خيارات الإدارة</h2>
           <div className="space-y-3">
             <Link
               to="/admin/projects"
               className="flex items-center gap-3 p-4 bg-white/5 hover:bg-white/10 rounded-lg transition"
             >
               <FileText className="w-5 h-5 text-blue-400" />
-              <span className="text-white">Manage All Projects</span>
+              <span className="text-white">إدارة جميع المشاريع</span>
             </Link>
             <Link
               to="/admin/categories"
               className="flex items-center gap-3 p-4 bg-white/5 hover:bg-white/10 rounded-lg transition"
             >
               <FolderOpen className="w-5 h-5 text-green-400" />
-              <span className="text-white">Manage Categories</span>
+              <span className="text-white">إدارة الفئات</span>
             </Link>
           </div>
         </div>

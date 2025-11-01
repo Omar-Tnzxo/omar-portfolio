@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Lock, Mail, Eye, EyeOff, AlertCircle } from 'lucide-react';
@@ -12,9 +12,24 @@ export const AdminLogin = () => {
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [checkingSession, setCheckingSession] = useState(true);
   const [error, setError] = useState('');
 
   const from = (location.state as any)?.from?.pathname || '/admin/dashboard';
+
+  // Check if user is already logged in
+  useEffect(() => {
+    const checkExistingSession = async () => {
+      const { user } = await authService.getSession();
+      if (user) {
+        // User is already logged in, redirect to dashboard
+        navigate(from, { replace: true });
+      }
+      setCheckingSession(false);
+    };
+
+    checkExistingSession();
+  }, [navigate, from]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -40,6 +55,15 @@ export const AdminLogin = () => {
 
     setLoading(false);
   };
+
+  // Show loading while checking session
+  if (checkingSession) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-primary via-[#0a0a1e] to-black flex items-center justify-center">
+        <div className="w-12 h-12 border-4 border-[#915EFF] border-t-transparent rounded-full animate-spin"></div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-primary via-[#0a0a1e] to-black flex items-center justify-center p-6">
